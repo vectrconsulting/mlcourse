@@ -1,0 +1,14 @@
+version: "3.4"
+
+services:
+  mlcourse:
+    image: mlcourse
+    hostname: mlcourse
+    container_name: mlcourse
+    ports:
+      - "8888:8888"
+    environment:
+      JUPYTER_ENABLE_LAB: "true"
+    build:
+      context: .
+      dockerfile: ./Dockerfile

@@ -1,0 +1,14 @@
+version: "3"
+services:
+  mlcourse:
+    volumes:
+      # Mounts the project folder to '/workspace'. While this file is in .devcontainer,
+      # mounts are relative to the first file in the list, which is a level up.
+      - .:/app:cached
+      - bashhistory:/home/yovan/commandhistory/
+    # only enable root and sudo if you need to install something outside of conda
+    #environment:
+    #  GRANT_SUDO: "yes"
+    #user: root
+volumes:
+  bashhistory:

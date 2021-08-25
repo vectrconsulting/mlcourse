@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exploratory Data Analysis &#8212; ML Cursus Vlabel</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welkom in deze basis ML cursus" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/VectrConsulting.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ML Cursus Vlabel</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welkom in deze basis ML cursus
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Exploratory Data Analysis
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/eda.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/vectrconsulting/mlcourse"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/vectrconsulting/mlcourse/main?urlpath=tree/./eda.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/vectrconsulting/mlcourse/blob/main/./eda.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="exploratory-data-analysis">
+<h1>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">¶</a></h1>
+<p>You can also create content with Jupyter Notebooks. This means that you can include
+code blocks and their outputs in your book.</p>
+<div class="figure align-default" id="architecture">
+<a class="reference internal image-reference" href="_images/test.drawio.png"><img alt="_images/test.drawio.png" src="_images/test.drawio.png" style="height: 250px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Some architecture</span><a class="headerlink" href="#architecture" title="Permalink to this image">¶</a></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pandas_profiling</span> <span class="kn">import</span> <span class="n">ProfileReport</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1969</span><span class="o">/</span><span class="mf">3170068168.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">pandas_profiling</span> <span class="kn">import</span> <span class="n">ProfileReport</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">])</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span> <span class="o">=</span> <span class="n">ProfileReport</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Pandas Profiling Report&quot;</span><span class="p">)</span>
+
+<span class="n">profile</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">navbar_show</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">to_html</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>An Extensive Step by Step Guide to Exploratory Data Analysis
+My personal guide to performing EDA for any dataset
+Terence Shin
+Terence Shin
+Jan 12, 2020·9 min read
+
+
+
+
+If you enjoyed this, follow me on Medium for more
+Follow me on Kaggle for more content!
+Let’s connect on LinkedIn
+Interested in collaborating? Check out my website.
+Check out my free data science resource with new material every week!
+What is Exploratory Data Analysis?
+Exploratory Data Analysis (EDA), also known as Data Exploration, is a step in the Data Analysis Process, where a number of techniques are used to better understand the dataset being used.
+‘Understanding the dataset’ can refer to a number of things including but not limited to…
+Extracting important variables and leaving behind useless variables
+Identifying outliers, missing values, or human error
+Understanding the relationship(s), or lack of, between variables
+Ultimately, maximizing your insights of a dataset and minimizing potential error that may occur later in the process
+Here’s why this is important.
+Have you heard of the phrase, “garbage in, garbage out”?
+With EDA, it’s more like, “garbage in, perform EDA, possibly garbage out.”
+By conducting EDA, you can turn an almost useable dataset into a completely useable dataset. I’m not saying that EDA can magically make any dataset clean — that is not true. However, many EDA techniques can remedy some common problems that are present in every dataset.
+Exploratory Data Analysis does two main things:
+1. It helps clean up a dataset.
+2. It gives you a better understanding of the variables and the relationships between them.
+Components of EDA
+To me, there are main components of exploring data:
+Understanding your variables
+Cleaning your dataset
+Analyzing relationships between variables
+In this article, we’ll take a look at the first two components.
+1. Understanding Your Variables
+You don’t know what you don’t know. And if you don’t know what you don’t know, then how are you supposed to know whether your insights make sense or not? You won’t.
+To give an example, I was exploring data provided by the NFL (data here) to see if I could discover any insights regarding variables that increase the likelihood of injury. One insight that I got was that Linebackers accumulated more than eight times as many injuries as Tight Ends. However, I had no idea what the difference between a Linebacker and a Tight End was, and because of this, I didn’t know if my insights made sense or not. Sure, I can Google what the differences between the two are, but I won’t always be able to rely on Google! Now you can see why understanding your data is so important. Let’s see how we can do this in practice.
+As an example, I used the same dataset that I used to create my first Random Forest model, the Used Car Dataset here. First, I imported all of the libraries that I knew I’d need for my analysis and conducted some preliminary analyses.
+#Import Libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pylab as plt
+import seaborn as sns#Understanding my variables
+df.shape
+df.head()
+df.columns
+.shape returns the number of rows by the number of columns for my dataset. My output was (525839, 22), meaning the dataset has 525839 rows and 22 columns.
+.head() returns the first 5 rows of my dataset. This is useful if you want to see some example values for each variable.
+.columns returns the name of all of your columns in the dataset.
+
+df.columns output
+Once I knew all of the variables in the dataset, I wanted to get a better understanding of the different values for each variable.
+df.nunique(axis=0)
+df.describe().apply(lambda s: s.apply(lambda x: format(x, &#39;f&#39;)))
+.nunique(axis=0) returns the number of unique values for each variable.
+.describe() summarizes the count, mean, standard deviation, min, and max for numeric variables. The code that follows this simply formats each row to the regular format and suppresses scientific notation (see here).
+
+df.nunique(axis=0) output
+
+df.describe().apply(lambda s: s.apply(lambda x: format(x, ‘f’))) output
+Immediately, I noticed an issue with price, year, and odometer. For example, the minimum and maximum price are $0.00 and $3,048,344,231.00 respectively. You’ll see how I dealt with this in the next section. I still wanted to get a better understanding of my discrete variables.
+df.condition.unique()
+Using .unique(), I took a look at my discrete variables, including ‘condition’.
+
+df.condition.unique()
+You can see that there are many synonyms of each other, like ‘excellent’ and ‘like new’. While this isn’t the greatest example, there will be some instances where it‘s ideal to clump together different words. For example, if you were analyzing weather patterns, you may want to reclassify ‘cloudy’, ‘grey’, ‘cloudy with a chance of rain’, and ‘mostly cloudy’ simply as ‘cloudy’.
+Later you’ll see that I end up omitting this column due to having too many null values, but if you wanted to re-classify the condition values, you could use the code below:
+# Reclassify condition column
+def clean_condition(row):
+    
+    good = [&#39;good&#39;,&#39;fair&#39;]
+    excellent = [&#39;excellent&#39;,&#39;like new&#39;]       
+    
+    if row.condition in good:
+        return &#39;good&#39;   
+    if row.condition in excellent:
+        return &#39;excellent&#39;    
+    return row.condition# Clean dataframe
+def clean_df(playlist):
+    df_cleaned = df.copy()
+    df_cleaned[&#39;condition&#39;] = df_cleaned.apply(lambda row: clean_condition(row), axis=1)
+    return df_cleaned# Get df with reclassfied &#39;condition&#39; column
+df_cleaned = clean_df(df)print(df_cleaned.condition.unique())
+And you can see that the values have been re-classified below.
+
+print(df_cleaned.condition.unique()) output
+2. Cleaning your dataset
+You now know how to reclassify discrete data if needed, but there are a number of things that still need to be looked at.
+a. Removing Redundant variables
+First I got rid of variables that I thought were redundant. This includes url, image_url, and city_url.
+df_cleaned = df_cleaned.copy().drop([&#39;url&#39;,&#39;image_url&#39;,&#39;city_url&#39;], axis=1)
+b. Variable Selection
+Next, I wanted to get rid of any columns that had too many null values. Thanks to my friend, Richie, I used the following code to remove any columns that had 40% or more of its data as null values. Depending on the situation, I may want to increase or decrease the threshold. The remaining columns are shown below.
+NA_val = df_cleaned.isna().sum()def na_filter(na, threshold = .4): #only select variables that passees the threshold
+    col_pass = []
+    for i in na.keys():
+        if na[i]/df_cleaned.shape[0]&lt;threshold:
+            col_pass.append(i)
+    return col_passdf_cleaned = df_cleaned[na_filter(NA_val)]
+df_cleaned.columns
+
+c. Removing Outliers
+Revisiting the issue previously addressed, I set parameters for price, year, and odometer to remove any values outside of the set boundaries. In this case, I used my intuition to determine parameters — I’m sure there are methods to determine the optimal boundaries, but I haven’t looked into it yet!
+df_cleaned = df_cleaned[df_cleaned[&#39;price&#39;].between(999.99, 99999.00)]
+df_cleaned = df_cleaned[df_cleaned[&#39;year&#39;] &gt; 1990]
+df_cleaned = df_cleaned[df_cleaned[&#39;odometer&#39;] &lt; 899999.00]df_cleaned.describe().apply(lambda s: s.apply(lambda x: format(x, &#39;f&#39;)))
+You can see that the minimum and maximum values have changed in the results below.
+
+d. Removing Rows with Null Values
+Lastly, I used .dropna(axis=0) to remove any rows with null values. After the code below, I went from 371982 to 208765 rows.
+df_cleaned = df_cleaned.dropna(axis=0)
+df_cleaned.shape
+3. Analyzing relationships between variables
+Correlation Matrix
+The first thing I like to do when analyzing my variables is visualizing it through a correlation matrix because it’s the fastest way to develop a general understanding of all of my variables. To review, correlation is a measurement that describes the relationship between two variables — if you want to learn more about it, you can check out my statistics cheat sheet here.) Thus, a correlation matrix is a table that shows the correlation coefficients between many variables. I used sns.heatmap() to plot a correlation matrix of all of the variables in the used car dataset.
+# calculate correlation matrix
+corr = df_cleaned.corr()# plot the heatmap
+sns.heatmap(corr, xticklabels=corr.columns, yticklabels=corr.columns, annot=True, cmap=sns.diverging_palette(220, 20, as_cmap=True))
+
+We can see that there is a positive correlation between price and year and a negative correlation between price and odometer. This makes sense as newer cars are generally more expensive, and cars with more mileage are relatively cheaper. We can also see that there is a negative correlation between year and odometer — the newer a car the less number of miles on the car.
+Scatterplot
+It’s pretty hard to beat correlation heatmaps when it comes to data visualizations, but scatterplots are arguably one of the most useful visualizations when it comes to data.
+A scatterplot is a type of graph which ‘plots’ the values of two variables along two axes, like age and height. Scatterplots are useful for many reasons: like correlation matrices, it allows you to quickly understand a relationship between two variables, it’s useful for identifying outliers, and it’s instrumental when polynomial multiple regression models (which we’ll get to in the next article). I used .plot() and set the ‘kind’ of graph as scatter. I also set the x-axis to ‘odometer’ and y-axis as ‘price’, since we want to see how different levels of mileage affects price.
+df_cleaned.plot(kind=&#39;scatter&#39;, x=&#39;odometer&#39;, y=&#39;price&#39;)
+
+This narrates the same story as a correlation matrix — there’s a negative correlation between odometer and price. What’s neat about scatterplots is that it communicates more information than just that. Another insight that you can assume is that mileage has a diminishing effect on price. In other words, the amount of mileage that a car accumulates early in its life impacts price much more than later on when a car is older. You can see this as the plots show a steep drop at first, but becomes less steep as more mileage is added. This is why people say that it’s not a good investment to buy a brand new car!
+df_cleaned.plot(kind=&#39;scatter&#39;, x=&#39;year&#39;, y=&#39;price&#39;)
+
+To give another example, the scatterplot above shows the relationship between year and price — the newer the car is, the more expensive it’s likely to be.
+As a bonus, sns.pairplot() is a great way to create scatterplots between all of your variables.
+sns.pairplot(df_cleaned)
+
+Histogram
+Correlation matrices and scatterplots are useful for exploring the relationship between two variables. But what if you only wanted to explore a single variable by itself? This is when histograms come into play. Histograms look like bar graphs but they show the distribution of a variable’s set of values.
+df_cleaned[&#39;odometer&#39;].plot(kind=&#39;hist&#39;, bins=50, figsize=(12,6), facecolor=&#39;grey&#39;,edgecolor=&#39;black&#39;)df_cleaned[&#39;year&#39;].plot(kind=&#39;hist&#39;, bins=20, figsize=(12,6), facecolor=&#39;grey&#39;,edgecolor=&#39;black&#39;)
+
+df_cleaned[&#39;year&#39;].plot(kind=&#39;hist&#39;, bins=20, figsize=(12,6), facecolor=&#39;grey&#39;,edgecolor=&#39;black&#39;)
+
+We can quickly notice that the average car has an odometer from 0 to just over 200,000 km and a year of around 2000 to 2020. The difference between the two graphs is that the distribution of ‘odometer’ is positively skewed while the distribution of ‘year’ is negatively skewed. Skewness is important, especially in areas like finance, because a lot of models assume that all variables are normally distributed, which typically isn’t the case.
+Boxplot
+Another way to visualize the distribution of a variable is a boxplot. We’re going to look at ‘price’ this time as an example.
+df_cleaned.boxplot(&#39;price&#39;)
+
+Boxplots are not as intuitive as the other graphs shown above, but it communicates a lot of information in its own way. The image below explains how to read a boxplot. Immediately, you can see that there are a number of outliers for price in the upper range and that most of the prices fall between 0 and $40,000.
+
+There are several other types of visualizations that weren’t covered that you can use depending on the dataset like stacked bar graphs, area plots, violin plots, and even geospatial visuals.
+By going through the three steps of exploratory data analysis, you’ll have a much better understanding of your data, which will make it easier to choose your model, your attributes, and refine it overall.
+For more articles like this one, check out https://blog.datatron.com/
+Thanks for Reading!
+If you enjoyed this, follow me on Medium for more
+Follow me on Kaggle for more content!
+Let’s connect on LinkedIn
+Interested in collaborating? Check out my website.
+Check out my free data science resource with new material every week!
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is a lot more that you can do with outputs (such as including interactive outputs)
+with your book. For more information about this, see <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a></p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="intro.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Welkom in deze basis ML cursus</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Tom Michiels<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

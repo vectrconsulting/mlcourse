@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: ML Cursus Vlabel
+title: Basis ML
 author: Tom Michiels
 logo:  images/VectrConsulting.png
 
@@ -9,6 +9,7 @@ logo:  images/VectrConsulting.png
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: force
+  timeout: 100
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -28,7 +29,7 @@ repository:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  use_issues_button: false
+  use_issues_button: true
   use_repository_button: true
 
 launch_buttons:

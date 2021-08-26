@@ -17,21 +17,26 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
+#Import Libraries
 import numpy as np
 import pandas as pd
-from pandas_profiling import ProfileReport
+import matplotlib.pylab as plt
+import seaborn as sns
+from sklearn import datasets
+data =datasets.load_boston()
+df = pd.DataFrame(data.data, columns=data.feature_names)
+df.head()
 
-df = pd.DataFrame(np.random.rand(100, 5), columns=["a", "b", "c", "d", "e"])
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2012/3170068168.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 2[0;31m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      3[0m [0;32mfrom[0m [0mpandas_profiling[0m [0;32mimport[0m [0mProfileReport[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m [0;34m[0m[0m
-[1;32m      5[0m [0mdf[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mDataFrame[0m[0;34m([0m[0mnp[0m[0;34m.[0m[0mrandom[0m[0;34m.[0m[0mrand[0m[0;34m([0m[0;36m100[0m[0;34m,[0m [0;36m5[0m[0;34m)[0m[0;34m,[0m [0mcolumns[0m[0;34m=[0m[0;34m[[0m[0;34m"a"[0m[0;34m,[0m [0;34m"b"[0m[0;34m,[0m [0;34m"c"[0m[0;34m,[0m [0;34m"d"[0m[0;34m,[0m [0;34m"e"[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/tmp/ipykernel_1910/3215963599.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;31m#Import Libraries[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 3[0;31m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      4[0m [0;32mimport[0m [0mmatplotlib[0m[0;34m.[0m[0mpylab[0m [0;32mas[0m [0mplt[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;32mimport[0m [0mseaborn[0m [0;32mas[0m [0msns[0m[0;34m[0m[0;34m[0m[0m
 
 [0;31mModuleNotFoundError[0m: No module named 'pandas'
 ModuleNotFoundError: No module named 'pandas'

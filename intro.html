@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welkom in deze basis ML cursus &#8212; ML Cursus Vlabel</title>
+    <title>Basis ML &#8212; Basis ML</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -73,7 +73,7 @@
       <img src="_static/VectrConsulting.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">ML Cursus Vlabel</h1>
+      <h1 class="site-logo" id="site-title">Basis ML</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -84,7 +84,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1 current">
   <a class="reference internal" href="#">
-   Welkom in deze basis ML cursus
+   Basis ML
   </a>
  </li>
 </ul>
@@ -154,7 +154,10 @@
             href="https://github.com/vectrconsulting/mlcourse"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
-        
+        <a class="issues-button"
+            href="https://github.com/vectrconsulting/mlcourse/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
     </div>
 </div>
@@ -195,6 +198,54 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ml-toepassingen">
+   ML Toepassingen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploratory-data-analysis-eda">
+   Exploratory Data Analysis (EDA)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-cleaning">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-engineering">
+   Feature engineering
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modellen-trainen-en-selecteren">
+   Modellen trainen en selecteren
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modellen-tunen">
+   Modellen tunen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modellen-in-productie">
+   Modellen in productie
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cloud-en-spark">
+   Cloud en Spark
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -203,11 +254,12 @@
         
               <div>
                 
-  <div class="section" id="welkom-in-deze-basis-ml-cursus">
-<h1>Welkom in deze basis ML cursus<a class="headerlink" href="#welkom-in-deze-basis-ml-cursus" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="basis-ml">
+<h1>Basis ML<a class="headerlink" href="#basis-ml" title="Permalink to this headline">¶</a></h1>
 <p>In deze cursus zullen we de basis principes van Machine Learning belichten en bespreken.
-We zullen verschillende topics licht aanraken en hopen een volledig holistisch beeld te geven over de basis principes.</p>
-<p>Dit zijn de topics die we gaan bekijken.</p>
+We zullen verschillende topics licht aanraken en hopen een holistisch beeld te kunnen schetsen</p>
+<p>&nbsp;</p><p>Dit zijn de onderwerpen die we gaan bekijken.</p>
+<p>&nbsp;</p> 
 <ul class="simple">
 <li><p>EDA</p></li>
 <li><p>Data Cleaning</p></li>
@@ -218,9 +270,11 @@ We zullen verschillende topics licht aanraken en hopen een volledig holistisch b
 <li><p>Cloud en Spark</p></li>
 </ul>
 <p>Deze cursus is gemaakt met jupyter notebooks. Jupyter notebooks worden veel gebruikt door data scientist om eerste prototypes in te maken. Notebooks zijn gebaseerd op de principes van het literal programming. Notebooks combineren documentatie met uit te voerden code.</p>
-<p>Deze cursus kan dus zowel als website bekeken worden maar alle code examples kunnen ook uitgevoerd worden door de colab button uit te voeren.</p>
-<p>Hieronder een voorbeeld van een code cell die uitgevoerd kan worden.</p>
-<div class="cell docutils container">
+<p>&nbsp;</p> 
+Deze cursus kan jedus zowel als website bekeken worden maar alle code examples kunnen ook uitgevoerd worden door de colab button uit te voeren.
+<p>&nbsp;</p> 
+Hieronder een voorbeeld van een code cell die uitgevoerd kan worden.
+<p>&nbsp;</p> <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
 </pre></div>
@@ -231,6 +285,60 @@ We zullen verschillende topics licht aanraken en hopen een volledig holistisch b
 </pre></div>
 </div>
 </div>
+</div>
+<p>Via de execute knop bovenaan kan je deze cursus openen op een interactieve omgeving zoals Google Colab uitvoeren.</p>
+<div class="section" id="ml-toepassingen">
+<h2>ML Toepassingen<a class="headerlink" href="#ml-toepassingen" title="Permalink to this headline">¶</a></h2>
+<p>Wat zijn ML toepassingen nu juist? Stel we moeten inschatten hoeveel tijd een verhuis gaat kosten. Op voorhand kunnen we regels gaan opstellen en schatten hoeveel tijd we per item gaan nodig hebben. Bij traditionele software schrijven we meestal het volgende.</p>
+<p>&nbsp;</p> <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">num_bedrooms</span><span class="p">,</span><span class="n">num_bathrooms</span><span class="p">,</span><span class="n">sq_ft</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">num_bedrooms</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">num_bathrooms</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1500</span>
+    <span class="k">elif</span> <span class="n">num_bedrooms</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">sq_ft</span> <span class="o">&gt;</span> <span class="mi">2000</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">2500</span>
+    <span class="k">return</span> <span class="mi">2000</span>
+
+
+<span class="n">cost</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2000
+</pre></div>
+</div>
+</div>
+</div>
+<p>We zien wel snel dat bij het vergroten van de inpout parameters dat deze if else structuren snel zeer onoverzichtelijk beginnen te worden. ML laat ons toe om deze if else structuren te vervangen door modellen die we kunnen trainen op historische data. We gaan als het ware de if else leren uit het verleden. Bij het leren een toepassen van deze technieken komt wel heel wat te kijken. We zullen nu even de grote lijnen toelichten.</p>
+</div>
+<div class="section" id="exploratory-data-analysis-eda">
+<h2>Exploratory Data Analysis (EDA)<a class="headerlink" href="#exploratory-data-analysis-eda" title="Permalink to this headline">¶</a></h2>
+<p>Het hoofdoel van EDA is om je historische data die je wil gebruiken bij het trainen te leren kennen. Zodoende vroeg in het process al eventueel zaken te detecteren die het latere verloop zullen bemoeilijken. Typisch kijken we naar missing values. Data distributies. Correlaties tussen verschillende features. Na deze stap begrijpen we onze data beter en kunnen we de volgende stappen gaan definieren. Eventueel kunnen we ook al beslissen dat extra data nodig is</p>
+</div>
+<div class="section" id="data-cleaning">
+<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
+<p>Wat doen we met missing values? Laten we volledige kolomen weg of gaan we waardes trachten te gokken. Distributies die niet normaal verdeeld zijn gaan we deze proberen te transformeren. Sommige ML modellen zijn zeer gevoelig aan data distributies en kunnen vreemd gedrag vertonen als we hier geen rekening mee gaan houden. De data cleaning stap is de voorbereidened stap waar we hier rekening mee gaan houden. Eventueel kunnen we ook outliers gaan detecteren en proberen te verwijderen.</p>
+</div>
+<div class="section" id="feature-engineering">
+<h2>Feature engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">¶</a></h2>
+<p>We hebben onze data ondertussen leren kennen en we hebben de data in een behapbare vorm gekregen. Nu kunnen we eens kijken samen met de domein experten welke features we best gaan gebruiken. Kunnen we met de huidige features set misschien nog extra features gaan berekenen of afleiden. Als we geospatiale informatie hebben dan kunnen we misschien extra aggregaties gaan toevoegen. Als we tijdsgebonden data hebben kunnen we de tijd gaan transformeren naar meer ML toegankelijkere formaten. Dit zijn allemaal stappen die we tijden deze fase gaan uitvoeren.</p>
+</div>
+<div class="section" id="modellen-trainen-en-selecteren">
+<h2>Modellen trainen en selecteren<a class="headerlink" href="#modellen-trainen-en-selecteren" title="Permalink to this headline">¶</a></h2>
+<p>De data is nu klaar en we kunnen nu onze modellen gaan trainen. We zoeken via een iteratief process de parameters van onze modellen. Er zijn veel verschillende modellen die we kunnen trainen. Hier beperken we ons vooral tot liniaire modellen en decision trees. Belangrijk om ook te bepalen is op welke metric ons model geoptimaliseerd wordt. Er bestaan low code libraries die bij een eerste selectie kunnen helpen.</p>
+</div>
+<div class="section" id="modellen-tunen">
+<h2>Modellen tunen<a class="headerlink" href="#modellen-tunen" title="Permalink to this headline">¶</a></h2>
+<p>Eens we via selectie methode model kandidaten hebben gevonden dan kunnen we modellen verder gaan tunen. Die door de hyperparameters wat beter te gaan afstellen of door combinaties te gaan maken van verschillende modellen. We moeten ook rekening beginnen te gaan houden met overfitting willen we de bruikbaarheid van onze modellen op nieuwe data kunnen garanderen.</p>
+</div>
+<div class="section" id="modellen-in-productie">
+<h2>Modellen in productie<a class="headerlink" href="#modellen-in-productie" title="Permalink to this headline">¶</a></h2>
+<p>Als we modellen in productie zetten moeten we rekening houden met verschillende aspecten. Is de nieuwe data die we gaan voorspellen gelijkaardig aan de historisch data. Hoe betrouwbaar is ons model op termijn. Op welke tijdstippen gaan we de modellen opnieuw gaan trainen?</p>
+</div>
+<div class="section" id="cloud-en-spark">
+<h2>Cloud en Spark<a class="headerlink" href="#cloud-en-spark" title="Permalink to this headline">¶</a></h2>
+<p>Welke zijn de courante componenten ter ondersteuning van een ML Project</p>
 </div>
 <div class="toctree-wrapper compound">
 </div>

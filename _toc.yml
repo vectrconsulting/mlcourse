@@ -5,3 +5,10 @@ format: jb-book
 root: intro
 chapters:
 - file: eda
+- file: datacleaning
+- file: featureengineering
+- file: modeltrain
+- file: modeltune
+- file: modelpr
+- file: cloudspark
+

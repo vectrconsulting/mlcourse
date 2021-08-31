@@ -5,3 +5,4 @@ sklearn
 fuzzywuzzy
 mlxtend
 pycaret
+optuna

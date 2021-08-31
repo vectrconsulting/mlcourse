@@ -17,26 +17,37 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-from pycaret.datasets import get_data
-jewellery = get_data('jewellery')
-from pycaret.clustering import *
-exp_name = setup(data = jewellery,silent=True)
+from pycaret.datasets import get_data 
+diabetes = get_data('diabetes') 
+# Importing module and initializing setup 
+from pycaret.classification import * 
+clf1 = setup(data = diabetes, target = 'Class variable')
+# train a decision tree model
+dt = create_model('dt')
+# tune hyperparameters with custom_grid
+params = {"max_depth": np.random.randint(1, (len(data.columns)*.85),20),
+          "max_features": np.random.randint(1, len(data.columns),20),
+          "min_samples_leaf": [2,3,4,5,6],
+          "criterion": ["gini", "entropy"]
+          }
+tuned_dt_custom = tune_model(dt, custom_grid = params)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mImportError[0m                               Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2079/2116537435.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0mdatasets[0m [0;32mimport[0m [0mget_data[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      2[0m [0mjewellery[0m [0;34m=[0m [0mget_data[0m[0;34m([0m[0;34m'jewellery'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 3[0;31m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0mclustering[0m [0;32mimport[0m [0;34m*[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      4[0m [0mexp_name[0m [0;34m=[0m [0msetup[0m[0;34m([0m[0mdata[0m [0;34m=[0m [0mjewellery[0m[0;34m,[0m[0msilent[0m[0;34m=[0m[0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/tmp/ipykernel_2109/563638542.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      2[0m [0mdiabetes[0m [0;34m=[0m [0mget_data[0m[0;34m([0m[0;34m'diabetes'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0;31m# Importing module and initializing setup[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 4[0;31m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0mclassification[0m [0;32mimport[0m [0;34m*[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      5[0m [0mclf1[0m [0;34m=[0m [0msetup[0m[0;34m([0m[0mdata[0m [0;34m=[0m [0mdiabetes[0m[0;34m,[0m [0mtarget[0m [0;34m=[0m [0;34m'Class variable'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0;31m# train a decision tree model[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pycaret/clustering.py[0m in [0;36m<module>[0;34m[0m
-[1;32m     14[0m [0;32mimport[0m [0mipywidgets[0m [0;32mas[0m [0mipw[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     15[0m [0;32mfrom[0m [0mtyping[0m [0;32mimport[0m [0mList[0m[0;34m,[0m [0mTuple[0m[0;34m,[0m [0mAny[0m[0;34m,[0m [0mUnion[0m[0;34m,[0m [0mOptional[0m[0;34m,[0m [0mDict[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 16[0;31m [0;32mimport[0m [0mpycaret[0m[0;34m.[0m[0minternal[0m[0;34m.[0m[0mtabular[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     17[0m [0;34m[0m[0m
-[1;32m     18[0m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0minternal[0m[0;34m.[0m[0mtabular[0m [0;32mimport[0m [0mMLUsecase[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pycaret/classification.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      8[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      9[0m [0;34m[0m[0m
+[0;32m---> 10[0;31m [0;32mimport[0m [0mpycaret[0m[0;34m.[0m[0minternal[0m[0;34m.[0m[0mtabular[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     11[0m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0minternal[0m[0;34m.[0m[0mDisplay[0m [0;32mimport[0m [0mDisplay[0m[0;34m,[0m [0mis_in_colab[0m[0;34m,[0m [0menable_colab[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     12[0m [0;32mfrom[0m [0mtyping[0m [0;32mimport[0m [0mList[0m[0;34m,[0m [0mTuple[0m[0;34m,[0m [0mAny[0m[0;34m,[0m [0mUnion[0m[0;34m,[0m [0mOptional[0m[0;34m,[0m [0mDict[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pycaret/internal/tabular.py[0m in [0;36m<module>[0;34m[0m
 [1;32m     45[0m [0;32mimport[0m [0mpycaret[0m[0;34m.[0m[0mcontainers[0m[0;34m.[0m[0mmodels[0m[0;34m.[0m[0mclustering[0m[0;34m[0m[0;34m[0m[0m

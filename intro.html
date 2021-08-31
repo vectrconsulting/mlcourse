@@ -301,9 +301,7 @@ We zullen verschillende topics licht aanraken en hopen een holistisch beeld te k
 <li><p>Modellen in productie</p></li>
 <li><p>Cloud en Spark</p></li>
 </ul>
-<p>Deze cursus is gemaakt met jupyter notebooks. Jupyter notebooks worden veel gebruikt door data scientist om eerste prototypes in te maken. Notebooks zijn gebaseerd op de principes van het literal programming. Notebooks combineren documentatie met uit te voerden code.</p>
-<p>&nbsp;</p> 
-Deze cursus kan jedus zowel als website bekeken worden maar alle code examples kunnen ook uitgevoerd worden door de colab button uit te voeren.
+<p>Deze cursus is gemaakt met jupyter notebooks. Jupyter notebooks worden veel gebruikt door data scientist om eerste prototypes in te maken. Notebooks zijn gebaseerd op de principes van het literal programming. Notebooks combineren documentatie met uit te voeren code.</p>
 <p>&nbsp;</p> 
 Hieronder een voorbeeld van een code cell die uitgevoerd kan worden.
 <p>&nbsp;</p> <div class="cell docutils container">
@@ -321,7 +319,7 @@ Hieronder een voorbeeld van een code cell die uitgevoerd kan worden.
 <p>Via de execute knop bovenaan kan je deze cursus openen op een interactieve omgeving zoals Google Colab uitvoeren.</p>
 <div class="section" id="ml-toepassingen">
 <h2>ML Toepassingen<a class="headerlink" href="#ml-toepassingen" title="Permalink to this headline">¶</a></h2>
-<p>Wat zijn ML toepassingen nu juist? Stel we moeten inschatten hoeveel tijd een verhuis gaat kosten. Op voorhand kunnen we regels gaan opstellen en schatten hoeveel tijd we per item gaan nodig hebben. Bij traditionele software schrijven we meestal het volgende.</p>
+<p>Wat zijn ML toepassingen nu juist? Stel we moeten inschatten hoeveel tijd een verhuis gaat kosten. Eerst kunnen we regels gaan opstellen en schatten hoeveel tijd we per item gaan nodig hebben. Bij traditionele software schrijven we meestal het volgende.</p>
 <p>&nbsp;</p> <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">num_bedrooms</span><span class="p">,</span><span class="n">num_bathrooms</span><span class="p">,</span><span class="n">sq_ft</span><span class="p">):</span>
@@ -342,15 +340,15 @@ Hieronder een voorbeeld van een code cell die uitgevoerd kan worden.
 </div>
 </div>
 </div>
-<p>We zien wel snel dat bij het vergroten van de inpout parameters dat deze if else structuren snel zeer onoverzichtelijk beginnen te worden. ML laat ons toe om deze if else structuren te vervangen door modellen die we kunnen trainen op historische data. We gaan als het ware de if else leren uit het verleden. Bij het leren een toepassen van deze technieken komt wel heel wat te kijken. We zullen nu even de grote lijnen toelichten.</p>
+<p>We zien wel snel dat bij het vergroten van de input parameters dat deze if else structuren snel zeer onoverzichtelijk beginnen te worden. ML laat ons toe om deze if else structuren te vervangen door modellen die we kunnen trainen op historische data. We gaan als het ware de if else leren uit het verleden. Bij het leren een toepassen van deze technieken komt wel heel wat te kijken. We zullen nu even de grote lijnen toelichten.</p>
 </div>
 <div class="section" id="exploratory-data-analysis-eda">
 <h2>Exploratory Data Analysis (EDA)<a class="headerlink" href="#exploratory-data-analysis-eda" title="Permalink to this headline">¶</a></h2>
-<p>Het hoofdoel van EDA is om je historische data die je wil gebruiken bij het trainen te leren kennen. Zodoende vroeg in het process al eventueel zaken te detecteren die het latere verloop zullen bemoeilijken. Typisch kijken we naar missing values. Data distributies. Correlaties tussen verschillende features. Na deze stap begrijpen we onze data beter en kunnen we de volgende stappen gaan definieren. Eventueel kunnen we ook al beslissen dat extra data nodig is</p>
+<p>Het hoofdoel van EDA is om je historische data die je wil gebruiken bij het trainen te leren kennen. Vroeg in het process al eventueel zaken te detecteren die het latere verloop zullen bemoeilijken. Typisch kijken we naar missing values. Data distributies. Correlaties tussen verschillende features. Na deze stap begrijpen we onze data beter en kunnen we de volgende stappen gaan definiëren. Eventueel kunnen we ook al beslissen dat extra data nodig is</p>
 </div>
 <div class="section" id="data-cleaning">
 <h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
-<p>Wat doen we met missing values? Laten we volledige kolomen weg of gaan we waardes trachten te gokken. Distributies die niet normaal verdeeld zijn gaan we deze proberen te transformeren. Sommige ML modellen zijn zeer gevoelig aan data distributies en kunnen vreemd gedrag vertonen als we hier geen rekening mee gaan houden. De data cleaning stap is de voorbereidened stap waar we hier rekening mee gaan houden. Eventueel kunnen we ook outliers gaan detecteren en proberen te verwijderen.</p>
+<p>Wat doen we met missing values? Laten we volledige kolommen weg of gaan we waardes proberen te gokken. Distributies die niet normaal verdeeld zijn gaan we deze proberen te transformeren. Sommige ML modellen zijn zeer gevoelig aan data distributies en kunnen vreemd gedrag vertonen als we hier geen rekening mee gaan houden. De data cleaning stap is de voorbereidende stap waar we hier rekening mee gaan houden. Eventueel kunnen we ook outliers gaan detecteren en proberen te verwijderen.</p>
 </div>
 <div class="section" id="feature-engineering">
 <h2>Feature engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">¶</a></h2>
@@ -358,7 +356,7 @@ Hieronder een voorbeeld van een code cell die uitgevoerd kan worden.
 </div>
 <div class="section" id="modellen-trainen-en-selecteren">
 <h2>Modellen trainen en selecteren<a class="headerlink" href="#modellen-trainen-en-selecteren" title="Permalink to this headline">¶</a></h2>
-<p>De data is nu klaar en we kunnen nu onze modellen gaan trainen. We zoeken via een iteratief process de parameters van onze modellen. Er zijn veel verschillende modellen die we kunnen trainen. Hier beperken we ons vooral tot liniaire modellen en decision trees. Belangrijk om ook te bepalen is op welke metric ons model geoptimaliseerd wordt. Er bestaan low code libraries die bij een eerste selectie kunnen helpen.</p>
+<p>De data is nu klaar en we kunnen nu onze modellen gaan trainen. We zoeken via een iteratief process de parameters van onze modellen. Er zijn veel verschillende modellen die we kunnen trainen. Hier beperken we ons vooral tot lineaire modellen en decision trees. Belangrijk om ook te bepalen is op welke metric ons model geoptimaliseerd wordt. Er bestaan low code libraries die bij een eerste selectie kunnen helpen.</p>
 </div>
 <div class="section" id="modellen-tunen">
 <h2>Modellen tunen<a class="headerlink" href="#modellen-tunen" title="Permalink to this headline">¶</a></h2>

@@ -230,6 +230,61 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#elastic-scaling">
+   Elastic scaling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#infrastructure-as-code">
+   Infrastructure as Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lakehouse">
+   Lakehouse
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transactie-ondersteuning">
+     Transactie-ondersteuning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#schema-handhaving-en-beheer">
+     Schema-handhaving en beheer:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bi-ondersteuning">
+     BI-ondersteuning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#openheid">
+     Openheid
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ondersteuning-voor-diverse-workloads">
+     Ondersteuning voor diverse workloads
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#end-to-end-streaming">
+     End-to-end streaming
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -240,7 +295,46 @@
                 
   <div class="section" id="cloud-spark">
 <h1>Cloud &amp; Spark<a class="headerlink" href="#cloud-spark" title="Permalink to this headline">¶</a></h1>
-<p>Nu we de data hebben leren kennen. Kunnen we data beginnen op kuisen.</p>
+<div class="section" id="elastic-scaling">
+<h2>Elastic scaling<a class="headerlink" href="#elastic-scaling" title="Permalink to this headline">¶</a></h2>
+<p>We hebben niet altijd dezelfde workload nodig. Er zijn verschillende fases exploratie training en productie die allen verschillende noden hebben. Cloud maakt het mogelijk om elke fase zijn infrastructuur te geven.</p>
+</div>
+<div class="section" id="infrastructure-as-code">
+<h2>Infrastructure as Code<a class="headerlink" href="#infrastructure-as-code" title="Permalink to this headline">¶</a></h2>
+<p>Omdat het inpluggen aanmaken van een server geen fysieke actie meer is maar gedigitaliseerd is het mogelijk om het aanmaak plan ook te digitaliseren. Het is dus mogelijk om de aanmaak en configuratie stappen digitaal bij te houden.</p>
+</div>
+<div class="section" id="lakehouse">
+<h2>Lakehouse<a class="headerlink" href="#lakehouse" title="Permalink to this headline">¶</a></h2>
+<p>De toekomstige data die we willen gaan binnenhalen is niet  enkel meer gestructureerde data die we ophalen uit transactionele systemen maar zal in de toekomst zeer divers worden. We hebben nood aan infrastructuur die ons in staat zal stellen om deze data in een performante manier te verwerken. Lake houses zijn de geknipte kandidaat.  Een lakehouse kunnen we ergens situeren tussen een data lake en een datawarehouse.  Waar een data lake perfect geschikt is voor het opslaan van allerlei data blijkt toch uit jaren gebruik dat het waarde creëren uit de opgeslagen data niet triviaal is.  Om op een eenvoudigere  manier data te kunnen opzetten naar waardevolle inzichten moet een lake house implementatie voldoen aan de volgende vereisten.</p>
+<div class="section" id="transactie-ondersteuning">
+<h3>Transactie-ondersteuning<a class="headerlink" href="#transactie-ondersteuning" title="Permalink to this headline">¶</a></h3>
+<p>In een enterprise lakehouse zullen veel data pijplijnen vaak gelijktijdig data lezen en schrijven. Ondersteuning voor ACID-transacties zorgt voor consistentie omdat meerdere partijen gelijktijdig gegevens lezen of schrijven, meestal met behulp van SQL.</p>
+</div>
+<div class="section" id="schema-handhaving-en-beheer">
+<h3>Schema-handhaving en beheer:<a class="headerlink" href="#schema-handhaving-en-beheer" title="Permalink to this headline">¶</a></h3>
+<p>Een lakehouse moet schema-handhaving en evolutie ondersteunen. Zowel DW-schema-architecturen als ster en sneeuwvlok schema’s worden ondersteund. Het systeem moet kunnen redeneren over gegevensintegriteit en moet beschikken over robuuste governance- en controlemechanismen.</p>
+</div>
+<div class="section" id="bi-ondersteuning">
+<h3>BI-ondersteuning<a class="headerlink" href="#bi-ondersteuning" title="Permalink to this headline">¶</a></h3>
+<p>Lakehouses maken het mogelijk om BI-tools rechtstreeks op de brongegevens te gebruiken.</p>
+<p>###Opslag is losgekoppeld van rekenkracht</p>
+<p>In de praktijk betekent dit dat opslag en rekenkracht afzonderlijke clusters gebruiken, waardoor deze systemen kunnen worden geschaald naar veel meer gelijktijdige gebruikers en grotere gegevens omvang.</p>
+</div>
+<div class="section" id="openheid">
+<h3>Openheid<a class="headerlink" href="#openheid" title="Permalink to this headline">¶</a></h3>
+<p>De opslagformaten die we gebruiken zijn open en gestandaardiseerd, zoals parquet, en ze bieden een API zodat een verscheidenheid aan tools en engines, waaronder machine learning en Python/R-bibliotheken, efficiënt rechtstreeks toegang hebben tot de gegevens.
+Ondersteuning voor diverse gegevenstypen, variërend van ongestructureerde tot gestructureerde gegevens</p>
+</div>
+<div class="section" id="ondersteuning-voor-diverse-workloads">
+<h3>Ondersteuning voor diverse workloads<a class="headerlink" href="#ondersteuning-voor-diverse-workloads" title="Permalink to this headline">¶</a></h3>
+<p>Data science, machine learning en SQL worden ondersteund.</p>
+</div>
+<div class="section" id="end-to-end-streaming">
+<h3>End-to-end streaming<a class="headerlink" href="#end-to-end-streaming" title="Permalink to this headline">¶</a></h3>
+<p>Realtime rapporten zijn de norm in veel ondernemingen. Ondersteuning voor streaming elimineert de noodzaak voor afzonderlijke systemen die zijn bedoeld voor het bedienen van realtime gegevens toepassingen.</p>
+<p>Als al deze vereiste zijn voldaan kunnen we spreken van een lakehouse. ER zijn mogelijkheden om dit zowel on premise als in de cloud te implementeren.</p>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

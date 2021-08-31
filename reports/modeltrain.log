@@ -25,7 +25,7 @@ exp_name = setup(data = jewellery,silent=True)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mImportError[0m                               Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2078/2116537435.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_2166/2116537435.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0mdatasets[0m [0;32mimport[0m [0mget_data[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      2[0m [0mjewellery[0m [0;34m=[0m [0mget_data[0m[0;34m([0m[0;34m'jewellery'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 3[0;31m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0mclustering[0m [0;32mimport[0m [0;34m*[0m[0;34m[0m[0;34m[0m[0m

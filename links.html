@@ -42,6 +42,8 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -91,6 +93,36 @@
  <li class="toctree-l1">
   <a class="reference internal" href="eda.html">
    Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datacleaning.html">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="featureengineering.html">
+   Feature engineering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modeltrain.html">
+   Model Training
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modeltune.html">
+   Model Tuning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modelpr.html">
+   Models in production
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cloudspark.html">
+   Cloud &amp; Spark
   </a>
  </li>
 </ul>
@@ -190,6 +222,21 @@
    Feature extraction
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-training">
+   Model training
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-tuning">
+   Model tuning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other">
+   other
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -205,12 +252,25 @@
 <h1>Usefull links<a class="headerlink" href="#usefull-links" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="feature-engineering">
 <h2>Feature engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.analyticsvidhya.com/blog/2020/07/types-of-feature-transformation-and-scaling/">scaling &amp; transforming</a></p>
 </div>
 <div class="section" id="feature-extraction">
 <h2>Feature extraction<a class="headerlink" href="#feature-extraction" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Feature_extraction">Feature extraction</a></p>
 <p>dimensionality reducing</p>
 <p><a class="reference external" href="https://towardsdatascience.com/getting-data-ready-for-modelling-feature-engineering-feature-selection-dimension-reduction-39dfa267b95a">PCA</a></p>
+</div>
+<div class="section" id="model-training">
+<h2>Model training<a class="headerlink" href="#model-training" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.ibm.com/cloud/blog/supervised-vs-unsupervised-learning">Different types</a></p>
+</div>
+<div class="section" id="model-tuning">
+<h2>Model tuning<a class="headerlink" href="#model-tuning" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://medium.com/distributed-computing-with-ray/bayesian-hyperparameter-optimization-with-tune-sklearn-in-pycaret-a33b1592662f">Pycaret - Ray tune</a></p>
+</div>
+<div class="section" id="other">
+<h2>other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://medium.com/analytics-vidhya/boston-house-price-prediction-using-machine-learning-ad3750a866cd">Full example</a></p>
 </div>
 </div>
 

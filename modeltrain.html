@@ -1,0 +1,1005 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Model Training &#8212; Basis ML</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Model Tuning" href="modeltune.html" />
+    <link rel="prev" title="Feature engineering" href="featureengineering.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/VectrConsulting.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Basis ML</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Basis ML
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="eda.html">
+   Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datacleaning.html">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="featureengineering.html">
+   Feature engineering
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Model Training
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modeltune.html">
+   Model Tuning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modelpr.html">
+   Models in production
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cloudspark.html">
+   Cloud &amp; Spark
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/modeltrain.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/vectrconsulting/mlcourse"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/vectrconsulting/mlcourse/issues/new?title=Issue%20on%20page%20%2Fmodeltrain.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/vectrconsulting/mlcourse/main?urlpath=tree/./modeltrain.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/vectrconsulting/mlcourse/blob/main/./modeltrain.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unsupervised">
+   Unsupervised
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clustering">
+     Clustering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#associatie-regels">
+     Associatie regels
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dimensionaliteitsreductie">
+     Dimensionaliteitsreductie
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#curse-of-dimensionality">
+     Curse of dimensionality
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#supervised">
+   Supervised
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classification">
+   Classification
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regressie">
+   Regressie
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#models">
+   Models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lineaire-modellen">
+     Lineaire modellen
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decision-trees">
+     Decision trees
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-test">
+   Train/Test
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hyperparameters">
+   Hyperparameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ensembles">
+   Ensembles
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stacking">
+     Stacking
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bagging">
+     Bagging
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boosting">
+     Boosting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overfitting">
+   Overfitting
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="model-training">
+<h1>Model Training<a class="headerlink" href="#model-training" title="Permalink to this headline">¶</a></h1>
+<p>Onze data is nu klaar om getrained te worden. We kunnen ML toepasssingen opdelen in 2 grote categorien.  We zullen gebruik maken van de low code library pycaret om alles te demonstreren.</p>
+<div class="section" id="unsupervised">
+<h2>Unsupervised<a class="headerlink" href="#unsupervised" title="Permalink to this headline">¶</a></h2>
+<p>Unsupervised learning maakt gebruik van machine learning-algoritmen om ongelabelde datasets te analyseren en te clusteren. Deze algoritmen ontdekken verborgen patronen in gegevens zonder dat menselijke tussenkomst nodig is (daarom zijn ze “zonder toezicht”).</p>
+<p>Niet-gesuperviseerde leermodellen worden gebruikt voor drie hoofdtaken: clustering, associatie en dimensionaliteitsreductie:</p>
+<p>Dimensionaliteitsreductie is een leertechniek die wordt gebruikt wanneer het aantal kenmerken (of dimensies) in een bepaalde dataset te hoog is. Het reduceert het aantal gegevensinvoer tot een beheersbare omvang en behoudt tegelijkertijd de gegevensintegriteit.</p>
+<div class="section" id="clustering">
+<h3>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h3>
+<p>is een dataminingtechniek voor het groeperen van niet-gelabelde gegevens op basis van hun overeenkomsten of verschillen. K-means clusteringalgoritmen wijzen bijvoorbeeld vergelijkbare gegevenspunten toe aan groepen, waarbij de K-waarde de grootte van de groepering en granulariteit vertegenwoordigt. Deze techniek is handig voor marktsegmentatie, beeldcompressie, enz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycaret.datasets</span> <span class="kn">import</span> <span class="n">get_data</span>
+<span class="n">jewellery</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="s1">&#39;jewellery&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pycaret.clustering</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">exp_name</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">jewellery</span><span class="p">,</span><span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Income</th>
+      <th>SpendingScore</th>
+      <th>Savings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>58</td>
+      <td>77769</td>
+      <td>0.791329</td>
+      <td>6559.829923</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>59</td>
+      <td>81799</td>
+      <td>0.791082</td>
+      <td>5417.661426</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>62</td>
+      <td>74751</td>
+      <td>0.702657</td>
+      <td>9258.992965</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>59</td>
+      <td>74373</td>
+      <td>0.765680</td>
+      <td>7346.334504</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>87</td>
+      <td>17760</td>
+      <td>0.348778</td>
+      <td>16869.507130</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="ne">RuntimeError</span>: module compiled against API version 0xe but this version of numpy is 0xd
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2078</span><span class="o">/</span><span class="mf">2116537435.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">pycaret.datasets</span> <span class="kn">import</span> <span class="n">get_data</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">jewellery</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="s1">&#39;jewellery&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">pycaret.clustering</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">exp_name</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">jewellery</span><span class="p">,</span><span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pycaret</span><span class="o">/</span><span class="n">clustering</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">ipw</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="ne">---&gt; </span><span class="mi">16</span> <span class="kn">import</span> <span class="nn">pycaret.internal.tabular</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> 
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">pycaret.internal.tabular</span> <span class="kn">import</span> <span class="n">MLUsecase</span>
+
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pycaret</span><span class="o">/</span><span class="n">internal</span><span class="o">/</span><span class="n">tabular</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="kn">import</span> <span class="nn">pycaret.containers.models.clustering</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="kn">import</span> <span class="nn">pycaret.containers.models.anomaly</span>
+<span class="ne">---&gt; </span><span class="mi">47</span> <span class="kn">import</span> <span class="nn">pycaret.internal.preprocess</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pycaret</span><span class="o">/</span><span class="n">internal</span><span class="o">/</span><span class="n">preprocess</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">IncrementalPCA</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">KBinsDiscretizer</span>
+<span class="ne">---&gt; </span><span class="mi">27</span> <span class="kn">from</span> <span class="nn">pyod.models.knn</span> <span class="kn">import</span> <span class="n">KNN</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">pyod.models.iforest</span> <span class="kn">import</span> <span class="n">IForest</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">pyod.models.pca</span> <span class="kn">import</span> <span class="n">PCA</span> <span class="k">as</span> <span class="n">PCA_od</span>
+
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pyod</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># TODO: add version information here</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pyod</span><span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">.data</span> <span class="kn">import</span> <span class="n">generate_data</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">.data</span> <span class="kn">import</span> <span class="n">evaluate_print</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">.stat_models</span> <span class="kn">import</span> <span class="n">pairwise_distances_no_broadcast</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">.stat_models</span> <span class="kn">import</span> <span class="n">wpearsonr</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">from</span> <span class="nn">.stat_models</span> <span class="kn">import</span> <span class="n">pearsonr_mat</span>
+
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pyod</span><span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">stat_models</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> 
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">pearsonr</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="kn">import</span> <span class="n">check_array</span>
+
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numba</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span> 
+<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="c1"># Re-export decorators</span>
+<span class="ne">---&gt; </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">numba.core.decorators</span> <span class="kn">import</span> <span class="p">(</span><span class="n">cfunc</span><span class="p">,</span> <span class="n">generated_jit</span><span class="p">,</span> <span class="n">jit</span><span class="p">,</span> <span class="n">njit</span><span class="p">,</span> <span class="n">stencil</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>                                    <span class="n">jit_module</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span> 
+
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numba</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">decorators</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> 
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">numba.core.errors</span> <span class="kn">import</span> <span class="n">DeprecationError</span><span class="p">,</span> <span class="n">NumbaDeprecationWarning</span>
+<span class="ne">---&gt; </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">numba.stencils.stencil</span> <span class="kn">import</span> <span class="n">stencil</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">from</span> <span class="nn">numba.core</span> <span class="kn">import</span> <span class="n">config</span><span class="p">,</span> <span class="n">extending</span><span class="p">,</span> <span class="n">sigutils</span><span class="p">,</span> <span class="n">registry</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> 
+
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numba</span><span class="o">/</span><span class="n">stencils</span><span class="o">/</span><span class="n">stencil</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">llvmlite</span> <span class="kn">import</span> <span class="n">ir</span> <span class="k">as</span> <span class="n">lir</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> 
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">numba.core</span> <span class="kn">import</span> <span class="n">types</span><span class="p">,</span> <span class="n">typing</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">ir</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">ir_utils</span><span class="p">,</span> <span class="n">registry</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">numba.core.typing.templates</span> <span class="kn">import</span> <span class="p">(</span><span class="n">CallableTemplate</span><span class="p">,</span> <span class="n">signature</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>                                          <span class="n">infer_global</span><span class="p">,</span> <span class="n">AbstractTemplate</span><span class="p">)</span>
+
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numba</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">ir_utils</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> 
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="kn">import</span> <span class="nn">numba</span>
+<span class="ne">---&gt; </span><span class="mi">16</span> <span class="kn">from</span> <span class="nn">numba.core.extending</span> <span class="kn">import</span> <span class="n">_Intrinsic</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">numba.core</span> <span class="kn">import</span> <span class="n">types</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">typing</span><span class="p">,</span> <span class="n">ir</span><span class="p">,</span> <span class="n">analysis</span><span class="p">,</span> <span class="n">postproc</span><span class="p">,</span> <span class="n">rewrites</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">cgutils</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">numba.core.typing.templates</span> <span class="kn">import</span> <span class="p">(</span><span class="n">signature</span><span class="p">,</span> <span class="n">infer_global</span><span class="p">,</span>
+
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numba</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">extending</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">numba.core.datamodel</span> <span class="kn">import</span> <span class="n">models</span>   <span class="c1"># noqa: F401</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">numba.core.datamodel</span> <span class="kn">import</span> <span class="n">register_default</span> <span class="k">as</span> <span class="n">register_model</span>  <span class="c1"># noqa: F401, E501</span>
+<span class="ne">---&gt; </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">numba.core.pythonapi</span> <span class="kn">import</span> <span class="n">box</span><span class="p">,</span> <span class="n">unbox</span><span class="p">,</span> <span class="n">reflect</span><span class="p">,</span> <span class="n">NativeValue</span>  <span class="c1"># noqa: F401</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="kn">from</span> <span class="nn">numba._helperlib</span> <span class="kn">import</span> <span class="n">_import_cython_function</span>  <span class="c1"># noqa: F401</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span> <span class="nn">numba.core.serialize</span> <span class="kn">import</span> <span class="n">ReduceMixin</span>
+
+<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numba</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">pythonapi</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> 
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">import</span> <span class="nn">ctypes</span>
+<span class="ne">---&gt; </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">_helperlib</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">from</span> <span class="nn">numba.core</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">types</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">lowering</span><span class="p">,</span> <span class="n">cgutils</span><span class="p">,</span> <span class="n">imputils</span><span class="p">,</span> <span class="n">serialize</span><span class="p">,</span>
+
+<span class="ne">ImportError</span>: numpy.core.multiarray failed to import
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;kmeans&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Silhouette</th>
+      <th>Calinski-Harabasz</th>
+      <th>Davies-Bouldin</th>
+      <th>Homogeneity</th>
+      <th>Rand Index</th>
+      <th>Completeness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.7207</td>
+      <td>5011.8113</td>
+      <td>0.4114</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans_df</span> <span class="o">=</span> <span class="n">assign_model</span><span class="p">(</span><span class="n">kmeans</span><span class="p">)</span>
+<span class="n">kmeans_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Income</th>
+      <th>SpendingScore</th>
+      <th>Savings</th>
+      <th>Cluster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>58</td>
+      <td>77769</td>
+      <td>0.791329</td>
+      <td>6559.829923</td>
+      <td>Cluster 0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>59</td>
+      <td>81799</td>
+      <td>0.791082</td>
+      <td>5417.661426</td>
+      <td>Cluster 0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>62</td>
+      <td>74751</td>
+      <td>0.702657</td>
+      <td>9258.992965</td>
+      <td>Cluster 0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>59</td>
+      <td>74373</td>
+      <td>0.765680</td>
+      <td>7346.334504</td>
+      <td>Cluster 0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>87</td>
+      <td>17760</td>
+      <td>0.348778</td>
+      <td>16869.507130</td>
+      <td>Cluster 2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="n">plot_model</span><span class="p">(</span><span class="n">kmeans</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span> <span class="s1">&#39;distribution&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>                            <div id="ce5e46fa-796c-4c4f-a860-9eba27912250" class="plotly-graph-div" style="height:600px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("ce5e46fa-796c-4c4f-a860-9eba27912250")) {                    Plotly.newPlot(                        "ce5e46fa-796c-4c4f-a860-9eba27912250",                        [{"alignmentgroup":"True","bingroup":"x","hovertemplate":"Cluster=%{x}<br>count=%{y}<extra></extra>","legendgroup":"Cluster 0","marker":{"color":"#636efa","opacity":0.7,"pattern":{"shape":""}},"name":"Cluster 0","offsetgroup":"Cluster 0","orientation":"v","showlegend":true,"type":"histogram","x":["Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0"],"xaxis":"x","yaxis":"y"},{"alignmentgroup":"True","customdata":[[58.0,77769.0,0.7913287771988531,6559.829923004832],[58.0,83351.0,0.840697803869219,6673.909711092488],[55.0,76057.0,0.8778279844516369,6132.898204816149],[60.0,67491.0,0.84661848692906,7180.713788260257],[56.0,60059.0,0.7275840223364691,7166.858605155183],[60.0,65340.0,0.7316484923943142,8354.196507802662],[58.0,80278.0,0.823358991009156,6335.97831998802],[56.0,67274.0,0.7798516671891869,6652.391024403152],[64.0,64331.0,0.7571277508774099,5815.660096290825],[63.0,75078.0,0.7831591503681397,7468.8510795028],[62.0,62747.0,0.7705945596869115,5852.326242628098],[59.0,75505.0,0.7682786576081454,5006.528691371692],[67.0,59243.0,0.7436599996604758,5446.557472721708],[58.0,77559.0,0.7122963723872477,5742.524488088997],[58.0,70272.0,0.8229596005059499,5290.087044285296],[57.0,65608.0,0.7662313009024402,6904.318224287021],[66.0,71672.0,0.7538892176112998,7387.835437850722],[64.0,78801.0,0.7403674891662984,6420.944071200261],[59.0,69460.0,0.7527238381125997,6101.372146632122],[68.0,77648.0,0.7965446939835457,6190.864082788901],[61.0,71171.0,0.7210804930623951,6457.790641224787],[64.0,76410.0,0.7756041848937439,6135.308197117818],[63.0,56875.0,0.7622805817657738,7837.233619544163],[55.0,73895.0,0.7471254610291731,5563.906948891499],[57.0,76573.0,0.8405990704520518,6225.376082433229],[57.0,69655.0,0.6748906779058501,5889.831167170132],[53.0,74996.0,0.7387310917031671,7821.447803561914],[61.0,73495.0,0.7727563051023116,9288.189785744367],[61.0,71033.0,0.8380950724014863,9456.876962701135],[62.0,67030.0,0.7467384433463651,6740.765182071713],[62.0,63596.0,0.7453271943508174,6142.2016193458685],[62.0,62650.0,0.766572365027147,7533.673609198676],[60.0,71436.0,0.8320590985324969,8557.86012627717],[65.0,65736.0,0.7785687658100923,6387.2196944302905],[60.0,70663.0,0.7153396972946453,7557.937593550947],[63.0,80705.0,0.7626699527314824,5154.330634621805],[56.0,84386.0,0.7849450699605269,7270.41953428175],[58.0,75757.0,0.8097944168848634,7390.577293437033],[62.0,71050.0,0.7353568506694507,6988.19736827388],[56.0,68698.0,0.7162678503859907,7070.967006969191],[59.0,67781.0,0.7225483489421433,6701.527664794541],[65.0,66017.0,0.7861892594159869,6159.662935925753],[62.0,80093.0,0.6909167811268888,6756.749072752338],[59.0,67988.0,0.8114707012366371,7255.90311433466],[66.0,82526.0,0.7696800667721441,6205.662650191711],[64.0,76364.0,0.6993887663543108,5772.117135854975],[62.0,68279.0,0.7196850779929922,7028.675510384213],[61.0,69698.0,0.7416839698444291,8777.077471725162],[56.0,68463.0,0.8157116929554062,8995.180087953215],[62.0,78413.0,0.7907090657200839,6961.204192368095],[60.0,65054.0,0.7086131723969877,5417.237293788359],[62.0,69391.0,0.7921059737158539,6518.283467894094],[64.0,86283.0,0.7568019251873561,6852.554866914717],[63.0,69849.0,0.7403870808915297,7670.690965941329],[58.0,78635.0,0.7864400503429185,7162.7390430553605],[59.0,71302.0,0.7020090041734849,6595.726010227134],[59.0,75495.0,0.7945029052198103,6702.9519263157545],[59.0,56321.0,0.806565925193039,6129.288986032587],[59.0,67401.0,0.7114339697492305,6529.586309935448],[55.0,64768.0,0.7332568512323248,6486.353872691102],[51.0,72086.0,0.7911147257599156,6732.096068632267],[57.0,72055.0,0.7549723463413129,6544.847498075687],[61.0,78837.0,0.7459489746307642,6811.303235949058],[60.0,74460.0,0.7545393292392412,7567.647652220367],[64.0,62886.0,0.7480162682831766,8302.588638401632],[65.0,74430.0,0.7517741617758547,7145.251128357927],[59.0,67346.0,0.7251568963089163,8857.849116294088],[58.0,78078.0,0.7837795500405715,6483.049643745244],[63.0,82343.0,0.7323186222078123,8090.706739679063],[61.0,67372.0,0.7340673095092516,6618.549336247915],[59.0,68038.0,0.8014869916095588,7719.283632687175],[56.0,65313.0,0.7546029986455771,5574.243676707098],[61.0,72027.0,0.7623249166772856,6926.123598416466],[63.0,70580.0,0.7665090449070475,7262.108723452132],[58.0,70676.0,0.7640283880376706,7664.415650964042],[62.0,73675.0,0.7966191667425384,4688.657157271711],[60.0,63476.0,0.7519000198498227,7543.542801728055],[62.0,67731.0,0.8191699488980382,5956.555677017446],[65.0,70430.0,0.6969942581249643,6971.164886262858],[59.0,69408.0,0.8799059975919311,6491.771149967825],[65.0,71229.0,0.7878897626638453,9024.337460598084],[58.0,70369.0,0.9045204855363144,7461.567502649429],[61.0,74282.0,0.6922364738673796,7286.754751068365],[66.0,77052.0,0.7072624347132287,6296.41731122746],[58.0,78611.0,0.910416682938019,7665.884294519009],[68.0,68944.0,0.7455674638713768,6828.709702363695],[58.0,69247.0,0.7237211912021976,8715.67957429646],[67.0,78702.0,0.7632736815688779,5030.364838791924],[58.0,76052.0,0.7215881830727278,6681.984386377028],[56.0,75599.0,0.7737370986430746,6799.625271842961],[61.0,72060.0,0.8334590233217959,7924.641138154016],[56.0,78992.0,0.8122757021441627,7285.180436851739],[61.0,65647.0,0.717489977384151,7497.231607003855],[59.0,77978.0,0.7188952048526104,8316.31110205122],[62.0,69326.0,0.798012338054483,7003.095703317772],[59.0,69115.0,0.75988343384532,5997.690199856996],[59.0,80876.0,0.6573140731575163,7232.825142650887],[59.0,73057.0,0.8302949092020397,7819.393215767329],[57.0,64803.0,0.7285849289103553,6255.55264105716],[59.0,73350.0,0.6797735912164855,6710.5740183754415],[64.0,71692.0,0.8426521453196145,7002.976554303355],[61.0,65914.0,0.7781022309770123,6406.877130352032],[63.0,67370.0,0.8999405530923943,5985.077029740456],[56.0,80431.0,0.7594315957853627,8150.55743948241],[59.0,82199.0,0.8035145098215853,5880.814834306346],[58.0,80248.0,0.7249557054919687,7641.16038162423],[61.0,68842.0,0.7544065421993587,4077.6586565080543],[55.0,76831.0,0.742113734041324,7806.398750466399],[59.0,73596.0,0.8567042188430352,8281.718740320448],[60.0,70054.0,0.7143393610830643,6609.918507412547],[60.0,65942.0,0.8005783854654352,5253.265006608644],[67.0,80914.0,0.819664259296033,6833.507136694643],[57.0,79794.0,0.82240840085096,5893.975284946178],[56.0,73516.0,0.806499154055182,7696.832373798451],[67.0,68663.0,0.7738336308243648,7451.99401402587],[63.0,72815.0,0.8200359737627068,5504.385543801038],[57.0,74014.0,0.787378081122989,5783.846928267083],[59.0,65700.0,0.8114711740198254,6932.487932327357],[61.0,69001.0,0.8216687745413516,5074.12121172259],[59.0,74576.0,0.7812961239072382,10547.775367695343],[64.0,60493.0,0.7680563479442216,7708.112609459161],[62.0,69741.0,0.8462196017575947,5781.658046536959],[55.0,71621.0,0.753342683616619,7780.589913955976],[54.0,76500.0,0.7851978501165687,6878.884248553975],[61.0,63846.0,0.8278622414878984,7283.504772674617],[58.0,69879.0,0.7209986871945887,6669.033518051874],[59.0,69738.0,0.742112121715572,7151.650866065036],[53.0,76667.0,0.7600576501232099,5168.225474983632],[55.0,71056.0,0.7565897119333272,7464.163256732262],[58.0,77101.0,0.7667195837506832,8148.49184821177],[58.0,74340.0,0.7351650452097145,7259.540921675671],[61.0,74117.0,0.7702140596767938,5103.609230428381],[62.0,73480.0,0.7391949797931453,6277.675150528886],[57.0,79470.0,0.7734352958312237,6773.04908977712],[56.0,63866.0,0.7618879582513512,7762.255066659052],[61.0,71933.0,0.8441067966472876,8022.208541100705],[59.0,72588.0,0.8017156979122673,6300.8437570950255],[60.0,70012.0,0.7944610508231513,7263.242447729872],[61.0,76955.0,0.777117564607447,7467.0367023144945],[66.0,72571.0,0.8115483367376335,6509.411506109981],[58.0,70798.0,0.7535283874245788,5330.73989989779],[63.0,85761.0,0.8005979105724924,7175.090218501248],[58.0,70259.0,0.7697129169369328,7101.674514204499],[60.0,79969.0,0.812104912914789,4879.334872972362],[62.0,74751.0,0.7026569520102857,9258.992965034067],[66.0,64866.0,0.766594189137425,5037.899138583947],[59.0,74373.0,0.7656795619984281,7346.334503537976],[56.0,86484.0,0.7321233689266612,8777.496176839057],[59.0,81799.0,0.7910820467274178,5417.661426197439],[64.0,88361.0,0.7745562258521365,7240.759687480846],[61.0,73245.0,0.811160373170345,7413.784487271214],[57.0,75332.0,0.7215024376129366,6845.056822204781],[55.0,78761.0,0.8271741985123882,8376.74947779104],[53.0,62117.0,0.7331388477995737,7500.452413594261],[57.0,76594.0,0.7906578552491133,6584.654681310476],[55.0,74356.0,0.7998269700906482,6484.630737953293]],"hovertemplate":"Cluster=%{x}<br>Age=%{customdata[0]}<br>Income=%{customdata[1]}<br>SpendingScore=%{customdata[2]}<br>Savings=%{customdata[3]}<extra></extra>","legendgroup":"Cluster 0","marker":{"color":"#636efa"},"name":"Cluster 0","notched":true,"offsetgroup":"Cluster 0","showlegend":false,"type":"box","x":["Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0","Cluster 0"],"xaxis":"x2","yaxis":"y2"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"Cluster=%{x}<br>count=%{y}<extra></extra>","legendgroup":"Cluster 1","marker":{"color":"#EF553B","opacity":0.7,"pattern":{"shape":""}},"name":"Cluster 1","offsetgroup":"Cluster 1","orientation":"v","showlegend":true,"type":"histogram","x":["Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1"],"xaxis":"x","yaxis":"y"},{"alignmentgroup":"True","customdata":[[88.0,123651.0,0.0290271402910519,13504.577571797936],[21.0,129726.0,0.9517923119702948,4550.799521687883],[26.0,125662.0,0.9268183658411524,6089.47832250152],[25.0,130361.0,0.9254385568124625,4691.55213906238],[23.0,129937.0,0.8727356634334804,4102.065424707484],[20.0,129469.0,0.9399954311014268,5522.573424346325],[30.0,122788.0,0.8728724057273831,5706.149573297764],[17.0,134966.0,0.9072421746334024,4128.044795832437],[24.0,134384.0,0.8747208244890404,3731.339761444919],[29.0,119366.0,0.3587713900686116,15012.8530142263],[29.0,122264.0,0.8985788437238403,2494.55627432471],[25.0,120957.0,0.8776734245644572,5590.447216086322],[23.0,126500.0,0.8650328592458483,3270.1504344070872],[87.0,117564.0,0.1282795957567026,14000.248964992144],[85.0,118169.0,0.123196057747337,14855.95102392762],[22.0,134209.0,0.8706980046008759,5138.109568643242],[83.0,117347.0,0.1556940923286098,15086.701120471578],[25.0,138021.0,0.944017175810026,3005.577482475175],[83.0,119429.0,0.0421548010785584,15607.561541234569],[90.0,124170.0,0.0307513143939138,14773.40720559984],[18.0,130813.0,0.890891247267583,5256.434559627984],[17.0,134734.0,0.8579216672301577,0.0],[24.0,129087.0,0.8271179432765905,3290.829468618805],[20.0,122581.0,0.8940806156500202,4444.447684252053],[20.0,129142.0,0.8870519941988757,5603.121027746489],[23.0,138443.0,0.9226565539031124,3297.058843994153],[91.0,118794.0,0.0192120658984376,14047.388986415734],[26.0,131827.0,0.8807194909406801,4352.699304837541],[77.0,128596.0,0.0408240706625097,14503.410786381415],[21.0,123678.0,0.8320252689431032,2838.815820835909],[83.0,117943.0,0.0772132400334304,15391.952192206512],[28.0,117108.0,0.857078493256913,4749.879237491619],[28.0,129019.0,0.9308319590820414,3016.8206434862623],[29.0,142000.0,0.9400873084125808,5349.821181717665],[24.0,134389.0,0.9388521378701832,4573.60634580409],[90.0,117668.0,0.0827227429940155,12554.69274242066],[28.0,123153.0,0.9842407862639496,3697.51364538533],[25.0,131009.0,0.8640569016468125,4792.426581212785],[34.0,119877.0,0.3054369951589357,15634.788286084158],[89.0,119697.0,0.0916792017028315,16215.399076555512],[27.0,121468.0,0.9206489879585448,5011.112062373317],[27.0,122671.0,0.910107112831516,4206.28723870951],[22.0,132948.0,0.8898001728484242,2839.7863574778585],[82.0,121642.0,0.0546531904642098,14177.513323069668],[92.0,122879.0,0.0607240352184939,13709.670274517475],[26.0,127320.0,0.8250298045601994,5495.642137901323],[93.0,126601.0,0.0251701694773457,14117.44703707058],[17.0,123828.0,0.9420129076091708,3798.8403998790254],[28.0,127699.0,0.8814245468734898,5490.8149556706885],[24.0,127352.0,0.9054521594192038,2961.716874324024],[24.0,120465.0,0.9074853865005544,4838.3483502815925],[26.0,123005.0,0.9845261943505972,4371.23473281147],[24.0,130974.0,0.9118386021444842,4420.0727101369375],[18.0,123718.0,0.8065528615489801,4420.445820614172],[32.0,117050.0,0.3113555349689566,14310.546206532164],[26.0,126617.0,0.8770521049168103,2913.368146562765],[28.0,123229.0,0.8733219541371664,610.4462190811464],[23.0,120226.0,0.8819129663041946,4698.294710949844],[28.0,121216.0,0.8569692823607705,5349.065446955783],[29.0,131578.0,0.847034102512837,3535.5143522162816],[82.0,126257.0,0.0780961943994333,15816.101922357922],[17.0,136255.0,0.935876103673024,4126.22665140887],[86.0,128378.0,0.1260834097584985,13585.778624417357],[27.0,125008.0,0.9596454072349518,2963.637708058779],[88.0,120678.0,0.0632728512966028,14264.473846639945],[84.0,122696.0,0.0821868319247355,13809.734086698068],[24.0,136644.0,0.8716976842508705,1617.2257000775644],[86.0,124372.0,0.0,15374.465952896948],[25.0,130934.0,0.9137660194970426,3942.389134492165],[25.0,128625.0,0.8167389887954251,4914.117127206948],[31.0,122924.0,0.89046022417733,3071.9445761529696],[22.0,120525.0,1.0,5495.165732288548]],"hovertemplate":"Cluster=%{x}<br>Age=%{customdata[0]}<br>Income=%{customdata[1]}<br>SpendingScore=%{customdata[2]}<br>Savings=%{customdata[3]}<extra></extra>","legendgroup":"Cluster 1","marker":{"color":"#EF553B"},"name":"Cluster 1","notched":true,"offsetgroup":"Cluster 1","showlegend":false,"type":"box","x":["Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1","Cluster 1"],"xaxis":"x2","yaxis":"y2"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"Cluster=%{x}<br>count=%{y}<extra></extra>","legendgroup":"Cluster 2","marker":{"color":"#00cc96","opacity":0.7,"pattern":{"shape":""}},"name":"Cluster 2","offsetgroup":"Cluster 2","orientation":"v","showlegend":true,"type":"histogram","x":["Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2"],"xaxis":"x","yaxis":"y"},{"alignmentgroup":"True","customdata":[[84.0,24105.0,0.2718090229374729,16524.902538052145],[90.0,22288.0,0.2713268321051207,18434.099152391347],[84.0,18244.0,0.2926633744644019,17815.348406878897],[90.0,22782.0,0.3563068710287742,15924.071707885843],[91.0,28165.0,0.3036929225036061,17460.179350212424],[86.0,18812.0,0.3415457603870515,16157.734142403424],[94.0,18937.0,0.3470950600753079,17739.776098377628],[90.0,35297.0,0.3551490190566364,16091.401954058958],[86.0,23400.0,0.2780355384470266,15215.28126373834],[88.0,26351.0,0.3041682062164746,14035.91755354235],[87.0,23042.0,0.3663120107544869,18149.035872923057],[84.0,30481.0,0.3970228936031003,16837.205964813103],[87.0,30178.0,0.2793159778940049,16123.070750832],[93.0,19934.0,0.2031402397953781,17969.693768505334],[86.0,31994.0,0.2494769403551006,18210.088099070614],[91.0,30756.0,0.3036980300982536,15492.004711465304],[91.0,12038.0,0.3498032558856572,16464.960504438823],[87.0,29909.0,0.3421516318130468,18142.232746738577],[92.0,36032.0,0.3369683066109672,17348.5998812573],[88.0,35051.0,0.3860515062876168,17593.24679258195],[89.0,26940.0,0.3260051328059917,16555.159377159824],[87.0,12000.0,0.3429910076112659,16180.26525174153],[93.0,17672.0,0.3032923688871533,18516.451810726718],[91.0,36639.0,0.3261988874784867,16275.703341192586],[84.0,36463.0,0.3536209572557781,16563.37259114783],[97.0,27271.0,0.283922895270403,14928.165597390327],[90.0,33490.0,0.4199085281737912,17091.904228934392],[92.0,18724.0,0.3278623148176303,15341.381109594677],[92.0,22484.0,0.3317732623948493,18615.632589788456],[82.0,33610.0,0.3012532342412973,17755.664940228176],[87.0,15671.0,0.3507250914944152,14326.601120246103],[87.0,42592.0,0.3552896820382759,18086.287157859304],[83.0,26882.0,0.347979632373841,17775.22817123954],[92.0,33550.0,0.3685156285793065,17106.32591058189],[89.0,34524.0,0.348118273264174,14051.256515312789],[87.0,26665.0,0.4021456613889217,17376.914743318182],[88.0,17851.0,0.2898659849627828,17472.470686173863],[92.0,35484.0,0.3970636039704499,17324.045112814925],[87.0,30102.0,0.3903905943444749,16330.081190027213],[88.0,31366.0,0.3796208481334848,16079.622699815933],[87.0,31481.0,0.317423970601333,16180.68808203422],[82.0,33636.0,0.3717829785401914,17866.83359752812],[90.0,37503.0,0.3577883144645876,17258.57497274541],[89.0,28160.0,0.3388488510290433,15607.061781887898],[90.0,24376.0,0.2812794569155435,15134.994226396466],[89.0,22008.0,0.3819060693389532,16458.398097731257],[86.0,15695.0,0.2571749664748936,17366.186263516567],[79.0,32421.0,0.3032762059432743,15319.46766227239],[91.0,22672.0,0.2710645345158168,15407.646761130874],[82.0,24391.0,0.276101346355296,17053.03010738692],[85.0,21652.0,0.3184561372216806,14175.16988549895],[85.0,28408.0,0.3580738593579665,15063.335797441836],[86.0,36031.0,0.2401766350783482,16945.326244896307],[79.0,38201.0,0.3697828881534748,16393.395697309446],[83.0,18162.0,0.3013734548863508,16029.46921391427],[83.0,30492.0,0.3016314685914632,15365.858462932552],[91.0,29750.0,0.2884703320713124,19201.119916275755],[84.0,20704.0,0.3794963151514172,16816.911895743782],[90.0,29029.0,0.303758971334624,15592.991530526488],[83.0,34384.0,0.3247186821733416,14783.3790857945],[88.0,22602.0,0.3567448288797468,16740.343496726702],[91.0,27168.0,0.3322388165540652,15893.729773516614],[87.0,17760.0,0.3487775484305074,16869.507130301474],[91.0,28777.0,0.3241935550357819,17808.2662415687],[92.0,22616.0,0.3228506824321553,17275.661313984565],[84.0,27384.0,0.3136467169954889,16734.672754073246],[87.0,25566.0,0.3167603729756968,15188.058749407255],[86.0,27705.0,0.3293769514872405,17130.85610211788],[89.0,25252.0,0.3217652209320886,16539.364186086335],[94.0,23854.0,0.3144466826182581,16828.410118749016],[94.0,38923.0,0.3302260180973432,16971.181554867213],[86.0,28779.0,0.336523330181688,16047.268331461928],[84.0,27693.0,0.3670629731870412,17879.558905551898],[85.0,21250.0,0.3104101151420251,16033.971166673777],[89.0,30267.0,0.2893100658351509,14386.351879589123],[89.0,26127.0,0.3044743722681633,17194.828018777476],[91.0,36991.0,0.2685979050949867,19047.77233878285],[83.0,34529.0,0.3172075114569807,16517.208746949746],[88.0,17388.0,0.4661894446652393,16698.6210372462],[83.0,28497.0,0.3938023931664612,15510.112981164848],[91.0,25886.0,0.3017537675837046,17266.045729118025],[84.0,27544.0,0.2309337663207005,18207.36169648481],[81.0,34425.0,0.272609779232364,16262.623790655764],[91.0,20681.0,0.3546791690549572,18401.08844474873],[92.0,35877.0,0.3668917159124752,17287.907016982324],[85.0,30794.0,0.2862292747117071,17096.39150937826],[91.0,16950.0,0.32300404344763,17172.609400509067],[82.0,24221.0,0.4735496605323542,16251.75944521267],[83.0,30721.0,0.3311418077630257,17705.99238527814],[86.0,35998.0,0.3216356471662456,20000.0],[83.0,23206.0,0.3212403632065312,16870.672003783384],[94.0,27169.0,0.3141730453838618,15061.77621514237],[83.0,33170.0,0.2410777442746463,16620.010473689304],[94.0,20719.0,0.3364022697976639,16281.832273239006],[82.0,32494.0,0.3273154026360584,16799.44426666245],[85.0,34802.0,0.2987969233586417,16450.003270402787],[85.0,29204.0,0.3254914498834959,16918.90346036913],[89.0,31096.0,0.2785878455435617,17736.94259966666],[89.0,20292.0,0.3121481952107594,16023.4456584523],[84.0,27179.0,0.3474234168306904,15612.6285477669],[87.0,24578.0,0.3761654587506353,17789.247521813828],[88.0,33303.0,0.3997156855452149,15232.598068845287],[87.0,18459.0,0.2645499059687874,15637.59765457844],[87.0,26045.0,0.3752921226023747,15903.558359374923],[94.0,27771.0,0.3025032231546656,17303.957194969433],[88.0,33251.0,0.3043913649608802,18868.24161249696],[88.0,28585.0,0.3977396663840212,16725.841854363774],[85.0,26355.0,0.3423406666949811,17971.19363998381],[94.0,28352.0,0.3768757353168557,16798.886114738052],[95.0,27038.0,0.3313520070109343,18126.577451151075],[88.0,19510.0,0.3167510258154691,16529.20080632274],[86.0,46977.0,0.2827283910152334,15628.957075805023],[85.0,27599.0,0.2819950483303406,13470.970605037028],[92.0,32915.0,0.3885749195868542,16694.706839244012],[87.0,25701.0,0.3152205738281264,15738.859295516551],[89.0,19202.0,0.3819877440174351,16626.222361477227],[89.0,33311.0,0.376146968508639,17093.06995548225],[85.0,28401.0,0.3694371368158696,15990.49413056604],[88.0,17946.0,0.2696436303999441,16715.160017840968],[93.0,20440.0,0.2975730342292497,17406.074017844054],[91.0,26424.0,0.3193886529047028,16501.46877669979],[84.0,42018.0,0.2979936021899302,16148.370454036614],[87.0,30812.0,0.3144631516753479,15238.118997598336],[88.0,34001.0,0.337569323887528,15530.934134298665],[85.0,29610.0,0.3181352453742131,18475.487468080937],[91.0,29082.0,0.2824885213712914,18794.488169074688],[90.0,30178.0,0.2823512821567113,16182.8384364088],[88.0,28802.0,0.4083878319987072,16293.038332542192],[85.0,34634.0,0.3690001696241634,16719.815875018445],[91.0,26917.0,0.3767135304583465,17986.618644605885],[90.0,33188.0,0.2488100687902313,15866.913937696345],[88.0,28409.0,0.3056535336752106,17326.175608364214],[84.0,38042.0,0.3660858718547989,17465.856285855403],[90.0,33259.0,0.377571058498228,15315.028503741696],[87.0,46910.0,0.3085616998317755,14789.14847617646],[91.0,25237.0,0.3535018242414266,17292.73310384825],[88.0,26092.0,0.3128732065230775,17105.79392615357],[89.0,24520.0,0.4438327068456706,13556.9358834699],[88.0,32708.0,0.3682153159958089,16711.0679804242],[91.0,30148.0,0.2773889467565771,15324.287405101715],[84.0,22286.0,0.3955062459001081,17886.53737311577],[83.0,28727.0,0.3082630418510537,18205.33626089001],[84.0,29492.0,0.3336031402694437,17954.09505703969],[87.0,23322.0,0.3068211973464496,16131.267659393412],[91.0,24370.0,0.2963285713632805,16141.048981383728],[90.0,25733.0,0.3385629680709827,17631.56888411863],[88.0,27169.0,0.2800595048614143,15260.635546195435]],"hovertemplate":"Cluster=%{x}<br>Age=%{customdata[0]}<br>Income=%{customdata[1]}<br>SpendingScore=%{customdata[2]}<br>Savings=%{customdata[3]}<extra></extra>","legendgroup":"Cluster 2","marker":{"color":"#00cc96"},"name":"Cluster 2","notched":true,"offsetgroup":"Cluster 2","showlegend":false,"type":"box","x":["Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2","Cluster 2"],"xaxis":"x2","yaxis":"y2"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"Cluster=%{x}<br>count=%{y}<extra></extra>","legendgroup":"Cluster 3","marker":{"color":"#ab63fa","opacity":0.7,"pattern":{"shape":""}},"name":"Cluster 3","offsetgroup":"Cluster 3","orientation":"v","showlegend":true,"type":"histogram","x":["Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3"],"xaxis":"x","yaxis":"y"},{"alignmentgroup":"True","customdata":[[34.0,98993.0,0.3229930887837502,16138.079373431863],[35.0,108499.0,0.2612719132713158,16046.08301542436],[29.0,102028.0,0.2889604994756899,14634.430692347907],[32.0,101905.0,0.3074763135926986,17532.16478349903],[30.0,96241.0,0.3773384910014747,15485.156009739389],[33.0,99637.0,0.2282170773869075,15139.40314264753],[34.0,107255.0,0.3283430294033383,15130.595225546444],[35.0,102308.0,0.2751372175012176,14874.557991326978],[28.0,97965.0,0.3134915614599665,14981.402201916082],[31.0,104388.0,0.2864732316476225,14406.561248437842],[35.0,107131.0,0.2424731551814768,16200.013010637644],[32.0,95536.0,0.2662460568101488,15420.62564400274],[30.0,101073.0,0.3143871202044516,14324.555977118507],[37.0,106894.0,0.3432357689892068,14075.217365594552],[29.0,106014.0,0.347945113577731,15038.010746320377],[22.0,109152.0,0.3234464163624235,16022.482482363524],[30.0,98030.0,0.4111117138132285,16316.842905166694],[29.0,111426.0,0.4002811559385194,14352.643773230728],[28.0,101206.0,0.3874406981253432,14936.775388622864],[36.0,101811.0,0.3406667947415742,15048.89961242685],[28.0,99611.0,0.2795578681222758,15345.658121390226],[36.0,104285.0,0.2123600508972585,13347.558779497918],[31.0,116247.0,0.2943151380482853,16178.204715186295],[28.0,111937.0,0.2537347301209012,13669.110632506934],[33.0,106757.0,0.2583961137212551,14431.65279923437],[31.0,101209.0,0.3043229953712127,16917.571691218804],[85.0,111389.0,0.0367953622110323,16009.237762922365],[33.0,107100.0,0.3424354833732075,14895.473479049117],[36.0,99780.0,0.2654326074020303,16398.40133318453],[86.0,115689.0,0.057842956133581,14803.153273493916],[30.0,99949.0,0.3446792235097859,13621.63972633141],[34.0,98752.0,0.3720337099315751,14975.384238944334],[27.0,106758.0,0.2662947092346973,14942.560723173168],[28.0,94762.0,0.3035961911057213,15352.521936894913],[31.0,107963.0,0.2905086327499087,13407.081391032512],[33.0,116616.0,0.3209300476959025,15104.49811363824],[32.0,108417.0,0.2873708671400807,16696.398659007995],[28.0,100592.0,0.2595983487762325,15520.355775683653],[32.0,110439.0,0.3069901582742725,13873.50756985278],[30.0,107926.0,0.2301607310342209,15520.536309707046],[38.0,115146.0,0.3144900731288347,14798.868153501797],[35.0,110106.0,0.2867692710102035,14924.537223475552],[37.0,110595.0,0.2866485050019983,15235.445457133226],[31.0,99457.0,0.3658064971511748,14580.613477014092],[31.0,107932.0,0.3742421881649844,12207.526078087716],[31.0,107994.0,0.2944689389706671,13685.97236173889],[31.0,107115.0,0.3280420856997338,15693.499570389358],[33.0,111813.0,0.2382437868013801,15901.238967721654],[34.0,102291.0,0.2478622761143138,15819.57760116052],[32.0,102035.0,0.2620703561646911,14209.93280239609],[30.0,106350.0,0.3694162857692796,14863.233588279092],[30.0,107525.0,0.2948164301396663,12702.847385049916],[35.0,104678.0,0.3279928581002429,15422.055799721802],[33.0,105667.0,0.2507508056238616,12869.761073905089],[40.0,98821.0,0.279080850187049,15995.160053914662],[42.0,106990.0,0.330065422314764,14856.938997469417],[37.0,97831.0,0.3744658274308825,14935.144813058325],[25.0,101503.0,0.2884688560740983,15026.262148820157],[34.0,89598.0,0.3401523810436963,12832.768720823738],[84.0,115237.0,0.0687782098136733,14396.568282311468],[43.0,101641.0,0.3819838041034955,14424.09799559298],[28.0,109075.0,0.3627619606240113,14082.458238005996],[36.0,105567.0,0.3126388486955741,14355.31094653896],[37.0,106664.0,0.2775867542026021,14479.374117495969],[37.0,108635.0,0.2864957031483905,14558.054542315444],[35.0,112878.0,0.3009135799974076,13755.482301873282],[31.0,112943.0,0.341239503307387,14297.702229457282],[36.0,100158.0,0.316060414098024,13832.37937073453],[31.0,105826.0,0.2862743235826754,13856.805832195869],[29.0,116451.0,0.3406596106851227,15294.661511529368],[33.0,114555.0,0.2792568364789493,13746.745438440072],[36.0,108004.0,0.3089229914936124,15813.964573146995],[30.0,102056.0,0.2607006223919937,15370.66882713054],[36.0,98137.0,0.297401293159654,15978.332837131276],[34.0,98165.0,0.1741204938230648,15721.86284266975],[37.0,97678.0,0.2574704443875843,15834.113173627364],[35.0,117112.0,0.3047918711384766,15908.035997555322],[35.0,101691.0,0.3491110181825554,14152.671689505803],[88.0,114767.0,0.0322075423389263,17833.093470094427],[31.0,111449.0,0.2941062030828216,13929.62155143948],[30.0,108581.0,0.3094467811568004,15628.791650531211],[33.0,106345.0,0.3392354218755358,15300.45379012999],[31.0,101481.0,0.2702350511848681,15226.614133627569],[31.0,108067.0,0.2686742663930692,13316.767286164832],[33.0,100275.0,0.3630856827120957,13735.43874238108],[26.0,97750.0,0.293408760516068,15823.032361634105],[24.0,110564.0,0.3049430059244968,14967.839625179657],[29.0,91375.0,0.2354504258588228,13104.962760687613],[33.0,94964.0,0.3302325026567214,14018.349867336628],[39.0,100540.0,0.3849229829012918,16741.013894847743],[37.0,107958.0,0.346669076543185,13641.009538079368],[29.0,110860.0,0.3194403010352474,16260.42103081417],[37.0,110732.0,0.3226762482802641,14265.35184049776],[29.0,101943.0,0.3256230614429721,14619.354282159027],[33.0,92569.0,0.3360798055671445,13765.685995748696],[34.0,103204.0,0.3010873537839331,15149.810421179482],[84.0,114406.0,0.1238383746409725,16840.570583774286],[44.0,114642.0,0.3092049154534187,14067.617788950563],[31.0,105036.0,0.2722279930569666,16465.063521972657],[31.0,102618.0,0.2763779214063509,13209.301612848927],[25.0,106772.0,0.3909047196000217,16353.471790615497],[36.0,109038.0,0.3242132027621541,16502.389477657125],[29.0,103223.0,0.3388162937437745,16252.88305306563],[29.0,112531.0,0.3427661743407053,14361.334979176148],[38.0,104738.0,0.4059588503683713,15634.313868027426],[39.0,100661.0,0.3766412501689559,16873.128638209408],[32.0,106543.0,0.3107432443044589,14337.288328489092],[36.0,109809.0,0.355660187354229,14978.502144076489],[29.0,99161.0,0.3079200040396055,15631.836772980836],[34.0,104284.0,0.3445454117798671,13541.801770810564],[31.0,105006.0,0.3741658782934958,15419.417763123292],[37.0,108651.0,0.1923436158292553,15881.242198260685],[84.0,110582.0,0.0790490322794597,14937.995169685584],[34.0,111303.0,0.345312577109288,14624.318634976556],[33.0,108345.0,0.32541328975821,15646.321717359428],[35.0,106588.0,0.3422142051018276,15648.65667046098],[36.0,96336.0,0.2880975671929816,15286.769335194169],[31.0,114833.0,0.3050696862135815,13953.029721407644],[39.0,99216.0,0.2166061433945727,15230.345105300736],[37.0,107877.0,0.3346179841546032,17968.55392863446],[38.0,113659.0,0.3334859873871594,14364.693391418998],[31.0,110882.0,0.3252806065281125,14004.61374291491],[35.0,105991.0,0.3433779781521022,16616.088239618915],[59.0,90422.0,0.8062102206275251,6746.28108382082],[33.0,101058.0,0.3150815497840024,14911.868398206978],[30.0,107302.0,0.2396771776819925,13993.24401848172],[33.0,98033.0,0.3095111158545869,15774.690605560643],[34.0,103428.0,0.2474244093916155,13791.035761571968],[38.0,94775.0,0.3803902009461493,16867.13082002739],[30.0,108928.0,0.303863615036657,14339.652917342728]],"hovertemplate":"Cluster=%{x}<br>Age=%{customdata[0]}<br>Income=%{customdata[1]}<br>SpendingScore=%{customdata[2]}<br>Savings=%{customdata[3]}<extra></extra>","legendgroup":"Cluster 3","marker":{"color":"#ab63fa"},"name":"Cluster 3","notched":true,"offsetgroup":"Cluster 3","showlegend":false,"type":"box","x":["Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3","Cluster 3"],"xaxis":"x2","yaxis":"y2"}],                        {"barmode":"relative","height":600,"legend":{"title":{"text":"Cluster"},"tracegroupgap":0},"margin":{"t":60},"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"anchor":"y","categoryarray":["Cluster 0","Cluster 1","Cluster 2","Cluster 3"],"categoryorder":"array","domain":[0.0,1.0],"title":{"text":"Cluster"}},"xaxis2":{"anchor":"y2","domain":[0.0,1.0],"matches":"x","showgrid":true,"showticklabels":false},"yaxis":{"anchor":"x","domain":[0.0,0.7326],"title":{"text":"count"}},"yaxis2":{"anchor":"x2","domain":[0.7426,1.0],"matches":"y2","showgrid":false,"showline":false,"showticklabels":false,"ticks":""}},                        {"responsive": true}                    ).then(function(){
+
+var gd = document.getElementById('ce5e46fa-796c-4c4f-a860-9eba27912250');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div></div></div>
+</div>
+<p>Met de elbow techniek kunnen we het optimaal aantal clusters gaan berekenen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="n">plot_model</span><span class="p">(</span><span class="n">kmeans</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span> <span class="s1">&#39;elbow&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/modeltrain_8_0.svg" src="_images/modeltrain_8_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="associatie-regels">
+<h3>Associatie regels<a class="headerlink" href="#associatie-regels" title="Permalink to this headline">¶</a></h3>
+<p>is unsupervised ML techniek die gebruikt wordt om relaties tussen variabelen in een bepaalde dataset te vinden. Deze methoden worden vaak gebruikt voor marktmandanalyse en aanbevelingsengines, in de trant van “Klanten die dit artikel kochten, kochten ook”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycaret.datasets</span> <span class="kn">import</span> <span class="n">get_data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="s1">&#39;france&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pycaret.arules</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">exp</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">transaction_id</span> <span class="o">=</span> <span class="s1">&#39;InvoiceNo&#39;</span><span class="p">,</span> <span class="n">item_id</span> <span class="o">=</span> <span class="s1">&#39;Description&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>InvoiceNo</th>
+      <th>StockCode</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>InvoiceDate</th>
+      <th>UnitPrice</th>
+      <th>CustomerID</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>536370</td>
+      <td>22728</td>
+      <td>ALARM CLOCK BAKELIKE PINK</td>
+      <td>24</td>
+      <td>12/1/2010 8:45</td>
+      <td>3.75</td>
+      <td>12583.0</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>536370</td>
+      <td>22727</td>
+      <td>ALARM CLOCK BAKELIKE RED</td>
+      <td>24</td>
+      <td>12/1/2010 8:45</td>
+      <td>3.75</td>
+      <td>12583.0</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>536370</td>
+      <td>22726</td>
+      <td>ALARM CLOCK BAKELIKE GREEN</td>
+      <td>12</td>
+      <td>12/1/2010 8:45</td>
+      <td>3.75</td>
+      <td>12583.0</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>536370</td>
+      <td>21724</td>
+      <td>PANDA AND BUNNIES STICKER SHEET</td>
+      <td>12</td>
+      <td>12/1/2010 8:45</td>
+      <td>0.85</td>
+      <td>12583.0</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>536370</td>
+      <td>21883</td>
+      <td>STARS GIFT TAPE</td>
+      <td>24</td>
+      <td>12/1/2010 8:45</td>
+      <td>0.65</td>
+      <td>12583.0</td>
+      <td>France</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><style  type="text/css" >
+</style><table id="T_aab80_" ><thead>    <tr>        <th class="col_heading level0 col0" >Description</th>        <th class="col_heading level0 col1" >Value</th>    </tr></thead><tbody>
+                <tr>
+                                <td id="T_aab80_row0_col0" class="data row0 col0" >session_id</td>
+                        <td id="T_aab80_row0_col1" class="data row0 col1" >3496</td>
+            </tr>
+            <tr>
+                                <td id="T_aab80_row1_col0" class="data row1 col0" ># Transactions</td>
+                        <td id="T_aab80_row1_col1" class="data row1 col1" >461</td>
+            </tr>
+            <tr>
+                                <td id="T_aab80_row2_col0" class="data row2 col0" ># Items</td>
+                        <td id="T_aab80_row2_col1" class="data row2 col1" >1565</td>
+            </tr>
+            <tr>
+                                <td id="T_aab80_row3_col0" class="data row3 col0" >Ignore Items</td>
+                        <td id="T_aab80_row3_col1" class="data row3 col1" >None</td>
+            </tr>
+    </tbody></table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rule1</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s1">&#39;confidence&#39;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">min_support</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_model</span><span class="p">(</span><span class="n">rule1</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.4.1.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+</div><div class="output text_html"><div>                            <div id="c410d21f-9eb2-461b-a22b-3bd4ac8e35b3" class="plotly-graph-div" style="height:800px; width:900px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("c410d21f-9eb2-461b-a22b-3bd4ac8e35b3")) {                    Plotly.newPlot(                        "c410d21f-9eb2-461b-a22b-3bd4ac8e35b3",                        [{"customdata":[["JUMBO BAG WOODLAND ANIMALS","POSTAGE"],["SET/6 RED SPOTTY PAPER PLATES","SET/6 RED SPOTTY PAPER CUPS"],["SET/20 RED RETROSPOT PAPER NAPKINS ","SET/6 RED SPOTTY PAPER PLATES"],["SET/6 RED SPOTTY PAPER PLATES","SET/6 RED SPOTTY PAPER CUPS"],["SET/20 RED RETROSPOT PAPER NAPKINS ","SET/6 RED SPOTTY PAPER PLATES"],["SET OF 9 BLACK SKULL BALLOONS","POSTAGE"],["PACK OF 6 SKULL PAPER CUPS","POSTAGE"],["SET/6 RED SPOTTY PAPER PLATES","SET/6 RED SPOTTY PAPER CUPS"],["SET/6 RED SPOTTY PAPER PLATES","SET/6 RED SPOTTY PAPER CUPS"],["TEA PARTY BIRTHDAY CARD","POSTAGE"],["STRAWBERRY LUNCH BOX WITH CUTLERY","POSTAGE"],["RED RETROSPOT PICNIC BAG","POSTAGE"],["CHILDRENS CUTLERY SPACEBOY ","CHILDRENS CUTLERY DOLLY GIRL "],["SET OF 2 TEA TOWELS APPLE AND PEARS","POSTAGE"],["ASSORTED COLOUR MINI CASES","POSTAGE"],["LUNCH BAG APPLE DESIGN","POSTAGE"],["ALARM CLOCK BAKELIKE RED ","POSTAGE"],["ROUND SNACK BOXES SET OF4 WOODLAND ","POSTAGE"],["ALARM CLOCK BAKELIKE RED ","POSTAGE"],["ALARM CLOCK BAKELIKE RED ","POSTAGE"],["WOODLAND CHARLOTTE BAG","POSTAGE"],["SET/6 RED SPOTTY PAPER CUPS","SET/6 RED SPOTTY PAPER PLATES"],["ALARM CLOCK BAKELIKE PINK","POSTAGE"],["PAPER BUNTING RETROSPOT","POSTAGE"],["SET/6 RED SPOTTY PAPER CUPS","SET/6 RED SPOTTY PAPER PLATES"],["RABBIT NIGHT LIGHT","POSTAGE"],["ALARM CLOCK BAKELIKE RED ","ALARM CLOCK BAKELIKE GREEN"],["ALARM CLOCK BAKELIKE PINK","ALARM CLOCK BAKELIKE RED "],["CHILDRENS CUTLERY DOLLY GIRL ","CHILDRENS CUTLERY SPACEBOY "],["RED TOADSTOOL LED NIGHT LIGHT","POSTAGE"],["ROUND SNACK BOXES SET OF 4 FRUITS ","POSTAGE"],["COFFEE MUG APPLES DESIGN","POSTAGE"],["PLASTERS IN TIN CIRCUS PARADE ","POSTAGE"],["SET/6 RED SPOTTY PAPER CUPS","POSTAGE"],["LUNCH BAG WOODLAND","POSTAGE"],["POSTAGE","ALARM CLOCK BAKELIKE RED "],["ALARM CLOCK BAKELIKE GREEN","POSTAGE"],["JUMBO BAG RED RETROSPOT","POSTAGE"],["RED RETROSPOT CHARLOTTE BAG","POSTAGE"],["SET/6 RED SPOTTY PAPER PLATES","POSTAGE"],["ALARM CLOCK BAKELIKE RED ","ALARM CLOCK BAKELIKE GREEN"],["SET/10 RED POLKADOT PARTY CANDLES","POSTAGE"],["SET/6 RED SPOTTY PAPER PLATES","POSTAGE"],["ALARM CLOCK BAKELIKE PINK","POSTAGE"],["SET/20 RED RETROSPOT PAPER NAPKINS ","POSTAGE"],["PACK OF 72 RETROSPOT CAKE CASES","POSTAGE"],["SET/20 RED RETROSPOT PAPER NAPKINS ","POSTAGE"],["PLASTERS IN TIN WOODLAND ANIMALS","POSTAGE"],["SET/6 RED SPOTTY PAPER PLATES","POSTAGE"],["ALARM CLOCK BAKELIKE RED ","ALARM CLOCK BAKELIKE GREEN"],["SET/6 RED SPOTTY PAPER PLATES","POSTAGE"],["LUNCH BAG APPLE DESIGN","POSTAGE"],["RED RETROSPOT MINI CASES","POSTAGE"],["PLASTERS IN TIN SPACEBOY","POSTAGE"],["SET/6 RED SPOTTY PAPER PLATES","SET/20 RED RETROSPOT PAPER NAPKINS "],["ALARM CLOCK BAKELIKE RED ","ALARM CLOCK BAKELIKE PINK"],["PLASTERS IN TIN WOODLAND ANIMALS","POSTAGE"],["PLASTERS IN TIN CIRCUS PARADE ","POSTAGE"],["PLASTERS IN TIN WOODLAND ANIMALS","POSTAGE"],["SET/20 RED RETROSPOT PAPER NAPKINS ","SET/6 RED SPOTTY PAPER PLATES"],["SET/6 RED SPOTTY PAPER PLATES","SET/6 RED SPOTTY PAPER CUPS"],["SET/6 RED SPOTTY PAPER PLATES","SET/20 RED RETROSPOT PAPER NAPKINS "],["SET/6 RED SPOTTY PAPER PLATES","SET/6 RED SPOTTY PAPER CUPS"],["SET/6 RED SPOTTY PAPER PLATES","SET/20 RED RETROSPOT PAPER NAPKINS "],["ALARM CLOCK BAKELIKE GREEN","ALARM CLOCK BAKELIKE RED "],["LUNCH BOX WITH CUTLERY RETROSPOT ","POSTAGE"],["LUNCH BAG RED RETROSPOT","POSTAGE"],["SET/6 RED SPOTTY PAPER PLATES","SET/20 RED RETROSPOT PAPER NAPKINS "],["ALARM CLOCK BAKELIKE RED ","ALARM CLOCK BAKELIKE PINK"],["PLASTERS IN TIN STRONGMAN","POSTAGE"],["MINI PAINT SET VINTAGE ","POSTAGE"],["SET/6 RED SPOTTY PAPER PLATES","SET/20 RED RETROSPOT PAPER NAPKINS "],["REGENCY CAKESTAND 3 TIER","POSTAGE"],["SPACEBOY LUNCH BOX ","POSTAGE"],["SET/20 RED RETROSPOT PAPER NAPKINS ","SET/6 RED SPOTTY PAPER PLATES"],["SET/20 RED RETROSPOT PAPER NAPKINS ","SET/6 RED SPOTTY PAPER CUPS"],["SET/20 RED RETROSPOT PAPER NAPKINS ","SET/6 RED SPOTTY PAPER CUPS"],["SET/20 RED RETROSPOT PAPER NAPKINS ","SET/6 RED SPOTTY PAPER PLATES"],["ALARM CLOCK BAKELIKE RED ","ALARM CLOCK BAKELIKE PINK"],["SET/6 RED SPOTTY PAPER PLATES","SET/20 RED RETROSPOT PAPER NAPKINS "],["ALARM CLOCK BAKELIKE RED ","POSTAGE"],["LUNCH BAG SPACEBOY DESIGN ","POSTAGE"],["SET/20 RED RETROSPOT PAPER NAPKINS ","SET/6 RED SPOTTY PAPER PLATES"],["PLASTERS IN TIN CIRCUS PARADE ","PLASTERS IN TIN WOODLAND ANIMALS"],["PLASTERS IN TIN SPACEBOY","PLASTERS IN TIN WOODLAND ANIMALS"],["SET/20 RED RETROSPOT PAPER NAPKINS ","SET/6 RED SPOTTY PAPER PLATES"],["ALARM CLOCK BAKELIKE GREEN","ALARM CLOCK BAKELIKE PINK"],["ALARM CLOCK BAKELIKE PINK","ALARM CLOCK BAKELIKE RED "],["SET/6 RED SPOTTY PAPER CUPS","SET/20 RED RETROSPOT PAPER NAPKINS "],["SET/6 RED SPOTTY PAPER CUPS","SET/6 RED SPOTTY PAPER PLATES"],["PLASTERS IN TIN SPACEBOY","PLASTERS IN TIN WOODLAND ANIMALS"],["POSTAGE","ALARM CLOCK BAKELIKE PINK"],["DOLLY GIRL LUNCH BOX","POSTAGE"],["ALARM CLOCK BAKELIKE PINK","ALARM CLOCK BAKELIKE RED "],["ALARM CLOCK BAKELIKE PINK","ALARM CLOCK BAKELIKE GREEN"],["SET/6 RED SPOTTY PAPER CUPS","SET/6 RED SPOTTY PAPER PLATES"],["ALARM CLOCK BAKELIKE GREEN","ALARM CLOCK BAKELIKE RED "],["SET/6 RED SPOTTY PAPER CUPS","SET/20 RED RETROSPOT PAPER NAPKINS "],["ALARM CLOCK BAKELIKE RED ","ALARM CLOCK BAKELIKE PINK"],["DOLLY GIRL LUNCH BOX","SPACEBOY LUNCH BOX "]],"hovertemplate":"support=%{x}<br>confidence=%{y}<br>lift=%{z}<br>antecedents=%{customdata[0]}<br>consequents=%{customdata[1]}<br>antecedent support=%{marker.color}<extra></extra>","legendgroup":"","marker":{"color":[0.0651,0.0868,0.0868,0.0716,0.0716,0.0564,0.0542,0.1085,0.0911,0.0803,0.1041,0.0629,0.0586,0.0586,0.0586,0.0564,0.0803,0.1388,0.0672,0.0629,0.0629,0.1171,0.0868,0.0694,0.0998,0.1627,0.0629,0.0629,0.0629,0.1562,0.0933,0.0607,0.1475,0.1171,0.102,0.0716,0.0846,0.0824,0.0824,0.1085,0.0803,0.0651,0.1041,0.0629,0.1128,0.0868,0.0868,0.0868,0.0868,0.0738,0.0846,0.1085,0.1193,0.1193,0.1041,0.0672,0.1453,0.0781,0.0889,0.0868,0.0868,0.0868,0.1085,0.1085,0.0846,0.1236,0.1323,0.0911,0.0803,0.0694,0.0889,0.1085,0.1171,0.1063,0.1128,0.1128,0.0933,0.0933,0.0738,0.0911,0.0803,0.1041,0.1128,0.0781,0.1193,0.0933,0.0846,0.0759,0.1171,0.1171,0.0976,0.0716,0.0868,0.0868,0.0868,0.1171,0.0846,0.0998,0.0803,0.0868],"coloraxis":"coloraxis","opacity":0.7,"symbol":"circle"},"mode":"markers","name":"","scene":"scene","showlegend":false,"type":"scatter3d","x":[0.0651,0.0846,0.0846,0.0694,0.0694,0.0542,0.0521,0.1041,0.0868,0.0759,0.0976,0.0586,0.0542,0.0542,0.0542,0.0521,0.0738,0.1258,0.0607,0.0564,0.0564,0.1041,0.0759,0.0607,0.0868,0.141,0.0542,0.0542,0.0542,0.1345,0.0803,0.0521,0.1258,0.0998,0.0868,0.0607,0.0716,0.0694,0.0694,0.0911,0.0672,0.0542,0.0868,0.0521,0.0933,0.0716,0.0716,0.0716,0.0716,0.0607,0.0694,0.0889,0.0976,0.0976,0.0846,0.0542,0.1171,0.0629,0.0716,0.0694,0.0694,0.0694,0.0868,0.0868,0.0672,0.0976,0.1041,0.0716,0.0629,0.0542,0.0694,0.0846,0.0911,0.0824,0.0868,0.0868,0.0716,0.0716,0.0564,0.0694,0.0607,0.0781,0.0846,0.0586,0.0889,0.0694,0.0629,0.0564,0.0868,0.0868,0.0716,0.0521,0.0629,0.0629,0.0629,0.0846,0.0607,0.0716,0.0564,0.0607],"y":[1.0,0.975,0.975,0.9697,0.9697,0.9615,0.96,0.96,0.9524,0.9459,0.9375,0.931,0.9259,0.9259,0.9259,0.9231,0.9189,0.9063,0.9032,0.8966,0.8966,0.8889,0.875,0.875,0.8696,0.8667,0.8621,0.8621,0.8621,0.8611,0.8605,0.8571,0.8529,0.8519,0.8511,0.8485,0.8462,0.8421,0.8421,0.84,0.8378,0.8333,0.8333,0.8276,0.8269,0.825,0.825,0.825,0.825,0.8235,0.8205,0.82,0.8182,0.8182,0.8125,0.8065,0.806,0.8056,0.8049,0.8,0.8,0.8,0.8,0.8,0.7949,0.7895,0.7869,0.7857,0.7838,0.7812,0.7805,0.78,0.7778,0.7755,0.7692,0.7692,0.7674,0.7674,0.7647,0.7619,0.7568,0.75,0.75,0.75,0.7455,0.7442,0.7436,0.7429,0.7407,0.7407,0.7333,0.7273,0.725,0.725,0.725,0.7222,0.7179,0.7174,0.7027,0.7],"z":[1.4823,8.3236,8.9895,8.2783,8.9406,1.4253,1.423,8.1956,8.1305,1.4022,1.3897,1.3801,14.719,1.3725,1.3725,1.3683,1.3621,1.3433,1.3389,1.329,1.329,8.1956,1.297,1.297,8.0174,1.2847,10.1901,10.7409,14.719,1.2764,1.2755,1.2706,1.2643,1.2627,1.2615,10.5717,1.2543,1.2483,1.2483,1.2451,9.9037,1.2353,1.2353,1.2267,1.2258,1.2229,1.2229,1.2229,1.2229,9.7345,1.2163,1.2155,1.2128,1.2128,7.2031,9.2944,1.1947,1.1941,1.1931,8.781,8.0174,7.0923,8.0174,7.0923,9.9037,1.1702,1.1664,6.9657,9.0331,1.1581,1.1569,8.9895,1.1529,1.1496,7.0923,6.567,6.5517,7.0758,8.8132,8.781,10.5717,1.1117,7.2031,5.1604,5.1292,7.1473,8.5699,9.2556,6.567,8.1305,5.0458,8.3818,1.0747,9.0331,8.5699,8.3236,9.7345,6.3599,9.2556,6.5857]}],                        {"coloraxis":{"colorbar":{"title":{"text":"antecedent support"}},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"height":800,"legend":{"tracegroupgap":0},"scene":{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"xaxis":{"title":{"text":"support"}},"yaxis":{"title":{"text":"confidence"}},"zaxis":{"title":{"text":"lift"}}},"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"title":{"text":"3d Plot for Rule Mining"},"width":900},                        {"responsive": true}                    ).then(function(){
+
+var gd = document.getElementById('c410d21f-9eb2-461b-a22b-3bd4ac8e35b3');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div></div></div>
+</div>
+</div>
+<div class="section" id="dimensionaliteitsreductie">
+<h3>Dimensionaliteitsreductie<a class="headerlink" href="#dimensionaliteitsreductie" title="Permalink to this headline">¶</a></h3>
+<p>is een leertechniek die wordt gebruikt wanneer het aantal kenmerken (of dimensies) in een bepaalde dataset te hoog is. Het reduceert het aantal tot een beheersbare omvang en behoudt tegelijkertijd de gegevensintegriteit.</p>
+<p>Dimensionaliteitsreductie technieken worden veel gebruikt bij feature engineering.</p>
+</div>
+<div class="section" id="curse-of-dimensionality">
+<h3>Curse of dimensionality<a class="headerlink" href="#curse-of-dimensionality" title="Permalink to this headline">¶</a></h3>
+<p>wanneer de dimensionaliteit toeneemt, neemt het volume van de ruimte zo snel toe dat de beschikbare gegevens schaars worden. Deze schaarste is problematisch voor elke methode die statistische significantie vereist</p>
+</div>
+</div>
+<div class="section" id="supervised">
+<h2>Supervised<a class="headerlink" href="#supervised" title="Permalink to this headline">¶</a></h2>
+<p>Supervised learning is een machine learning-benadering die wordt gedefinieerd door het gebruik van gelabelde datasets. Deze datasets zijn ontworpen om algoritmen te trainen of te “superviseren” om gegevens te classificeren of resultaten nauwkeurig te voorspellen. Met behulp van gelabelde inputs en outputs kan het model zijn nauwkeurigheid meten en in de loop van de tijd leren.</p>
+<p>Gesuperviseerd leren kan worden onderverdeeld in twee soorten problemen bij datamining: classificatie en regressie:</p>
+</div>
+<div class="section" id="classification">
+<h2>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h2>
+<p>is een algoritme om testgegevens nauwkeurig toe te wijzen aan specifieke categorieën, zoals het scheiden van appels van peren.</p>
+</div>
+<div class="section" id="regressie">
+<h2>Regressie<a class="headerlink" href="#regressie" title="Permalink to this headline">¶</a></h2>
+<p>Regressiemodellen zijn handig voor het voorspellen van numerieke waarden op basis van verschillende gegevenspunten, zoals projecties van verkoopopbrengsten voor een bepaald bedrijf.Regressie is een ander type begeleide leermethode die een algoritme gebruikt om de relatie tussen afhankelijke en onafhankelijke variabelen te begrijpen. Regressiemodellen zijn handig voor het voorspellen van numerieke waarden op basis van verschillende gegevenspunten, zoals projecties van verkoopopbrengsten voor een bepaald bedrijf. Enkele populaire regressie-algoritmen zijn lineaire regressie, logistische regressie en polynomiale regressie.</p>
+</div>
+<div class="section" id="models">
+<h2>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
+<p>We gaan even kort schetsen hoe de volgende modellen werken.</p>
+<div class="section" id="lineaire-modellen">
+<h3>Lineaire modellen<a class="headerlink" href="#lineaire-modellen" title="Permalink to this headline">¶</a></h3>
+<p><img alt="lm" src="_images/linear_regression.png" /></p>
+</div>
+<div class="section" id="decision-trees">
+<h3>Decision trees<a class="headerlink" href="#decision-trees" title="Permalink to this headline">¶</a></h3>
+<p><img alt="dt" src="_images/decison_tree.png" /></p>
+</div>
+</div>
+<div class="section" id="train-test">
+<h2>Train/Test<a class="headerlink" href="#train-test" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="hyperparameters">
+<h2>Hyperparameters<a class="headerlink" href="#hyperparameters" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="ensembles">
+<h2>Ensembles<a class="headerlink" href="#ensembles" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="stacking">
+<h3>Stacking<a class="headerlink" href="#stacking" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="bagging">
+<h3>Bagging<a class="headerlink" href="#bagging" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="boosting">
+<h3>Boosting<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="overfitting">
+<h2>Overfitting<a class="headerlink" href="#overfitting" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="featureengineering.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Feature engineering</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="modeltune.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Model Tuning</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Tom Michiels<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

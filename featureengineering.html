@@ -1,0 +1,655 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feature engineering &#8212; Basis ML</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Model Training" href="modeltrain.html" />
+    <link rel="prev" title="Data Cleaning" href="datacleaning.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/VectrConsulting.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Basis ML</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Basis ML
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="eda.html">
+   Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datacleaning.html">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Feature engineering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modeltrain.html">
+   Model Training
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modeltune.html">
+   Model Tuning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modelpr.html">
+   Models in production
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cloudspark.html">
+   Cloud &amp; Spark
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/featureengineering.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/vectrconsulting/mlcourse"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/vectrconsulting/mlcourse/issues/new?title=Issue%20on%20page%20%2Ffeatureengineering.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/vectrconsulting/mlcourse/main?urlpath=tree/./featureengineering.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/vectrconsulting/mlcourse/blob/main/./featureengineering.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#features-combineren">
+   Features combineren
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tellen">
+   Tellen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#groeperen">
+   Groeperen
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geospatial-features">
+     Geospatial features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#temporal-features">
+     Temporal features
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wip-dimension-reduction">
+   (WIP) Dimension reduction
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="feature-engineering">
+<h1>Feature engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">¶</a></h1>
+<p>We hebben de data nu bekeken en hebben alle data die niet ok was verwijderd nu komen we aan een stap waar we met domain kennis gaan proberen om extra features te gaan aanmaken.</p>
+<p>Het doel van feature engineering is om uw gegevens beter af te stemmen op het probleem.</p>
+<p>Metingen van “schijnbare temperatuur”, zoals de hitte-index en de gevoelstemperatuur. Deze grootheden proberen de waargenomen temperatuur voor mensen te meten op basis van luchttemperatuur, vochtigheid en windsnelheid, dingen die we direct kunnen meten. Je zou een schijnbare temperatuur kunnen zien als het resultaat van een soort feature-engineering, een poging om de waargenomen gegevens relevanter te maken voor waar we echt om geven: hoe het werkelijk buiten aanvoelt!</p>
+<div class="section" id="features-combineren">
+<h2>Features combineren<a class="headerlink" href="#features-combineren" title="Permalink to this headline">¶</a></h2>
+<p>We kunnen features wiskundig gaan combineren of features zelf onderwerpen aan een wiskundige operatie. Als we bijvoorbeeld ergens lengte hebben dan kunnen we opervlakte gaan berekenen om zo misschien toch lineaire relaties blood te leggen met de target variabele.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Installed packages</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pandas_profiling.utils.cache</span> <span class="kn">import</span> <span class="n">cache_file</span>
+
+<span class="c1"># Read car dataset</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="n">cache_file</span><span class="p">(</span>
+    <span class="s2">&quot;cars.csv&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://raw.githubusercontent.com/sanithps98/Automobile-Dataset-Analysis/master/module_5_auto.csv&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">autos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">autos</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Unnamed: 0.1</th>
+      <th>symboling</th>
+      <th>normalized-losses</th>
+      <th>make</th>
+      <th>aspiration</th>
+      <th>num-of-doors</th>
+      <th>body-style</th>
+      <th>drive-wheels</th>
+      <th>engine-location</th>
+      <th>...</th>
+      <th>compression-ratio</th>
+      <th>horsepower</th>
+      <th>peak-rpm</th>
+      <th>city-mpg</th>
+      <th>highway-mpg</th>
+      <th>price</th>
+      <th>city-L/100km</th>
+      <th>horsepower-binned</th>
+      <th>diesel</th>
+      <th>gas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>122</td>
+      <td>alfa-romero</td>
+      <td>std</td>
+      <td>two</td>
+      <td>convertible</td>
+      <td>rwd</td>
+      <td>front</td>
+      <td>...</td>
+      <td>9.0</td>
+      <td>111.0</td>
+      <td>5000.0</td>
+      <td>21</td>
+      <td>27</td>
+      <td>13495.0</td>
+      <td>11.190476</td>
+      <td>Medium</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>122</td>
+      <td>alfa-romero</td>
+      <td>std</td>
+      <td>two</td>
+      <td>convertible</td>
+      <td>rwd</td>
+      <td>front</td>
+      <td>...</td>
+      <td>9.0</td>
+      <td>111.0</td>
+      <td>5000.0</td>
+      <td>21</td>
+      <td>27</td>
+      <td>16500.0</td>
+      <td>11.190476</td>
+      <td>Medium</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>122</td>
+      <td>alfa-romero</td>
+      <td>std</td>
+      <td>two</td>
+      <td>hatchback</td>
+      <td>rwd</td>
+      <td>front</td>
+      <td>...</td>
+      <td>9.0</td>
+      <td>154.0</td>
+      <td>5000.0</td>
+      <td>19</td>
+      <td>26</td>
+      <td>16500.0</td>
+      <td>12.368421</td>
+      <td>Medium</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>164</td>
+      <td>audi</td>
+      <td>std</td>
+      <td>four</td>
+      <td>sedan</td>
+      <td>fwd</td>
+      <td>front</td>
+      <td>...</td>
+      <td>10.0</td>
+      <td>102.0</td>
+      <td>5500.0</td>
+      <td>24</td>
+      <td>30</td>
+      <td>13950.0</td>
+      <td>9.791667</td>
+      <td>Medium</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>164</td>
+      <td>audi</td>
+      <td>std</td>
+      <td>four</td>
+      <td>sedan</td>
+      <td>4wd</td>
+      <td>front</td>
+      <td>...</td>
+      <td>8.0</td>
+      <td>115.0</td>
+      <td>5500.0</td>
+      <td>18</td>
+      <td>22</td>
+      <td>17450.0</td>
+      <td>13.055556</td>
+      <td>Medium</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 31 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">autos</span><span class="p">[</span><span class="s2">&quot;stroke_ratio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">autos</span><span class="o">.</span><span class="n">stroke</span> <span class="o">/</span> <span class="n">autos</span><span class="o">.</span><span class="n">bore</span>
+
+<span class="n">autos</span><span class="p">[[</span><span class="s2">&quot;stroke&quot;</span><span class="p">,</span> <span class="s2">&quot;bore&quot;</span><span class="p">,</span> <span class="s2">&quot;stroke_ratio&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stroke</th>
+      <th>bore</th>
+      <th>stroke_ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.68</td>
+      <td>3.47</td>
+      <td>0.772334</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.68</td>
+      <td>3.47</td>
+      <td>0.772334</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.47</td>
+      <td>2.68</td>
+      <td>1.294776</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.40</td>
+      <td>3.19</td>
+      <td>1.065831</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3.40</td>
+      <td>3.19</td>
+      <td>1.065831</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We kunnen zelfs verder gaan en gekende formules gaan toepassen. Vandaar dat hier domein kennis cruciaal zal zijn.</p>
+</div>
+<div class="section" id="tellen">
+<h2>Tellen<a class="headerlink" href="#tellen" title="Permalink to this headline">¶</a></h2>
+<p>We kunnen verschillende features met elkaar gaan combineren om tot een iets algemener feature te komen te komen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">roadway_features</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Amenity&quot;</span><span class="p">,</span> <span class="s2">&quot;Bump&quot;</span><span class="p">,</span> <span class="s2">&quot;Crossing&quot;</span><span class="p">,</span> <span class="s2">&quot;GiveWay&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Junction&quot;</span><span class="p">,</span> <span class="s2">&quot;NoExit&quot;</span><span class="p">,</span> <span class="s2">&quot;Railway&quot;</span><span class="p">,</span> <span class="s2">&quot;Roundabout&quot;</span><span class="p">,</span> <span class="s2">&quot;Station&quot;</span><span class="p">,</span> <span class="s2">&quot;Stop&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;TrafficCalming&quot;</span><span class="p">,</span> <span class="s2">&quot;TrafficSignal&quot;</span><span class="p">]</span>
+<span class="n">accidents</span><span class="p">[</span><span class="s2">&quot;RoadwayFeatures&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">accidents</span><span class="p">[</span><span class="n">roadway_features</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="data" src="_images/creating_features.png" /></p>
+</div>
+<div class="section" id="groeperen">
+<h2>Groeperen<a class="headerlink" href="#groeperen" title="Permalink to this headline">¶</a></h2>
+<p>We kunnen data per rij gaan groeperen en daar aggregaties op gaan toepassen.</p>
+<div class="section" id="geospatial-features">
+<h3>Geospatial features<a class="headerlink" href="#geospatial-features" title="Permalink to this headline">¶</a></h3>
+<p>Bijvoorbeeld de gemiddelde verkoopwaarden van een huis binnen een regio kan zo een feature zijn.</p>
+<p><a class="reference external" href="https://pysal.org/esda/notebooks/spatialautocorrelation.html">geospatial features</a></p>
+</div>
+<div class="section" id="temporal-features">
+<h3>Temporal features<a class="headerlink" href="#temporal-features" title="Permalink to this headline">¶</a></h3>
+<p>Bijvoorbeeld aankoop transactie gaan groeperen per week en als kolom voorzien tijdstip-week.</p>
+<p><a class="reference external" href="https://github.com/Featuretools/predict-appointment-noshow/blob/master/Tutorial.ipynb">tijdsgebonden features</a></p>
+</div>
+</div>
+<div class="section" id="wip-dimension-reduction">
+<h2>(WIP) Dimension reduction<a class="headerlink" href="#wip-dimension-reduction" title="Permalink to this headline">¶</a></h2>
+<p>Met clustering is het mogelijk om features met elkaar te verbinden.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="datacleaning.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Data Cleaning</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="modeltrain.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Model Training</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Tom Michiels<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

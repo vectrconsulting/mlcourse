@@ -1,0 +1,673 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Model Tuning &#8212; Basis ML</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Models in production" href="modelpr.html" />
+    <link rel="prev" title="Model Training" href="modeltrain.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/VectrConsulting.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Basis ML</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Basis ML
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="eda.html">
+   Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datacleaning.html">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="featureengineering.html">
+   Feature engineering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modeltrain.html">
+   Model Training
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Model Tuning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modelpr.html">
+   Models in production
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cloudspark.html">
+   Cloud &amp; Spark
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/modeltune.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/vectrconsulting/mlcourse"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/vectrconsulting/mlcourse/issues/new?title=Issue%20on%20page%20%2Fmodeltune.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/vectrconsulting/mlcourse/main?urlpath=tree/./modeltune.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/vectrconsulting/mlcourse/blob/main/./modeltune.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="model-tuning">
+<h1>Model Tuning<a class="headerlink" href="#model-tuning" title="Permalink to this headline">¶</a></h1>
+<p>Bij model tuning gaan we search capaciteiten gebruiken om hyperparameters te zoeken die optimaal performatie geven.  Er zijn verschillende frameworks die we hiervoor kunnen gebruiken. Hieronder een voorbeeld met optuna. Waar we tijdens het trainen de parameters zoeken van een ML model zoals de gewichten bij linieare regresssie en de spilts bij een decision tree gaan we hier meerdere modelen gaan trainen met andere begin waarden. bijvoorbeeld hoeveel leafs heeft een decision tree.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Optuna example that optimizes a classifier configuration for Iris dataset using sklearn.</span>
+<span class="sd">In this example, we optimize a classifier configuration for Iris dataset. Classifiers are from</span>
+<span class="sd">scikit-learn. We optimize both the choice of classifier (among SVC and RandomForest) and their</span>
+<span class="sd">hyperparameters.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">optuna</span>
+
+<span class="kn">import</span> <span class="nn">sklearn.datasets</span>
+<span class="kn">import</span> <span class="nn">sklearn.ensemble</span>
+<span class="kn">import</span> <span class="nn">sklearn.model_selection</span>
+<span class="kn">import</span> <span class="nn">sklearn.svm</span>
+
+
+<span class="c1"># FYI: Objective functions can take additional arguments</span>
+<span class="c1"># (https://optuna.readthedocs.io/en/stable/faq.html#objective-func-additional-args).</span>
+<span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">trial</span><span class="p">):</span>
+    <span class="n">iris</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+
+    <span class="n">classifier_name</span> <span class="o">=</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_categorical</span><span class="p">(</span><span class="s2">&quot;classifier&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;SVC&quot;</span><span class="p">,</span> <span class="s2">&quot;RandomForest&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">classifier_name</span> <span class="o">==</span> <span class="s2">&quot;SVC&quot;</span><span class="p">:</span>
+        <span class="n">svc_c</span> <span class="o">=</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_float</span><span class="p">(</span><span class="s2">&quot;svc_c&quot;</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">,</span> <span class="mf">1e10</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">classifier_obj</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="n">svc_c</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">rf_max_depth</span> <span class="o">=</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_int</span><span class="p">(</span><span class="s2">&quot;rf_max_depth&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">classifier_obj</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">ensemble</span><span class="o">.</span><span class="n">RandomForestClassifier</span><span class="p">(</span>
+            <span class="n">max_depth</span><span class="o">=</span><span class="n">rf_max_depth</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span>
+        <span class="p">)</span>
+
+    <span class="n">score</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">model_selection</span><span class="o">.</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">classifier_obj</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="n">score</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">accuracy</span>
+
+
+<span class="n">study</span> <span class="o">=</span> <span class="n">optuna</span><span class="o">.</span><span class="n">create_study</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s2">&quot;maximize&quot;</span><span class="p">)</span>
+<span class="n">study</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">study</span><span class="o">.</span><span class="n">best_trial</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:03,751]</span> A new study created in memory with name: no-name-c47f6d4c-da0d-4354-b63e-6e2bfd0f6713
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:04,529]</span> Trial 0 finished with value: 0.32 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 1.2842680093912198e-07}. Best is trial 0 with value: 0.32.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:04,544]</span> Trial 1 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 1060.495365939307}. Best is trial 1 with value: 0.96.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:04,558]</span> Trial 2 finished with value: 0.9533333333333333 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 156.40286800866113}. Best is trial 1 with value: 0.96.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:04,569]</span> Trial 3 finished with value: 0.32 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 7.366364217409809e-09}. Best is trial 1 with value: 0.96.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:04,640]</span> Trial 4 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 5}. Best is trial 1 with value: 0.96.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:04,650]</span> Trial 5 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 8802983390.393064}. Best is trial 1 with value: 0.96.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:04,695]</span> Trial 6 finished with value: 0.9733333333333333 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 7}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:04,708]</span> Trial 7 finished with value: 0.32 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.0037570264937287555}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:04,840]</span> Trial 8 finished with value: 0.9533333333333333 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 24}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:04,850]</span> Trial 9 finished with value: 0.9733333333333333 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 2.3933732588012817}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:04,903]</span> Trial 10 finished with value: 0.9533333333333333 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 2}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:04,947]</span> Trial 11 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 11}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:04,993]</span> Trial 12 finished with value: 0.9533333333333333 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 5}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,038]</span> Trial 13 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 13}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,093]</span> Trial 14 finished with value: 0.94 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 2}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,111]</span> Trial 15 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 59058749.15276306}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,126]</span> Trial 16 finished with value: 0.32 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.003266154521491789}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,173]</span> Trial 17 finished with value: 0.9466666666666667 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 7}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,187]</span> Trial 18 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 112765.35389489698}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,232]</span> Trial 19 finished with value: 0.9666666666666667 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 25}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,247]</span> Trial 20 finished with value: 0.7466666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.02290083707279243}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,294]</span> Trial 21 finished with value: 0.9666666666666667 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 27}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,343]</span> Trial 22 finished with value: 0.9666666666666667 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 14}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,392]</span> Trial 23 finished with value: 0.9666666666666667 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 14}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,439]</span> Trial 24 finished with value: 0.9533333333333333 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 8}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,490]</span> Trial 25 finished with value: 0.9466666666666667 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 4}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,539]</span> Trial 26 finished with value: 0.9533333333333333 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 17}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,596]</span> Trial 27 finished with value: 0.9666666666666667 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 3}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,613]</span> Trial 28 finished with value: 0.32 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 4.751335234949594e-06}. Best is trial 6 with value: 0.9733333333333333.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,628]</span> Trial 29 finished with value: 0.98 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 8.210241706184561}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,644]</span> Trial 30 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 49.54585744243417}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,661]</span> Trial 31 finished with value: 0.9666666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.694396391452283}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,677]</span> Trial 32 finished with value: 0.9666666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.7276034320195776}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,693]</span> Trial 33 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 8454.00563273552}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,709]</span> Trial 34 finished with value: 0.32 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 1.5176173487710693e-05}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,723]</span> Trial 35 finished with value: 0.9733333333333333 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.9974047609874479}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,737]</span> Trial 36 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 960480.2002526897}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,753]</span> Trial 37 finished with value: 0.98 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 7.317351202711599}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,771]</span> Trial 38 finished with value: 0.32 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.0001057719107506793}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,787]</span> Trial 39 finished with value: 0.9733333333333333 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 12.339782079847861}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,803]</span> Trial 40 finished with value: 0.9733333333333333 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 13.143373709123777}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,818]</span> Trial 41 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 44.37733909296632}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,835]</span> Trial 42 finished with value: 0.9733333333333333 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 1.0358793400238684}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,853]</span> Trial 43 finished with value: 0.98 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 10.385501021976081}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,870]</span> Trial 44 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 5310.093366140177}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,887]</span> Trial 45 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.1810654761902529}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,902]</span> Trial 46 finished with value: 0.7600000000000001 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.03252102995299595}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,917]</span> Trial 47 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 68.31864682730021}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,935]</span> Trial 48 finished with value: 0.32 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.0005635255450231133}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,950]</span> Trial 49 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 1072.0772075249129}. Best is trial 29 with value: 0.98.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,966]</span> Trial 50 finished with value: 0.9866666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 4.364508023912621}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:05,986]</span> Trial 51 finished with value: 0.9133333333333334 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.05215503741321097}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,003]</span> Trial 52 finished with value: 0.98 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 7.721081900898568}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,019]</span> Trial 53 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 551.5617187698158}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,035]</span> Trial 54 finished with value: 0.98 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 8.353165970564703}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,053]</span> Trial 55 finished with value: 0.9733333333333333 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 12.083335012570238}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,068]</span> Trial 56 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 703.842214535107}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,086]</span> Trial 57 finished with value: 0.32 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 2.545574773489712e-10}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,103]</span> Trial 58 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 17204.13943085114}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,118]</span> Trial 59 finished with value: 0.32 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.0031607910965426355}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,134]</span> Trial 60 finished with value: 0.9733333333333333 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 3.13036263703092}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,151]</span> Trial 61 finished with value: 0.9866666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 4.590403608859452}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,166]</span> Trial 62 finished with value: 0.9466666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 175.02451961896045}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,185]</span> Trial 63 finished with value: 0.94 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.09698060916245517}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,201]</span> Trial 64 finished with value: 0.98 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 7.910229643724256}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,218]</span> Trial 65 finished with value: 0.9666666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.3922958298940198}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,234]</span> Trial 66 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 142.33533401079376}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,250]</span> Trial 67 finished with value: 0.9733333333333333 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 2.8715745005732503}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,267]</span> Trial 68 finished with value: 0.32 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.009815769788260747}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,284]</span> Trial 69 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 46531.75020837457}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,301]</span> Trial 70 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 457935.4345556738}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,317]</span> Trial 71 finished with value: 0.9666666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 24.43598186434941}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,334]</span> Trial 72 finished with value: 0.9866666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 3.8039316368708804}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,350]</span> Trial 73 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.21948055887973378}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,365]</span> Trial 74 finished with value: 0.9733333333333333 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 3.3251582575178995}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,382]</span> Trial 75 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 2553.2716381467603}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,398]</span> Trial 76 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 79.47762840220201}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,415]</span> Trial 77 finished with value: 0.9666666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.6373160679591398}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,434]</span> Trial 78 finished with value: 0.9866666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 4.266886751241363}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,451]</span> Trial 79 finished with value: 0.9733333333333333 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 2.4179191635227806}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,471]</span> Trial 80 finished with value: 0.9466666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 198.66565189113166}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,490]</span> Trial 81 finished with value: 0.98 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 10.05867988765091}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,505]</span> Trial 82 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 36.887311576481636}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,521]</span> Trial 83 finished with value: 0.9666666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.16995618123925726}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,537]</span> Trial 84 finished with value: 0.9866666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 4.231149350817364}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,554]</span> Trial 85 finished with value: 0.9666666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.83230318722969}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,570]</span> Trial 86 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 3263696689.168688}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,618]</span> Trial 87 finished with value: 0.9466666666666667 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 3}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,633]</span> Trial 88 finished with value: 0.9466666666666667 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 391.28120489886436}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,650]</span> Trial 89 finished with value: 0.7533333333333333 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.02733773855642037}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,666]</span> Trial 90 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 32.9264758394754}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,683]</span> Trial 91 finished with value: 0.98 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 6.84832294609186}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,698]</span> Trial 92 finished with value: 0.98 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 8.575531297193939}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,713]</span> Trial 93 finished with value: 0.9733333333333333 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 1.8427250855882933}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,731]</span> Trial 94 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.47573853439774094}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,748]</span> Trial 95 finished with value: 0.98 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 5.185968373882433}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,771]</span> Trial 96 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 2196.9503181374366}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,789]</span> Trial 97 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 58.43643340235675}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,809]</span> Trial 98 finished with value: 0.32 and parameters: {&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 0.01045852099000696}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">[I 2021-08-31 11:50:06,859]</span> Trial 99 finished with value: 0.96 and parameters: {&#39;classifier&#39;: &#39;RandomForest&#39;, &#39;rf_max_depth&#39;: 10}. Best is trial 50 with value: 0.9866666666666667.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FrozenTrial(number=50, values=[0.9866666666666667], datetime_start=datetime.datetime(2021, 8, 31, 11, 50, 5, 951590), datetime_complete=datetime.datetime(2021, 8, 31, 11, 50, 5, 966056), params={&#39;classifier&#39;: &#39;SVC&#39;, &#39;svc_c&#39;: 4.364508023912621}, distributions={&#39;classifier&#39;: CategoricalDistribution(choices=(&#39;SVC&#39;, &#39;RandomForest&#39;)), &#39;svc_c&#39;: LogUniformDistribution(high=10000000000.0, low=1e-10)}, user_attrs={}, system_attrs={}, intermediate_values={}, trial_id=50, state=TrialState.COMPLETE, value=None)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pycaret voorziet ook een tuning stap die gebaseerd is op een grid seacrch.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="modeltrain.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Model Training</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="modelpr.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Models in production</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Tom Michiels<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

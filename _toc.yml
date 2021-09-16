@@ -11,4 +11,5 @@ chapters:
 - file: modeltune
 - file: modelpr
 - file: cloudspark
+- file: mlcanvas
 

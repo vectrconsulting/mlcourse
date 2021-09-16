@@ -127,6 +127,11 @@
    Cloud &amp; Spark
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mlcanvas.html">
+   ML Canvas
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -883,7 +888,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/fuzzywuzzy/fuzz.py:11: UserWarning: Using slow pure-python SequenceMatcher. Install python-Levenshtein to remove this warning
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/fuzzywuzzy/fuzz.py:11: UserWarning: Using slow pure-python SequenceMatcher. Install python-Levenshtein to remove this warning
   warnings.warn(&#39;Using slow pure-python SequenceMatcher. Install python-Levenshtein to remove this warning&#39;)
 </pre></div>
 </div>
@@ -1047,106 +1052,323 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="ne">RuntimeError</span>: module compiled against API version 0xe but this version of numpy is 0xd
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1873</span><span class="o">/</span><span class="mf">1377916658.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">pycaret.classification</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">clf1</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">titanic</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">log_experiment</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">experiment_name</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">)</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pycaret</span><span class="o">/</span><span class="n">classification</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> 
-<span class="ne">---&gt; </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">pycaret.internal.tabular</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">pycaret.internal.Display</span> <span class="kn">import</span> <span class="n">Display</span><span class="p">,</span> <span class="n">is_in_colab</span><span class="p">,</span> <span class="n">enable_colab</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Dict</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pycaret</span><span class="o">/</span><span class="n">internal</span><span class="o">/</span><span class="n">tabular</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="kn">import</span> <span class="nn">pycaret.containers.models.clustering</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="kn">import</span> <span class="nn">pycaret.containers.models.anomaly</span>
-<span class="ne">---&gt; </span><span class="mi">47</span> <span class="kn">import</span> <span class="nn">pycaret.internal.preprocess</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pycaret</span><span class="o">/</span><span class="n">internal</span><span class="o">/</span><span class="n">preprocess</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">IncrementalPCA</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">KBinsDiscretizer</span>
-<span class="ne">---&gt; </span><span class="mi">27</span> <span class="kn">from</span> <span class="nn">pyod.models.knn</span> <span class="kn">import</span> <span class="n">KNN</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">pyod.models.iforest</span> <span class="kn">import</span> <span class="n">IForest</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">pyod.models.pca</span> <span class="kn">import</span> <span class="n">PCA</span> <span class="k">as</span> <span class="n">PCA_od</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pyod</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">models</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">utils</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># TODO: add version information here</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> 
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pyod</span><span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">.data</span> <span class="kn">import</span> <span class="n">generate_data</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">.data</span> <span class="kn">import</span> <span class="n">evaluate_print</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">.stat_models</span> <span class="kn">import</span> <span class="n">pairwise_distances_no_broadcast</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">.stat_models</span> <span class="kn">import</span> <span class="n">wpearsonr</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">from</span> <span class="nn">.stat_models</span> <span class="kn">import</span> <span class="n">pearsonr_mat</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pyod</span><span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">stat_models</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> 
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">pearsonr</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="kn">import</span> <span class="n">check_array</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numba</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> 
-<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="c1"># Re-export decorators</span>
-<span class="ne">---&gt; </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">numba.core.decorators</span> <span class="kn">import</span> <span class="p">(</span><span class="n">cfunc</span><span class="p">,</span> <span class="n">generated_jit</span><span class="p">,</span> <span class="n">jit</span><span class="p">,</span> <span class="n">njit</span><span class="p">,</span> <span class="n">stencil</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span>                                    <span class="n">jit_module</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span> 
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numba</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">decorators</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> 
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">numba.core.errors</span> <span class="kn">import</span> <span class="n">DeprecationError</span><span class="p">,</span> <span class="n">NumbaDeprecationWarning</span>
-<span class="ne">---&gt; </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">numba.stencils.stencil</span> <span class="kn">import</span> <span class="n">stencil</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">from</span> <span class="nn">numba.core</span> <span class="kn">import</span> <span class="n">config</span><span class="p">,</span> <span class="n">extending</span><span class="p">,</span> <span class="n">sigutils</span><span class="p">,</span> <span class="n">registry</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> 
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numba</span><span class="o">/</span><span class="n">stencils</span><span class="o">/</span><span class="n">stencil</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">llvmlite</span> <span class="kn">import</span> <span class="n">ir</span> <span class="k">as</span> <span class="n">lir</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> 
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">numba.core</span> <span class="kn">import</span> <span class="n">types</span><span class="p">,</span> <span class="n">typing</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">ir</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">ir_utils</span><span class="p">,</span> <span class="n">registry</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">numba.core.typing.templates</span> <span class="kn">import</span> <span class="p">(</span><span class="n">CallableTemplate</span><span class="p">,</span> <span class="n">signature</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>                                          <span class="n">infer_global</span><span class="p">,</span> <span class="n">AbstractTemplate</span><span class="p">)</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numba</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">ir_utils</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> 
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="kn">import</span> <span class="nn">numba</span>
-<span class="ne">---&gt; </span><span class="mi">16</span> <span class="kn">from</span> <span class="nn">numba.core.extending</span> <span class="kn">import</span> <span class="n">_Intrinsic</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">numba.core</span> <span class="kn">import</span> <span class="n">types</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">typing</span><span class="p">,</span> <span class="n">ir</span><span class="p">,</span> <span class="n">analysis</span><span class="p">,</span> <span class="n">postproc</span><span class="p">,</span> <span class="n">rewrites</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">cgutils</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">numba.core.typing.templates</span> <span class="kn">import</span> <span class="p">(</span><span class="n">signature</span><span class="p">,</span> <span class="n">infer_global</span><span class="p">,</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numba</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">extending</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">numba.core.datamodel</span> <span class="kn">import</span> <span class="n">models</span>   <span class="c1"># noqa: F401</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">numba.core.datamodel</span> <span class="kn">import</span> <span class="n">register_default</span> <span class="k">as</span> <span class="n">register_model</span>  <span class="c1"># noqa: F401, E501</span>
-<span class="ne">---&gt; </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">numba.core.pythonapi</span> <span class="kn">import</span> <span class="n">box</span><span class="p">,</span> <span class="n">unbox</span><span class="p">,</span> <span class="n">reflect</span><span class="p">,</span> <span class="n">NativeValue</span>  <span class="c1"># noqa: F401</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="kn">from</span> <span class="nn">numba._helperlib</span> <span class="kn">import</span> <span class="n">_import_cython_function</span>  <span class="c1"># noqa: F401</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span> <span class="nn">numba.core.serialize</span> <span class="kn">import</span> <span class="n">ReduceMixin</span>
-
-<span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.7.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numba</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">pythonapi</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> 
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">import</span> <span class="nn">ctypes</span>
-<span class="ne">---&gt; </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">_helperlib</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">from</span> <span class="nn">numba.core</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">types</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">lowering</span><span class="p">,</span> <span class="n">cgutils</span><span class="p">,</span> <span class="n">imputils</span><span class="p">,</span> <span class="n">serialize</span><span class="p">,</span>
-
-<span class="ne">ImportError</span>: numpy.core.multiarray failed to import
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><style type="text/css">
+#T_c1ee9_row5_col1, #T_c1ee9_row44_col1 {
+  background-color: lightgreen;
+}
+</style>
+<table id="T_c1ee9_">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th class="col_heading level0 col0" >Description</th>
+      <th class="col_heading level0 col1" >Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_c1ee9_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_c1ee9_row0_col0" class="data row0 col0" >session_id</td>
+      <td id="T_c1ee9_row0_col1" class="data row0 col1" >123</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_c1ee9_row1_col0" class="data row1 col0" >Target</td>
+      <td id="T_c1ee9_row1_col1" class="data row1 col1" >Survived</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_c1ee9_row2_col0" class="data row2 col0" >Target Type</td>
+      <td id="T_c1ee9_row2_col1" class="data row2 col1" >Binary</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_c1ee9_row3_col0" class="data row3 col0" >Label Encoded</td>
+      <td id="T_c1ee9_row3_col1" class="data row3 col1" >0: 0, 1: 1</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_c1ee9_row4_col0" class="data row4 col0" >Original Data</td>
+      <td id="T_c1ee9_row4_col1" class="data row4 col1" >(891, 11)</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_c1ee9_row5_col0" class="data row5 col0" >Missing Values</td>
+      <td id="T_c1ee9_row5_col1" class="data row5 col1" >True</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_c1ee9_row6_col0" class="data row6 col0" >Numeric Features</td>
+      <td id="T_c1ee9_row6_col1" class="data row6 col1" >3</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_c1ee9_row7_col0" class="data row7 col0" >Categorical Features</td>
+      <td id="T_c1ee9_row7_col1" class="data row7 col1" >7</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_c1ee9_row8_col0" class="data row8 col0" >Ordinal Features</td>
+      <td id="T_c1ee9_row8_col1" class="data row8 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_c1ee9_row9_col0" class="data row9 col0" >High Cardinality Features</td>
+      <td id="T_c1ee9_row9_col1" class="data row9 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row10" class="row_heading level0 row10" >10</th>
+      <td id="T_c1ee9_row10_col0" class="data row10 col0" >High Cardinality Method</td>
+      <td id="T_c1ee9_row10_col1" class="data row10 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row11" class="row_heading level0 row11" >11</th>
+      <td id="T_c1ee9_row11_col0" class="data row11 col0" >Transformed Train Set</td>
+      <td id="T_c1ee9_row11_col1" class="data row11 col1" >(623, 568)</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row12" class="row_heading level0 row12" >12</th>
+      <td id="T_c1ee9_row12_col0" class="data row12 col0" >Transformed Test Set</td>
+      <td id="T_c1ee9_row12_col1" class="data row12 col1" >(268, 568)</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row13" class="row_heading level0 row13" >13</th>
+      <td id="T_c1ee9_row13_col0" class="data row13 col0" >Shuffle Train-Test</td>
+      <td id="T_c1ee9_row13_col1" class="data row13 col1" >True</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row14" class="row_heading level0 row14" >14</th>
+      <td id="T_c1ee9_row14_col0" class="data row14 col0" >Stratify Train-Test</td>
+      <td id="T_c1ee9_row14_col1" class="data row14 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row15" class="row_heading level0 row15" >15</th>
+      <td id="T_c1ee9_row15_col0" class="data row15 col0" >Fold Generator</td>
+      <td id="T_c1ee9_row15_col1" class="data row15 col1" >StratifiedKFold</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row16" class="row_heading level0 row16" >16</th>
+      <td id="T_c1ee9_row16_col0" class="data row16 col0" >Fold Number</td>
+      <td id="T_c1ee9_row16_col1" class="data row16 col1" >10</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row17" class="row_heading level0 row17" >17</th>
+      <td id="T_c1ee9_row17_col0" class="data row17 col0" >CPU Jobs</td>
+      <td id="T_c1ee9_row17_col1" class="data row17 col1" >-1</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row18" class="row_heading level0 row18" >18</th>
+      <td id="T_c1ee9_row18_col0" class="data row18 col0" >Use GPU</td>
+      <td id="T_c1ee9_row18_col1" class="data row18 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row19" class="row_heading level0 row19" >19</th>
+      <td id="T_c1ee9_row19_col0" class="data row19 col0" >Log Experiment</td>
+      <td id="T_c1ee9_row19_col1" class="data row19 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row20" class="row_heading level0 row20" >20</th>
+      <td id="T_c1ee9_row20_col0" class="data row20 col0" >Experiment Name</td>
+      <td id="T_c1ee9_row20_col1" class="data row20 col1" >Survived</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row21" class="row_heading level0 row21" >21</th>
+      <td id="T_c1ee9_row21_col0" class="data row21 col0" >USI</td>
+      <td id="T_c1ee9_row21_col1" class="data row21 col1" >8fe0</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row22" class="row_heading level0 row22" >22</th>
+      <td id="T_c1ee9_row22_col0" class="data row22 col0" >Imputation Type</td>
+      <td id="T_c1ee9_row22_col1" class="data row22 col1" >simple</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row23" class="row_heading level0 row23" >23</th>
+      <td id="T_c1ee9_row23_col0" class="data row23 col0" >Iterative Imputation Iteration</td>
+      <td id="T_c1ee9_row23_col1" class="data row23 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row24" class="row_heading level0 row24" >24</th>
+      <td id="T_c1ee9_row24_col0" class="data row24 col0" >Numeric Imputer</td>
+      <td id="T_c1ee9_row24_col1" class="data row24 col1" >mean</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row25" class="row_heading level0 row25" >25</th>
+      <td id="T_c1ee9_row25_col0" class="data row25 col0" >Iterative Imputation Numeric Model</td>
+      <td id="T_c1ee9_row25_col1" class="data row25 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row26" class="row_heading level0 row26" >26</th>
+      <td id="T_c1ee9_row26_col0" class="data row26 col0" >Categorical Imputer</td>
+      <td id="T_c1ee9_row26_col1" class="data row26 col1" >constant</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row27" class="row_heading level0 row27" >27</th>
+      <td id="T_c1ee9_row27_col0" class="data row27 col0" >Iterative Imputation Categorical Model</td>
+      <td id="T_c1ee9_row27_col1" class="data row27 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row28" class="row_heading level0 row28" >28</th>
+      <td id="T_c1ee9_row28_col0" class="data row28 col0" >Unknown Categoricals Handling</td>
+      <td id="T_c1ee9_row28_col1" class="data row28 col1" >least_frequent</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row29" class="row_heading level0 row29" >29</th>
+      <td id="T_c1ee9_row29_col0" class="data row29 col0" >Normalize</td>
+      <td id="T_c1ee9_row29_col1" class="data row29 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row30" class="row_heading level0 row30" >30</th>
+      <td id="T_c1ee9_row30_col0" class="data row30 col0" >Normalize Method</td>
+      <td id="T_c1ee9_row30_col1" class="data row30 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row31" class="row_heading level0 row31" >31</th>
+      <td id="T_c1ee9_row31_col0" class="data row31 col0" >Transformation</td>
+      <td id="T_c1ee9_row31_col1" class="data row31 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row32" class="row_heading level0 row32" >32</th>
+      <td id="T_c1ee9_row32_col0" class="data row32 col0" >Transformation Method</td>
+      <td id="T_c1ee9_row32_col1" class="data row32 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row33" class="row_heading level0 row33" >33</th>
+      <td id="T_c1ee9_row33_col0" class="data row33 col0" >PCA</td>
+      <td id="T_c1ee9_row33_col1" class="data row33 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row34" class="row_heading level0 row34" >34</th>
+      <td id="T_c1ee9_row34_col0" class="data row34 col0" >PCA Method</td>
+      <td id="T_c1ee9_row34_col1" class="data row34 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row35" class="row_heading level0 row35" >35</th>
+      <td id="T_c1ee9_row35_col0" class="data row35 col0" >PCA Components</td>
+      <td id="T_c1ee9_row35_col1" class="data row35 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row36" class="row_heading level0 row36" >36</th>
+      <td id="T_c1ee9_row36_col0" class="data row36 col0" >Ignore Low Variance</td>
+      <td id="T_c1ee9_row36_col1" class="data row36 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row37" class="row_heading level0 row37" >37</th>
+      <td id="T_c1ee9_row37_col0" class="data row37 col0" >Combine Rare Levels</td>
+      <td id="T_c1ee9_row37_col1" class="data row37 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row38" class="row_heading level0 row38" >38</th>
+      <td id="T_c1ee9_row38_col0" class="data row38 col0" >Rare Level Threshold</td>
+      <td id="T_c1ee9_row38_col1" class="data row38 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row39" class="row_heading level0 row39" >39</th>
+      <td id="T_c1ee9_row39_col0" class="data row39 col0" >Numeric Binning</td>
+      <td id="T_c1ee9_row39_col1" class="data row39 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row40" class="row_heading level0 row40" >40</th>
+      <td id="T_c1ee9_row40_col0" class="data row40 col0" >Remove Outliers</td>
+      <td id="T_c1ee9_row40_col1" class="data row40 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row41" class="row_heading level0 row41" >41</th>
+      <td id="T_c1ee9_row41_col0" class="data row41 col0" >Outliers Threshold</td>
+      <td id="T_c1ee9_row41_col1" class="data row41 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row42" class="row_heading level0 row42" >42</th>
+      <td id="T_c1ee9_row42_col0" class="data row42 col0" >Remove Multicollinearity</td>
+      <td id="T_c1ee9_row42_col1" class="data row42 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row43" class="row_heading level0 row43" >43</th>
+      <td id="T_c1ee9_row43_col0" class="data row43 col0" >Multicollinearity Threshold</td>
+      <td id="T_c1ee9_row43_col1" class="data row43 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row44" class="row_heading level0 row44" >44</th>
+      <td id="T_c1ee9_row44_col0" class="data row44 col0" >Remove Perfect Collinearity</td>
+      <td id="T_c1ee9_row44_col1" class="data row44 col1" >True</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row45" class="row_heading level0 row45" >45</th>
+      <td id="T_c1ee9_row45_col0" class="data row45 col0" >Clustering</td>
+      <td id="T_c1ee9_row45_col1" class="data row45 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row46" class="row_heading level0 row46" >46</th>
+      <td id="T_c1ee9_row46_col0" class="data row46 col0" >Clustering Iteration</td>
+      <td id="T_c1ee9_row46_col1" class="data row46 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row47" class="row_heading level0 row47" >47</th>
+      <td id="T_c1ee9_row47_col0" class="data row47 col0" >Polynomial Features</td>
+      <td id="T_c1ee9_row47_col1" class="data row47 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row48" class="row_heading level0 row48" >48</th>
+      <td id="T_c1ee9_row48_col0" class="data row48 col0" >Polynomial Degree</td>
+      <td id="T_c1ee9_row48_col1" class="data row48 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row49" class="row_heading level0 row49" >49</th>
+      <td id="T_c1ee9_row49_col0" class="data row49 col0" >Trignometry Features</td>
+      <td id="T_c1ee9_row49_col1" class="data row49 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row50" class="row_heading level0 row50" >50</th>
+      <td id="T_c1ee9_row50_col0" class="data row50 col0" >Polynomial Threshold</td>
+      <td id="T_c1ee9_row50_col1" class="data row50 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row51" class="row_heading level0 row51" >51</th>
+      <td id="T_c1ee9_row51_col0" class="data row51 col0" >Group Features</td>
+      <td id="T_c1ee9_row51_col1" class="data row51 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row52" class="row_heading level0 row52" >52</th>
+      <td id="T_c1ee9_row52_col0" class="data row52 col0" >Feature Selection</td>
+      <td id="T_c1ee9_row52_col1" class="data row52 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row53" class="row_heading level0 row53" >53</th>
+      <td id="T_c1ee9_row53_col0" class="data row53 col0" >Feature Selection Method</td>
+      <td id="T_c1ee9_row53_col1" class="data row53 col1" >classic</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row54" class="row_heading level0 row54" >54</th>
+      <td id="T_c1ee9_row54_col0" class="data row54 col0" >Features Selection Threshold</td>
+      <td id="T_c1ee9_row54_col1" class="data row54 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row55" class="row_heading level0 row55" >55</th>
+      <td id="T_c1ee9_row55_col0" class="data row55 col0" >Feature Interaction</td>
+      <td id="T_c1ee9_row55_col1" class="data row55 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row56" class="row_heading level0 row56" >56</th>
+      <td id="T_c1ee9_row56_col0" class="data row56 col0" >Feature Ratio</td>
+      <td id="T_c1ee9_row56_col1" class="data row56 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row57" class="row_heading level0 row57" >57</th>
+      <td id="T_c1ee9_row57_col0" class="data row57 col0" >Interaction Threshold</td>
+      <td id="T_c1ee9_row57_col1" class="data row57 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row58" class="row_heading level0 row58" >58</th>
+      <td id="T_c1ee9_row58_col0" class="data row58 col0" >Fix Imbalance</td>
+      <td id="T_c1ee9_row58_col1" class="data row58 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_c1ee9_level0_row59" class="row_heading level0 row59" >59</th>
+      <td id="T_c1ee9_row59_col0" class="data row59 col0" >Fix Imbalance Method</td>
+      <td id="T_c1ee9_row59_col1" class="data row59 col1" >SMOTE</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1168,311 +1390,323 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style  type="text/css" >
-#T_4069a_row5_col1,#T_4069a_row29_col1,#T_4069a_row44_col1{
-            background-color:  lightgreen;
-        }</style><table id="T_4069a_" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >Description</th>        <th class="col_heading level0 col1" >Value</th>    </tr></thead><tbody>
-                <tr>
-                        <th id="T_4069a_level0_row0" class="row_heading level0 row0" >0</th>
-                        <td id="T_4069a_row0_col0" class="data row0 col0" >session_id</td>
-                        <td id="T_4069a_row0_col1" class="data row0 col1" >123</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row1" class="row_heading level0 row1" >1</th>
-                        <td id="T_4069a_row1_col0" class="data row1 col0" >Target</td>
-                        <td id="T_4069a_row1_col1" class="data row1 col1" >Survived</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row2" class="row_heading level0 row2" >2</th>
-                        <td id="T_4069a_row2_col0" class="data row2 col0" >Target Type</td>
-                        <td id="T_4069a_row2_col1" class="data row2 col1" >Binary</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row3" class="row_heading level0 row3" >3</th>
-                        <td id="T_4069a_row3_col0" class="data row3 col0" >Label Encoded</td>
-                        <td id="T_4069a_row3_col1" class="data row3 col1" >0: 0, 1: 1</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row4" class="row_heading level0 row4" >4</th>
-                        <td id="T_4069a_row4_col0" class="data row4 col0" >Original Data</td>
-                        <td id="T_4069a_row4_col1" class="data row4 col1" >(891, 11)</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row5" class="row_heading level0 row5" >5</th>
-                        <td id="T_4069a_row5_col0" class="data row5 col0" >Missing Values</td>
-                        <td id="T_4069a_row5_col1" class="data row5 col1" >True</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row6" class="row_heading level0 row6" >6</th>
-                        <td id="T_4069a_row6_col0" class="data row6 col0" >Numeric Features</td>
-                        <td id="T_4069a_row6_col1" class="data row6 col1" >3</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row7" class="row_heading level0 row7" >7</th>
-                        <td id="T_4069a_row7_col0" class="data row7 col0" >Categorical Features</td>
-                        <td id="T_4069a_row7_col1" class="data row7 col1" >7</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row8" class="row_heading level0 row8" >8</th>
-                        <td id="T_4069a_row8_col0" class="data row8 col0" >Ordinal Features</td>
-                        <td id="T_4069a_row8_col1" class="data row8 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row9" class="row_heading level0 row9" >9</th>
-                        <td id="T_4069a_row9_col0" class="data row9 col0" >High Cardinality Features</td>
-                        <td id="T_4069a_row9_col1" class="data row9 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row10" class="row_heading level0 row10" >10</th>
-                        <td id="T_4069a_row10_col0" class="data row10 col0" >High Cardinality Method</td>
-                        <td id="T_4069a_row10_col1" class="data row10 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row11" class="row_heading level0 row11" >11</th>
-                        <td id="T_4069a_row11_col0" class="data row11 col0" >Transformed Train Set</td>
-                        <td id="T_4069a_row11_col1" class="data row11 col1" >(623, 568)</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row12" class="row_heading level0 row12" >12</th>
-                        <td id="T_4069a_row12_col0" class="data row12 col0" >Transformed Test Set</td>
-                        <td id="T_4069a_row12_col1" class="data row12 col1" >(268, 568)</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row13" class="row_heading level0 row13" >13</th>
-                        <td id="T_4069a_row13_col0" class="data row13 col0" >Shuffle Train-Test</td>
-                        <td id="T_4069a_row13_col1" class="data row13 col1" >True</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row14" class="row_heading level0 row14" >14</th>
-                        <td id="T_4069a_row14_col0" class="data row14 col0" >Stratify Train-Test</td>
-                        <td id="T_4069a_row14_col1" class="data row14 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row15" class="row_heading level0 row15" >15</th>
-                        <td id="T_4069a_row15_col0" class="data row15 col0" >Fold Generator</td>
-                        <td id="T_4069a_row15_col1" class="data row15 col1" >StratifiedKFold</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row16" class="row_heading level0 row16" >16</th>
-                        <td id="T_4069a_row16_col0" class="data row16 col0" >Fold Number</td>
-                        <td id="T_4069a_row16_col1" class="data row16 col1" >10</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row17" class="row_heading level0 row17" >17</th>
-                        <td id="T_4069a_row17_col0" class="data row17 col0" >CPU Jobs</td>
-                        <td id="T_4069a_row17_col1" class="data row17 col1" >-1</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row18" class="row_heading level0 row18" >18</th>
-                        <td id="T_4069a_row18_col0" class="data row18 col0" >Use GPU</td>
-                        <td id="T_4069a_row18_col1" class="data row18 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row19" class="row_heading level0 row19" >19</th>
-                        <td id="T_4069a_row19_col0" class="data row19 col0" >Log Experiment</td>
-                        <td id="T_4069a_row19_col1" class="data row19 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row20" class="row_heading level0 row20" >20</th>
-                        <td id="T_4069a_row20_col0" class="data row20 col0" >Experiment Name</td>
-                        <td id="T_4069a_row20_col1" class="data row20 col1" >Survived</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row21" class="row_heading level0 row21" >21</th>
-                        <td id="T_4069a_row21_col0" class="data row21 col0" >USI</td>
-                        <td id="T_4069a_row21_col1" class="data row21 col1" >b7a7</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row22" class="row_heading level0 row22" >22</th>
-                        <td id="T_4069a_row22_col0" class="data row22 col0" >Imputation Type</td>
-                        <td id="T_4069a_row22_col1" class="data row22 col1" >simple</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row23" class="row_heading level0 row23" >23</th>
-                        <td id="T_4069a_row23_col0" class="data row23 col0" >Iterative Imputation Iteration</td>
-                        <td id="T_4069a_row23_col1" class="data row23 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row24" class="row_heading level0 row24" >24</th>
-                        <td id="T_4069a_row24_col0" class="data row24 col0" >Numeric Imputer</td>
-                        <td id="T_4069a_row24_col1" class="data row24 col1" >mean</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row25" class="row_heading level0 row25" >25</th>
-                        <td id="T_4069a_row25_col0" class="data row25 col0" >Iterative Imputation Numeric Model</td>
-                        <td id="T_4069a_row25_col1" class="data row25 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row26" class="row_heading level0 row26" >26</th>
-                        <td id="T_4069a_row26_col0" class="data row26 col0" >Categorical Imputer</td>
-                        <td id="T_4069a_row26_col1" class="data row26 col1" >constant</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row27" class="row_heading level0 row27" >27</th>
-                        <td id="T_4069a_row27_col0" class="data row27 col0" >Iterative Imputation Categorical Model</td>
-                        <td id="T_4069a_row27_col1" class="data row27 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row28" class="row_heading level0 row28" >28</th>
-                        <td id="T_4069a_row28_col0" class="data row28 col0" >Unknown Categoricals Handling</td>
-                        <td id="T_4069a_row28_col1" class="data row28 col1" >least_frequent</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row29" class="row_heading level0 row29" >29</th>
-                        <td id="T_4069a_row29_col0" class="data row29 col0" >Normalize</td>
-                        <td id="T_4069a_row29_col1" class="data row29 col1" >True</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row30" class="row_heading level0 row30" >30</th>
-                        <td id="T_4069a_row30_col0" class="data row30 col0" >Normalize Method</td>
-                        <td id="T_4069a_row30_col1" class="data row30 col1" >zscore</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row31" class="row_heading level0 row31" >31</th>
-                        <td id="T_4069a_row31_col0" class="data row31 col0" >Transformation</td>
-                        <td id="T_4069a_row31_col1" class="data row31 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row32" class="row_heading level0 row32" >32</th>
-                        <td id="T_4069a_row32_col0" class="data row32 col0" >Transformation Method</td>
-                        <td id="T_4069a_row32_col1" class="data row32 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row33" class="row_heading level0 row33" >33</th>
-                        <td id="T_4069a_row33_col0" class="data row33 col0" >PCA</td>
-                        <td id="T_4069a_row33_col1" class="data row33 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row34" class="row_heading level0 row34" >34</th>
-                        <td id="T_4069a_row34_col0" class="data row34 col0" >PCA Method</td>
-                        <td id="T_4069a_row34_col1" class="data row34 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row35" class="row_heading level0 row35" >35</th>
-                        <td id="T_4069a_row35_col0" class="data row35 col0" >PCA Components</td>
-                        <td id="T_4069a_row35_col1" class="data row35 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row36" class="row_heading level0 row36" >36</th>
-                        <td id="T_4069a_row36_col0" class="data row36 col0" >Ignore Low Variance</td>
-                        <td id="T_4069a_row36_col1" class="data row36 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row37" class="row_heading level0 row37" >37</th>
-                        <td id="T_4069a_row37_col0" class="data row37 col0" >Combine Rare Levels</td>
-                        <td id="T_4069a_row37_col1" class="data row37 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row38" class="row_heading level0 row38" >38</th>
-                        <td id="T_4069a_row38_col0" class="data row38 col0" >Rare Level Threshold</td>
-                        <td id="T_4069a_row38_col1" class="data row38 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row39" class="row_heading level0 row39" >39</th>
-                        <td id="T_4069a_row39_col0" class="data row39 col0" >Numeric Binning</td>
-                        <td id="T_4069a_row39_col1" class="data row39 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row40" class="row_heading level0 row40" >40</th>
-                        <td id="T_4069a_row40_col0" class="data row40 col0" >Remove Outliers</td>
-                        <td id="T_4069a_row40_col1" class="data row40 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row41" class="row_heading level0 row41" >41</th>
-                        <td id="T_4069a_row41_col0" class="data row41 col0" >Outliers Threshold</td>
-                        <td id="T_4069a_row41_col1" class="data row41 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row42" class="row_heading level0 row42" >42</th>
-                        <td id="T_4069a_row42_col0" class="data row42 col0" >Remove Multicollinearity</td>
-                        <td id="T_4069a_row42_col1" class="data row42 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row43" class="row_heading level0 row43" >43</th>
-                        <td id="T_4069a_row43_col0" class="data row43 col0" >Multicollinearity Threshold</td>
-                        <td id="T_4069a_row43_col1" class="data row43 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row44" class="row_heading level0 row44" >44</th>
-                        <td id="T_4069a_row44_col0" class="data row44 col0" >Remove Perfect Collinearity</td>
-                        <td id="T_4069a_row44_col1" class="data row44 col1" >True</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row45" class="row_heading level0 row45" >45</th>
-                        <td id="T_4069a_row45_col0" class="data row45 col0" >Clustering</td>
-                        <td id="T_4069a_row45_col1" class="data row45 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row46" class="row_heading level0 row46" >46</th>
-                        <td id="T_4069a_row46_col0" class="data row46 col0" >Clustering Iteration</td>
-                        <td id="T_4069a_row46_col1" class="data row46 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row47" class="row_heading level0 row47" >47</th>
-                        <td id="T_4069a_row47_col0" class="data row47 col0" >Polynomial Features</td>
-                        <td id="T_4069a_row47_col1" class="data row47 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row48" class="row_heading level0 row48" >48</th>
-                        <td id="T_4069a_row48_col0" class="data row48 col0" >Polynomial Degree</td>
-                        <td id="T_4069a_row48_col1" class="data row48 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row49" class="row_heading level0 row49" >49</th>
-                        <td id="T_4069a_row49_col0" class="data row49 col0" >Trignometry Features</td>
-                        <td id="T_4069a_row49_col1" class="data row49 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row50" class="row_heading level0 row50" >50</th>
-                        <td id="T_4069a_row50_col0" class="data row50 col0" >Polynomial Threshold</td>
-                        <td id="T_4069a_row50_col1" class="data row50 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row51" class="row_heading level0 row51" >51</th>
-                        <td id="T_4069a_row51_col0" class="data row51 col0" >Group Features</td>
-                        <td id="T_4069a_row51_col1" class="data row51 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row52" class="row_heading level0 row52" >52</th>
-                        <td id="T_4069a_row52_col0" class="data row52 col0" >Feature Selection</td>
-                        <td id="T_4069a_row52_col1" class="data row52 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row53" class="row_heading level0 row53" >53</th>
-                        <td id="T_4069a_row53_col0" class="data row53 col0" >Feature Selection Method</td>
-                        <td id="T_4069a_row53_col1" class="data row53 col1" >classic</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row54" class="row_heading level0 row54" >54</th>
-                        <td id="T_4069a_row54_col0" class="data row54 col0" >Features Selection Threshold</td>
-                        <td id="T_4069a_row54_col1" class="data row54 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row55" class="row_heading level0 row55" >55</th>
-                        <td id="T_4069a_row55_col0" class="data row55 col0" >Feature Interaction</td>
-                        <td id="T_4069a_row55_col1" class="data row55 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row56" class="row_heading level0 row56" >56</th>
-                        <td id="T_4069a_row56_col0" class="data row56 col0" >Feature Ratio</td>
-                        <td id="T_4069a_row56_col1" class="data row56 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row57" class="row_heading level0 row57" >57</th>
-                        <td id="T_4069a_row57_col0" class="data row57 col0" >Interaction Threshold</td>
-                        <td id="T_4069a_row57_col1" class="data row57 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row58" class="row_heading level0 row58" >58</th>
-                        <td id="T_4069a_row58_col0" class="data row58 col0" >Fix Imbalance</td>
-                        <td id="T_4069a_row58_col1" class="data row58 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_4069a_level0_row59" class="row_heading level0 row59" >59</th>
-                        <td id="T_4069a_row59_col0" class="data row59 col0" >Fix Imbalance Method</td>
-                        <td id="T_4069a_row59_col1" class="data row59 col1" >SMOTE</td>
-            </tr>
-    </tbody></table></div></div>
+<div class="output text_html"><style type="text/css">
+#T_0bb23_row5_col1, #T_0bb23_row29_col1, #T_0bb23_row44_col1 {
+  background-color: lightgreen;
+}
+</style>
+<table id="T_0bb23_">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th class="col_heading level0 col0" >Description</th>
+      <th class="col_heading level0 col1" >Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_0bb23_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_0bb23_row0_col0" class="data row0 col0" >session_id</td>
+      <td id="T_0bb23_row0_col1" class="data row0 col1" >123</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_0bb23_row1_col0" class="data row1 col0" >Target</td>
+      <td id="T_0bb23_row1_col1" class="data row1 col1" >Survived</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_0bb23_row2_col0" class="data row2 col0" >Target Type</td>
+      <td id="T_0bb23_row2_col1" class="data row2 col1" >Binary</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_0bb23_row3_col0" class="data row3 col0" >Label Encoded</td>
+      <td id="T_0bb23_row3_col1" class="data row3 col1" >0: 0, 1: 1</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_0bb23_row4_col0" class="data row4 col0" >Original Data</td>
+      <td id="T_0bb23_row4_col1" class="data row4 col1" >(891, 11)</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_0bb23_row5_col0" class="data row5 col0" >Missing Values</td>
+      <td id="T_0bb23_row5_col1" class="data row5 col1" >True</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_0bb23_row6_col0" class="data row6 col0" >Numeric Features</td>
+      <td id="T_0bb23_row6_col1" class="data row6 col1" >3</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_0bb23_row7_col0" class="data row7 col0" >Categorical Features</td>
+      <td id="T_0bb23_row7_col1" class="data row7 col1" >7</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_0bb23_row8_col0" class="data row8 col0" >Ordinal Features</td>
+      <td id="T_0bb23_row8_col1" class="data row8 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_0bb23_row9_col0" class="data row9 col0" >High Cardinality Features</td>
+      <td id="T_0bb23_row9_col1" class="data row9 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row10" class="row_heading level0 row10" >10</th>
+      <td id="T_0bb23_row10_col0" class="data row10 col0" >High Cardinality Method</td>
+      <td id="T_0bb23_row10_col1" class="data row10 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row11" class="row_heading level0 row11" >11</th>
+      <td id="T_0bb23_row11_col0" class="data row11 col0" >Transformed Train Set</td>
+      <td id="T_0bb23_row11_col1" class="data row11 col1" >(623, 567)</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row12" class="row_heading level0 row12" >12</th>
+      <td id="T_0bb23_row12_col0" class="data row12 col0" >Transformed Test Set</td>
+      <td id="T_0bb23_row12_col1" class="data row12 col1" >(268, 567)</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row13" class="row_heading level0 row13" >13</th>
+      <td id="T_0bb23_row13_col0" class="data row13 col0" >Shuffle Train-Test</td>
+      <td id="T_0bb23_row13_col1" class="data row13 col1" >True</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row14" class="row_heading level0 row14" >14</th>
+      <td id="T_0bb23_row14_col0" class="data row14 col0" >Stratify Train-Test</td>
+      <td id="T_0bb23_row14_col1" class="data row14 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row15" class="row_heading level0 row15" >15</th>
+      <td id="T_0bb23_row15_col0" class="data row15 col0" >Fold Generator</td>
+      <td id="T_0bb23_row15_col1" class="data row15 col1" >StratifiedKFold</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row16" class="row_heading level0 row16" >16</th>
+      <td id="T_0bb23_row16_col0" class="data row16 col0" >Fold Number</td>
+      <td id="T_0bb23_row16_col1" class="data row16 col1" >10</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row17" class="row_heading level0 row17" >17</th>
+      <td id="T_0bb23_row17_col0" class="data row17 col0" >CPU Jobs</td>
+      <td id="T_0bb23_row17_col1" class="data row17 col1" >-1</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row18" class="row_heading level0 row18" >18</th>
+      <td id="T_0bb23_row18_col0" class="data row18 col0" >Use GPU</td>
+      <td id="T_0bb23_row18_col1" class="data row18 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row19" class="row_heading level0 row19" >19</th>
+      <td id="T_0bb23_row19_col0" class="data row19 col0" >Log Experiment</td>
+      <td id="T_0bb23_row19_col1" class="data row19 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row20" class="row_heading level0 row20" >20</th>
+      <td id="T_0bb23_row20_col0" class="data row20 col0" >Experiment Name</td>
+      <td id="T_0bb23_row20_col1" class="data row20 col1" >Survived</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row21" class="row_heading level0 row21" >21</th>
+      <td id="T_0bb23_row21_col0" class="data row21 col0" >USI</td>
+      <td id="T_0bb23_row21_col1" class="data row21 col1" >6472</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row22" class="row_heading level0 row22" >22</th>
+      <td id="T_0bb23_row22_col0" class="data row22 col0" >Imputation Type</td>
+      <td id="T_0bb23_row22_col1" class="data row22 col1" >simple</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row23" class="row_heading level0 row23" >23</th>
+      <td id="T_0bb23_row23_col0" class="data row23 col0" >Iterative Imputation Iteration</td>
+      <td id="T_0bb23_row23_col1" class="data row23 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row24" class="row_heading level0 row24" >24</th>
+      <td id="T_0bb23_row24_col0" class="data row24 col0" >Numeric Imputer</td>
+      <td id="T_0bb23_row24_col1" class="data row24 col1" >mean</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row25" class="row_heading level0 row25" >25</th>
+      <td id="T_0bb23_row25_col0" class="data row25 col0" >Iterative Imputation Numeric Model</td>
+      <td id="T_0bb23_row25_col1" class="data row25 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row26" class="row_heading level0 row26" >26</th>
+      <td id="T_0bb23_row26_col0" class="data row26 col0" >Categorical Imputer</td>
+      <td id="T_0bb23_row26_col1" class="data row26 col1" >constant</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row27" class="row_heading level0 row27" >27</th>
+      <td id="T_0bb23_row27_col0" class="data row27 col0" >Iterative Imputation Categorical Model</td>
+      <td id="T_0bb23_row27_col1" class="data row27 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row28" class="row_heading level0 row28" >28</th>
+      <td id="T_0bb23_row28_col0" class="data row28 col0" >Unknown Categoricals Handling</td>
+      <td id="T_0bb23_row28_col1" class="data row28 col1" >least_frequent</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row29" class="row_heading level0 row29" >29</th>
+      <td id="T_0bb23_row29_col0" class="data row29 col0" >Normalize</td>
+      <td id="T_0bb23_row29_col1" class="data row29 col1" >True</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row30" class="row_heading level0 row30" >30</th>
+      <td id="T_0bb23_row30_col0" class="data row30 col0" >Normalize Method</td>
+      <td id="T_0bb23_row30_col1" class="data row30 col1" >zscore</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row31" class="row_heading level0 row31" >31</th>
+      <td id="T_0bb23_row31_col0" class="data row31 col0" >Transformation</td>
+      <td id="T_0bb23_row31_col1" class="data row31 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row32" class="row_heading level0 row32" >32</th>
+      <td id="T_0bb23_row32_col0" class="data row32 col0" >Transformation Method</td>
+      <td id="T_0bb23_row32_col1" class="data row32 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row33" class="row_heading level0 row33" >33</th>
+      <td id="T_0bb23_row33_col0" class="data row33 col0" >PCA</td>
+      <td id="T_0bb23_row33_col1" class="data row33 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row34" class="row_heading level0 row34" >34</th>
+      <td id="T_0bb23_row34_col0" class="data row34 col0" >PCA Method</td>
+      <td id="T_0bb23_row34_col1" class="data row34 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row35" class="row_heading level0 row35" >35</th>
+      <td id="T_0bb23_row35_col0" class="data row35 col0" >PCA Components</td>
+      <td id="T_0bb23_row35_col1" class="data row35 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row36" class="row_heading level0 row36" >36</th>
+      <td id="T_0bb23_row36_col0" class="data row36 col0" >Ignore Low Variance</td>
+      <td id="T_0bb23_row36_col1" class="data row36 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row37" class="row_heading level0 row37" >37</th>
+      <td id="T_0bb23_row37_col0" class="data row37 col0" >Combine Rare Levels</td>
+      <td id="T_0bb23_row37_col1" class="data row37 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row38" class="row_heading level0 row38" >38</th>
+      <td id="T_0bb23_row38_col0" class="data row38 col0" >Rare Level Threshold</td>
+      <td id="T_0bb23_row38_col1" class="data row38 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row39" class="row_heading level0 row39" >39</th>
+      <td id="T_0bb23_row39_col0" class="data row39 col0" >Numeric Binning</td>
+      <td id="T_0bb23_row39_col1" class="data row39 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row40" class="row_heading level0 row40" >40</th>
+      <td id="T_0bb23_row40_col0" class="data row40 col0" >Remove Outliers</td>
+      <td id="T_0bb23_row40_col1" class="data row40 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row41" class="row_heading level0 row41" >41</th>
+      <td id="T_0bb23_row41_col0" class="data row41 col0" >Outliers Threshold</td>
+      <td id="T_0bb23_row41_col1" class="data row41 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row42" class="row_heading level0 row42" >42</th>
+      <td id="T_0bb23_row42_col0" class="data row42 col0" >Remove Multicollinearity</td>
+      <td id="T_0bb23_row42_col1" class="data row42 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row43" class="row_heading level0 row43" >43</th>
+      <td id="T_0bb23_row43_col0" class="data row43 col0" >Multicollinearity Threshold</td>
+      <td id="T_0bb23_row43_col1" class="data row43 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row44" class="row_heading level0 row44" >44</th>
+      <td id="T_0bb23_row44_col0" class="data row44 col0" >Remove Perfect Collinearity</td>
+      <td id="T_0bb23_row44_col1" class="data row44 col1" >True</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row45" class="row_heading level0 row45" >45</th>
+      <td id="T_0bb23_row45_col0" class="data row45 col0" >Clustering</td>
+      <td id="T_0bb23_row45_col1" class="data row45 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row46" class="row_heading level0 row46" >46</th>
+      <td id="T_0bb23_row46_col0" class="data row46 col0" >Clustering Iteration</td>
+      <td id="T_0bb23_row46_col1" class="data row46 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row47" class="row_heading level0 row47" >47</th>
+      <td id="T_0bb23_row47_col0" class="data row47 col0" >Polynomial Features</td>
+      <td id="T_0bb23_row47_col1" class="data row47 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row48" class="row_heading level0 row48" >48</th>
+      <td id="T_0bb23_row48_col0" class="data row48 col0" >Polynomial Degree</td>
+      <td id="T_0bb23_row48_col1" class="data row48 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row49" class="row_heading level0 row49" >49</th>
+      <td id="T_0bb23_row49_col0" class="data row49 col0" >Trignometry Features</td>
+      <td id="T_0bb23_row49_col1" class="data row49 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row50" class="row_heading level0 row50" >50</th>
+      <td id="T_0bb23_row50_col0" class="data row50 col0" >Polynomial Threshold</td>
+      <td id="T_0bb23_row50_col1" class="data row50 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row51" class="row_heading level0 row51" >51</th>
+      <td id="T_0bb23_row51_col0" class="data row51 col0" >Group Features</td>
+      <td id="T_0bb23_row51_col1" class="data row51 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row52" class="row_heading level0 row52" >52</th>
+      <td id="T_0bb23_row52_col0" class="data row52 col0" >Feature Selection</td>
+      <td id="T_0bb23_row52_col1" class="data row52 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row53" class="row_heading level0 row53" >53</th>
+      <td id="T_0bb23_row53_col0" class="data row53 col0" >Feature Selection Method</td>
+      <td id="T_0bb23_row53_col1" class="data row53 col1" >classic</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row54" class="row_heading level0 row54" >54</th>
+      <td id="T_0bb23_row54_col0" class="data row54 col0" >Features Selection Threshold</td>
+      <td id="T_0bb23_row54_col1" class="data row54 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row55" class="row_heading level0 row55" >55</th>
+      <td id="T_0bb23_row55_col0" class="data row55 col0" >Feature Interaction</td>
+      <td id="T_0bb23_row55_col1" class="data row55 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row56" class="row_heading level0 row56" >56</th>
+      <td id="T_0bb23_row56_col0" class="data row56 col0" >Feature Ratio</td>
+      <td id="T_0bb23_row56_col1" class="data row56 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row57" class="row_heading level0 row57" >57</th>
+      <td id="T_0bb23_row57_col0" class="data row57 col0" >Interaction Threshold</td>
+      <td id="T_0bb23_row57_col1" class="data row57 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row58" class="row_heading level0 row58" >58</th>
+      <td id="T_0bb23_row58_col0" class="data row58 col0" >Fix Imbalance</td>
+      <td id="T_0bb23_row58_col1" class="data row58 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_0bb23_level0_row59" class="row_heading level0 row59" >59</th>
+      <td id="T_0bb23_row59_col0" class="data row59 col0" >Fix Imbalance Method</td>
+      <td id="T_0bb23_row59_col1" class="data row59 col1" >SMOTE</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1505,18 +1739,18 @@ dtype: int64
       <th>Pclass_1</th>
       <th>Pclass_2</th>
       <th>Pclass_3</th>
-      <th>Sex_male</th>
+      <th>Sex_female</th>
       <th>SibSp_0</th>
       <th>SibSp_1</th>
       <th>SibSp_2</th>
       <th>SibSp_3</th>
       <th>...</th>
+      <th>Cabin_E8</th>
       <th>Cabin_F E69</th>
       <th>Cabin_F2</th>
       <th>Cabin_F33</th>
       <th>Cabin_F4</th>
       <th>Cabin_G6</th>
-      <th>Cabin_T</th>
       <th>Cabin_not_available</th>
       <th>Embarked_C</th>
       <th>Embarked_Q</th>
@@ -1531,7 +1765,7 @@ dtype: int64
       <td>0.000000</td>
       <td>0.000000</td>
       <td>1.000000</td>
-      <td>1.000000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>1.000000</td>
       <td>0.000000</td>
@@ -1555,7 +1789,7 @@ dtype: int64
       <td>1.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.000000</td>
+      <td>1.000000</td>
       <td>0.000000</td>
       <td>1.000000</td>
       <td>0.000000</td>
@@ -1579,7 +1813,7 @@ dtype: int64
       <td>0.000000</td>
       <td>0.000000</td>
       <td>1.000000</td>
-      <td>0.000000</td>
+      <td>1.000000</td>
       <td>1.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -1603,7 +1837,7 @@ dtype: int64
       <td>1.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.000000</td>
+      <td>1.000000</td>
       <td>0.000000</td>
       <td>1.000000</td>
       <td>0.000000</td>
@@ -1627,7 +1861,7 @@ dtype: int64
       <td>0.000000</td>
       <td>0.000000</td>
       <td>1.000000</td>
-      <td>1.000000</td>
+      <td>0.000000</td>
       <td>1.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -1646,7 +1880,7 @@ dtype: int64
     </tr>
   </tbody>
 </table>
-<p>5 rows × 568 columns</p>
+<p>5 rows × 567 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1659,7 +1893,8 @@ dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:ylabel=&#39;Frequency&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/datacleaning_45_1.svg" src="_images/datacleaning_45_1.svg" /></div>
+<img alt="_images/datacleaning_45_1.png" src="_images/datacleaning_45_1.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1668,311 +1903,323 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style  type="text/css" >
-#T_2eda6_row5_col1,#T_2eda6_row31_col1,#T_2eda6_row44_col1{
-            background-color:  lightgreen;
-        }</style><table id="T_2eda6_" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >Description</th>        <th class="col_heading level0 col1" >Value</th>    </tr></thead><tbody>
-                <tr>
-                        <th id="T_2eda6_level0_row0" class="row_heading level0 row0" >0</th>
-                        <td id="T_2eda6_row0_col0" class="data row0 col0" >session_id</td>
-                        <td id="T_2eda6_row0_col1" class="data row0 col1" >123</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row1" class="row_heading level0 row1" >1</th>
-                        <td id="T_2eda6_row1_col0" class="data row1 col0" >Target</td>
-                        <td id="T_2eda6_row1_col1" class="data row1 col1" >Survived</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row2" class="row_heading level0 row2" >2</th>
-                        <td id="T_2eda6_row2_col0" class="data row2 col0" >Target Type</td>
-                        <td id="T_2eda6_row2_col1" class="data row2 col1" >Binary</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row3" class="row_heading level0 row3" >3</th>
-                        <td id="T_2eda6_row3_col0" class="data row3 col0" >Label Encoded</td>
-                        <td id="T_2eda6_row3_col1" class="data row3 col1" >0: 0, 1: 1</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row4" class="row_heading level0 row4" >4</th>
-                        <td id="T_2eda6_row4_col0" class="data row4 col0" >Original Data</td>
-                        <td id="T_2eda6_row4_col1" class="data row4 col1" >(891, 11)</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row5" class="row_heading level0 row5" >5</th>
-                        <td id="T_2eda6_row5_col0" class="data row5 col0" >Missing Values</td>
-                        <td id="T_2eda6_row5_col1" class="data row5 col1" >True</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row6" class="row_heading level0 row6" >6</th>
-                        <td id="T_2eda6_row6_col0" class="data row6 col0" >Numeric Features</td>
-                        <td id="T_2eda6_row6_col1" class="data row6 col1" >3</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row7" class="row_heading level0 row7" >7</th>
-                        <td id="T_2eda6_row7_col0" class="data row7 col0" >Categorical Features</td>
-                        <td id="T_2eda6_row7_col1" class="data row7 col1" >7</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row8" class="row_heading level0 row8" >8</th>
-                        <td id="T_2eda6_row8_col0" class="data row8 col0" >Ordinal Features</td>
-                        <td id="T_2eda6_row8_col1" class="data row8 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row9" class="row_heading level0 row9" >9</th>
-                        <td id="T_2eda6_row9_col0" class="data row9 col0" >High Cardinality Features</td>
-                        <td id="T_2eda6_row9_col1" class="data row9 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row10" class="row_heading level0 row10" >10</th>
-                        <td id="T_2eda6_row10_col0" class="data row10 col0" >High Cardinality Method</td>
-                        <td id="T_2eda6_row10_col1" class="data row10 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row11" class="row_heading level0 row11" >11</th>
-                        <td id="T_2eda6_row11_col0" class="data row11 col0" >Transformed Train Set</td>
-                        <td id="T_2eda6_row11_col1" class="data row11 col1" >(623, 568)</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row12" class="row_heading level0 row12" >12</th>
-                        <td id="T_2eda6_row12_col0" class="data row12 col0" >Transformed Test Set</td>
-                        <td id="T_2eda6_row12_col1" class="data row12 col1" >(268, 568)</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row13" class="row_heading level0 row13" >13</th>
-                        <td id="T_2eda6_row13_col0" class="data row13 col0" >Shuffle Train-Test</td>
-                        <td id="T_2eda6_row13_col1" class="data row13 col1" >True</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row14" class="row_heading level0 row14" >14</th>
-                        <td id="T_2eda6_row14_col0" class="data row14 col0" >Stratify Train-Test</td>
-                        <td id="T_2eda6_row14_col1" class="data row14 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row15" class="row_heading level0 row15" >15</th>
-                        <td id="T_2eda6_row15_col0" class="data row15 col0" >Fold Generator</td>
-                        <td id="T_2eda6_row15_col1" class="data row15 col1" >StratifiedKFold</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row16" class="row_heading level0 row16" >16</th>
-                        <td id="T_2eda6_row16_col0" class="data row16 col0" >Fold Number</td>
-                        <td id="T_2eda6_row16_col1" class="data row16 col1" >10</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row17" class="row_heading level0 row17" >17</th>
-                        <td id="T_2eda6_row17_col0" class="data row17 col0" >CPU Jobs</td>
-                        <td id="T_2eda6_row17_col1" class="data row17 col1" >-1</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row18" class="row_heading level0 row18" >18</th>
-                        <td id="T_2eda6_row18_col0" class="data row18 col0" >Use GPU</td>
-                        <td id="T_2eda6_row18_col1" class="data row18 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row19" class="row_heading level0 row19" >19</th>
-                        <td id="T_2eda6_row19_col0" class="data row19 col0" >Log Experiment</td>
-                        <td id="T_2eda6_row19_col1" class="data row19 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row20" class="row_heading level0 row20" >20</th>
-                        <td id="T_2eda6_row20_col0" class="data row20 col0" >Experiment Name</td>
-                        <td id="T_2eda6_row20_col1" class="data row20 col1" >Survived</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row21" class="row_heading level0 row21" >21</th>
-                        <td id="T_2eda6_row21_col0" class="data row21 col0" >USI</td>
-                        <td id="T_2eda6_row21_col1" class="data row21 col1" >c621</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row22" class="row_heading level0 row22" >22</th>
-                        <td id="T_2eda6_row22_col0" class="data row22 col0" >Imputation Type</td>
-                        <td id="T_2eda6_row22_col1" class="data row22 col1" >simple</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row23" class="row_heading level0 row23" >23</th>
-                        <td id="T_2eda6_row23_col0" class="data row23 col0" >Iterative Imputation Iteration</td>
-                        <td id="T_2eda6_row23_col1" class="data row23 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row24" class="row_heading level0 row24" >24</th>
-                        <td id="T_2eda6_row24_col0" class="data row24 col0" >Numeric Imputer</td>
-                        <td id="T_2eda6_row24_col1" class="data row24 col1" >mean</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row25" class="row_heading level0 row25" >25</th>
-                        <td id="T_2eda6_row25_col0" class="data row25 col0" >Iterative Imputation Numeric Model</td>
-                        <td id="T_2eda6_row25_col1" class="data row25 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row26" class="row_heading level0 row26" >26</th>
-                        <td id="T_2eda6_row26_col0" class="data row26 col0" >Categorical Imputer</td>
-                        <td id="T_2eda6_row26_col1" class="data row26 col1" >constant</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row27" class="row_heading level0 row27" >27</th>
-                        <td id="T_2eda6_row27_col0" class="data row27 col0" >Iterative Imputation Categorical Model</td>
-                        <td id="T_2eda6_row27_col1" class="data row27 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row28" class="row_heading level0 row28" >28</th>
-                        <td id="T_2eda6_row28_col0" class="data row28 col0" >Unknown Categoricals Handling</td>
-                        <td id="T_2eda6_row28_col1" class="data row28 col1" >least_frequent</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row29" class="row_heading level0 row29" >29</th>
-                        <td id="T_2eda6_row29_col0" class="data row29 col0" >Normalize</td>
-                        <td id="T_2eda6_row29_col1" class="data row29 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row30" class="row_heading level0 row30" >30</th>
-                        <td id="T_2eda6_row30_col0" class="data row30 col0" >Normalize Method</td>
-                        <td id="T_2eda6_row30_col1" class="data row30 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row31" class="row_heading level0 row31" >31</th>
-                        <td id="T_2eda6_row31_col0" class="data row31 col0" >Transformation</td>
-                        <td id="T_2eda6_row31_col1" class="data row31 col1" >True</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row32" class="row_heading level0 row32" >32</th>
-                        <td id="T_2eda6_row32_col0" class="data row32 col0" >Transformation Method</td>
-                        <td id="T_2eda6_row32_col1" class="data row32 col1" >yeo-johnson</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row33" class="row_heading level0 row33" >33</th>
-                        <td id="T_2eda6_row33_col0" class="data row33 col0" >PCA</td>
-                        <td id="T_2eda6_row33_col1" class="data row33 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row34" class="row_heading level0 row34" >34</th>
-                        <td id="T_2eda6_row34_col0" class="data row34 col0" >PCA Method</td>
-                        <td id="T_2eda6_row34_col1" class="data row34 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row35" class="row_heading level0 row35" >35</th>
-                        <td id="T_2eda6_row35_col0" class="data row35 col0" >PCA Components</td>
-                        <td id="T_2eda6_row35_col1" class="data row35 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row36" class="row_heading level0 row36" >36</th>
-                        <td id="T_2eda6_row36_col0" class="data row36 col0" >Ignore Low Variance</td>
-                        <td id="T_2eda6_row36_col1" class="data row36 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row37" class="row_heading level0 row37" >37</th>
-                        <td id="T_2eda6_row37_col0" class="data row37 col0" >Combine Rare Levels</td>
-                        <td id="T_2eda6_row37_col1" class="data row37 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row38" class="row_heading level0 row38" >38</th>
-                        <td id="T_2eda6_row38_col0" class="data row38 col0" >Rare Level Threshold</td>
-                        <td id="T_2eda6_row38_col1" class="data row38 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row39" class="row_heading level0 row39" >39</th>
-                        <td id="T_2eda6_row39_col0" class="data row39 col0" >Numeric Binning</td>
-                        <td id="T_2eda6_row39_col1" class="data row39 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row40" class="row_heading level0 row40" >40</th>
-                        <td id="T_2eda6_row40_col0" class="data row40 col0" >Remove Outliers</td>
-                        <td id="T_2eda6_row40_col1" class="data row40 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row41" class="row_heading level0 row41" >41</th>
-                        <td id="T_2eda6_row41_col0" class="data row41 col0" >Outliers Threshold</td>
-                        <td id="T_2eda6_row41_col1" class="data row41 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row42" class="row_heading level0 row42" >42</th>
-                        <td id="T_2eda6_row42_col0" class="data row42 col0" >Remove Multicollinearity</td>
-                        <td id="T_2eda6_row42_col1" class="data row42 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row43" class="row_heading level0 row43" >43</th>
-                        <td id="T_2eda6_row43_col0" class="data row43 col0" >Multicollinearity Threshold</td>
-                        <td id="T_2eda6_row43_col1" class="data row43 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row44" class="row_heading level0 row44" >44</th>
-                        <td id="T_2eda6_row44_col0" class="data row44 col0" >Remove Perfect Collinearity</td>
-                        <td id="T_2eda6_row44_col1" class="data row44 col1" >True</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row45" class="row_heading level0 row45" >45</th>
-                        <td id="T_2eda6_row45_col0" class="data row45 col0" >Clustering</td>
-                        <td id="T_2eda6_row45_col1" class="data row45 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row46" class="row_heading level0 row46" >46</th>
-                        <td id="T_2eda6_row46_col0" class="data row46 col0" >Clustering Iteration</td>
-                        <td id="T_2eda6_row46_col1" class="data row46 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row47" class="row_heading level0 row47" >47</th>
-                        <td id="T_2eda6_row47_col0" class="data row47 col0" >Polynomial Features</td>
-                        <td id="T_2eda6_row47_col1" class="data row47 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row48" class="row_heading level0 row48" >48</th>
-                        <td id="T_2eda6_row48_col0" class="data row48 col0" >Polynomial Degree</td>
-                        <td id="T_2eda6_row48_col1" class="data row48 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row49" class="row_heading level0 row49" >49</th>
-                        <td id="T_2eda6_row49_col0" class="data row49 col0" >Trignometry Features</td>
-                        <td id="T_2eda6_row49_col1" class="data row49 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row50" class="row_heading level0 row50" >50</th>
-                        <td id="T_2eda6_row50_col0" class="data row50 col0" >Polynomial Threshold</td>
-                        <td id="T_2eda6_row50_col1" class="data row50 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row51" class="row_heading level0 row51" >51</th>
-                        <td id="T_2eda6_row51_col0" class="data row51 col0" >Group Features</td>
-                        <td id="T_2eda6_row51_col1" class="data row51 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row52" class="row_heading level0 row52" >52</th>
-                        <td id="T_2eda6_row52_col0" class="data row52 col0" >Feature Selection</td>
-                        <td id="T_2eda6_row52_col1" class="data row52 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row53" class="row_heading level0 row53" >53</th>
-                        <td id="T_2eda6_row53_col0" class="data row53 col0" >Feature Selection Method</td>
-                        <td id="T_2eda6_row53_col1" class="data row53 col1" >classic</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row54" class="row_heading level0 row54" >54</th>
-                        <td id="T_2eda6_row54_col0" class="data row54 col0" >Features Selection Threshold</td>
-                        <td id="T_2eda6_row54_col1" class="data row54 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row55" class="row_heading level0 row55" >55</th>
-                        <td id="T_2eda6_row55_col0" class="data row55 col0" >Feature Interaction</td>
-                        <td id="T_2eda6_row55_col1" class="data row55 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row56" class="row_heading level0 row56" >56</th>
-                        <td id="T_2eda6_row56_col0" class="data row56 col0" >Feature Ratio</td>
-                        <td id="T_2eda6_row56_col1" class="data row56 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row57" class="row_heading level0 row57" >57</th>
-                        <td id="T_2eda6_row57_col0" class="data row57 col0" >Interaction Threshold</td>
-                        <td id="T_2eda6_row57_col1" class="data row57 col1" >None</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row58" class="row_heading level0 row58" >58</th>
-                        <td id="T_2eda6_row58_col0" class="data row58 col0" >Fix Imbalance</td>
-                        <td id="T_2eda6_row58_col1" class="data row58 col1" >False</td>
-            </tr>
-            <tr>
-                        <th id="T_2eda6_level0_row59" class="row_heading level0 row59" >59</th>
-                        <td id="T_2eda6_row59_col0" class="data row59 col0" >Fix Imbalance Method</td>
-                        <td id="T_2eda6_row59_col1" class="data row59 col1" >SMOTE</td>
-            </tr>
-    </tbody></table></div></div>
+<div class="output text_html"><style type="text/css">
+#T_f9c4c_row5_col1, #T_f9c4c_row31_col1, #T_f9c4c_row44_col1 {
+  background-color: lightgreen;
+}
+</style>
+<table id="T_f9c4c_">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th class="col_heading level0 col0" >Description</th>
+      <th class="col_heading level0 col1" >Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_f9c4c_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_f9c4c_row0_col0" class="data row0 col0" >session_id</td>
+      <td id="T_f9c4c_row0_col1" class="data row0 col1" >123</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_f9c4c_row1_col0" class="data row1 col0" >Target</td>
+      <td id="T_f9c4c_row1_col1" class="data row1 col1" >Survived</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_f9c4c_row2_col0" class="data row2 col0" >Target Type</td>
+      <td id="T_f9c4c_row2_col1" class="data row2 col1" >Binary</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_f9c4c_row3_col0" class="data row3 col0" >Label Encoded</td>
+      <td id="T_f9c4c_row3_col1" class="data row3 col1" >0: 0, 1: 1</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_f9c4c_row4_col0" class="data row4 col0" >Original Data</td>
+      <td id="T_f9c4c_row4_col1" class="data row4 col1" >(891, 11)</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_f9c4c_row5_col0" class="data row5 col0" >Missing Values</td>
+      <td id="T_f9c4c_row5_col1" class="data row5 col1" >True</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_f9c4c_row6_col0" class="data row6 col0" >Numeric Features</td>
+      <td id="T_f9c4c_row6_col1" class="data row6 col1" >3</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_f9c4c_row7_col0" class="data row7 col0" >Categorical Features</td>
+      <td id="T_f9c4c_row7_col1" class="data row7 col1" >7</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_f9c4c_row8_col0" class="data row8 col0" >Ordinal Features</td>
+      <td id="T_f9c4c_row8_col1" class="data row8 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_f9c4c_row9_col0" class="data row9 col0" >High Cardinality Features</td>
+      <td id="T_f9c4c_row9_col1" class="data row9 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row10" class="row_heading level0 row10" >10</th>
+      <td id="T_f9c4c_row10_col0" class="data row10 col0" >High Cardinality Method</td>
+      <td id="T_f9c4c_row10_col1" class="data row10 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row11" class="row_heading level0 row11" >11</th>
+      <td id="T_f9c4c_row11_col0" class="data row11 col0" >Transformed Train Set</td>
+      <td id="T_f9c4c_row11_col1" class="data row11 col1" >(623, 567)</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row12" class="row_heading level0 row12" >12</th>
+      <td id="T_f9c4c_row12_col0" class="data row12 col0" >Transformed Test Set</td>
+      <td id="T_f9c4c_row12_col1" class="data row12 col1" >(268, 567)</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row13" class="row_heading level0 row13" >13</th>
+      <td id="T_f9c4c_row13_col0" class="data row13 col0" >Shuffle Train-Test</td>
+      <td id="T_f9c4c_row13_col1" class="data row13 col1" >True</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row14" class="row_heading level0 row14" >14</th>
+      <td id="T_f9c4c_row14_col0" class="data row14 col0" >Stratify Train-Test</td>
+      <td id="T_f9c4c_row14_col1" class="data row14 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row15" class="row_heading level0 row15" >15</th>
+      <td id="T_f9c4c_row15_col0" class="data row15 col0" >Fold Generator</td>
+      <td id="T_f9c4c_row15_col1" class="data row15 col1" >StratifiedKFold</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row16" class="row_heading level0 row16" >16</th>
+      <td id="T_f9c4c_row16_col0" class="data row16 col0" >Fold Number</td>
+      <td id="T_f9c4c_row16_col1" class="data row16 col1" >10</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row17" class="row_heading level0 row17" >17</th>
+      <td id="T_f9c4c_row17_col0" class="data row17 col0" >CPU Jobs</td>
+      <td id="T_f9c4c_row17_col1" class="data row17 col1" >-1</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row18" class="row_heading level0 row18" >18</th>
+      <td id="T_f9c4c_row18_col0" class="data row18 col0" >Use GPU</td>
+      <td id="T_f9c4c_row18_col1" class="data row18 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row19" class="row_heading level0 row19" >19</th>
+      <td id="T_f9c4c_row19_col0" class="data row19 col0" >Log Experiment</td>
+      <td id="T_f9c4c_row19_col1" class="data row19 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row20" class="row_heading level0 row20" >20</th>
+      <td id="T_f9c4c_row20_col0" class="data row20 col0" >Experiment Name</td>
+      <td id="T_f9c4c_row20_col1" class="data row20 col1" >Survived</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row21" class="row_heading level0 row21" >21</th>
+      <td id="T_f9c4c_row21_col0" class="data row21 col0" >USI</td>
+      <td id="T_f9c4c_row21_col1" class="data row21 col1" >2bbe</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row22" class="row_heading level0 row22" >22</th>
+      <td id="T_f9c4c_row22_col0" class="data row22 col0" >Imputation Type</td>
+      <td id="T_f9c4c_row22_col1" class="data row22 col1" >simple</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row23" class="row_heading level0 row23" >23</th>
+      <td id="T_f9c4c_row23_col0" class="data row23 col0" >Iterative Imputation Iteration</td>
+      <td id="T_f9c4c_row23_col1" class="data row23 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row24" class="row_heading level0 row24" >24</th>
+      <td id="T_f9c4c_row24_col0" class="data row24 col0" >Numeric Imputer</td>
+      <td id="T_f9c4c_row24_col1" class="data row24 col1" >mean</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row25" class="row_heading level0 row25" >25</th>
+      <td id="T_f9c4c_row25_col0" class="data row25 col0" >Iterative Imputation Numeric Model</td>
+      <td id="T_f9c4c_row25_col1" class="data row25 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row26" class="row_heading level0 row26" >26</th>
+      <td id="T_f9c4c_row26_col0" class="data row26 col0" >Categorical Imputer</td>
+      <td id="T_f9c4c_row26_col1" class="data row26 col1" >constant</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row27" class="row_heading level0 row27" >27</th>
+      <td id="T_f9c4c_row27_col0" class="data row27 col0" >Iterative Imputation Categorical Model</td>
+      <td id="T_f9c4c_row27_col1" class="data row27 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row28" class="row_heading level0 row28" >28</th>
+      <td id="T_f9c4c_row28_col0" class="data row28 col0" >Unknown Categoricals Handling</td>
+      <td id="T_f9c4c_row28_col1" class="data row28 col1" >least_frequent</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row29" class="row_heading level0 row29" >29</th>
+      <td id="T_f9c4c_row29_col0" class="data row29 col0" >Normalize</td>
+      <td id="T_f9c4c_row29_col1" class="data row29 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row30" class="row_heading level0 row30" >30</th>
+      <td id="T_f9c4c_row30_col0" class="data row30 col0" >Normalize Method</td>
+      <td id="T_f9c4c_row30_col1" class="data row30 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row31" class="row_heading level0 row31" >31</th>
+      <td id="T_f9c4c_row31_col0" class="data row31 col0" >Transformation</td>
+      <td id="T_f9c4c_row31_col1" class="data row31 col1" >True</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row32" class="row_heading level0 row32" >32</th>
+      <td id="T_f9c4c_row32_col0" class="data row32 col0" >Transformation Method</td>
+      <td id="T_f9c4c_row32_col1" class="data row32 col1" >yeo-johnson</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row33" class="row_heading level0 row33" >33</th>
+      <td id="T_f9c4c_row33_col0" class="data row33 col0" >PCA</td>
+      <td id="T_f9c4c_row33_col1" class="data row33 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row34" class="row_heading level0 row34" >34</th>
+      <td id="T_f9c4c_row34_col0" class="data row34 col0" >PCA Method</td>
+      <td id="T_f9c4c_row34_col1" class="data row34 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row35" class="row_heading level0 row35" >35</th>
+      <td id="T_f9c4c_row35_col0" class="data row35 col0" >PCA Components</td>
+      <td id="T_f9c4c_row35_col1" class="data row35 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row36" class="row_heading level0 row36" >36</th>
+      <td id="T_f9c4c_row36_col0" class="data row36 col0" >Ignore Low Variance</td>
+      <td id="T_f9c4c_row36_col1" class="data row36 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row37" class="row_heading level0 row37" >37</th>
+      <td id="T_f9c4c_row37_col0" class="data row37 col0" >Combine Rare Levels</td>
+      <td id="T_f9c4c_row37_col1" class="data row37 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row38" class="row_heading level0 row38" >38</th>
+      <td id="T_f9c4c_row38_col0" class="data row38 col0" >Rare Level Threshold</td>
+      <td id="T_f9c4c_row38_col1" class="data row38 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row39" class="row_heading level0 row39" >39</th>
+      <td id="T_f9c4c_row39_col0" class="data row39 col0" >Numeric Binning</td>
+      <td id="T_f9c4c_row39_col1" class="data row39 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row40" class="row_heading level0 row40" >40</th>
+      <td id="T_f9c4c_row40_col0" class="data row40 col0" >Remove Outliers</td>
+      <td id="T_f9c4c_row40_col1" class="data row40 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row41" class="row_heading level0 row41" >41</th>
+      <td id="T_f9c4c_row41_col0" class="data row41 col0" >Outliers Threshold</td>
+      <td id="T_f9c4c_row41_col1" class="data row41 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row42" class="row_heading level0 row42" >42</th>
+      <td id="T_f9c4c_row42_col0" class="data row42 col0" >Remove Multicollinearity</td>
+      <td id="T_f9c4c_row42_col1" class="data row42 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row43" class="row_heading level0 row43" >43</th>
+      <td id="T_f9c4c_row43_col0" class="data row43 col0" >Multicollinearity Threshold</td>
+      <td id="T_f9c4c_row43_col1" class="data row43 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row44" class="row_heading level0 row44" >44</th>
+      <td id="T_f9c4c_row44_col0" class="data row44 col0" >Remove Perfect Collinearity</td>
+      <td id="T_f9c4c_row44_col1" class="data row44 col1" >True</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row45" class="row_heading level0 row45" >45</th>
+      <td id="T_f9c4c_row45_col0" class="data row45 col0" >Clustering</td>
+      <td id="T_f9c4c_row45_col1" class="data row45 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row46" class="row_heading level0 row46" >46</th>
+      <td id="T_f9c4c_row46_col0" class="data row46 col0" >Clustering Iteration</td>
+      <td id="T_f9c4c_row46_col1" class="data row46 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row47" class="row_heading level0 row47" >47</th>
+      <td id="T_f9c4c_row47_col0" class="data row47 col0" >Polynomial Features</td>
+      <td id="T_f9c4c_row47_col1" class="data row47 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row48" class="row_heading level0 row48" >48</th>
+      <td id="T_f9c4c_row48_col0" class="data row48 col0" >Polynomial Degree</td>
+      <td id="T_f9c4c_row48_col1" class="data row48 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row49" class="row_heading level0 row49" >49</th>
+      <td id="T_f9c4c_row49_col0" class="data row49 col0" >Trignometry Features</td>
+      <td id="T_f9c4c_row49_col1" class="data row49 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row50" class="row_heading level0 row50" >50</th>
+      <td id="T_f9c4c_row50_col0" class="data row50 col0" >Polynomial Threshold</td>
+      <td id="T_f9c4c_row50_col1" class="data row50 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row51" class="row_heading level0 row51" >51</th>
+      <td id="T_f9c4c_row51_col0" class="data row51 col0" >Group Features</td>
+      <td id="T_f9c4c_row51_col1" class="data row51 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row52" class="row_heading level0 row52" >52</th>
+      <td id="T_f9c4c_row52_col0" class="data row52 col0" >Feature Selection</td>
+      <td id="T_f9c4c_row52_col1" class="data row52 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row53" class="row_heading level0 row53" >53</th>
+      <td id="T_f9c4c_row53_col0" class="data row53 col0" >Feature Selection Method</td>
+      <td id="T_f9c4c_row53_col1" class="data row53 col1" >classic</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row54" class="row_heading level0 row54" >54</th>
+      <td id="T_f9c4c_row54_col0" class="data row54 col0" >Features Selection Threshold</td>
+      <td id="T_f9c4c_row54_col1" class="data row54 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row55" class="row_heading level0 row55" >55</th>
+      <td id="T_f9c4c_row55_col0" class="data row55 col0" >Feature Interaction</td>
+      <td id="T_f9c4c_row55_col1" class="data row55 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row56" class="row_heading level0 row56" >56</th>
+      <td id="T_f9c4c_row56_col0" class="data row56 col0" >Feature Ratio</td>
+      <td id="T_f9c4c_row56_col1" class="data row56 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row57" class="row_heading level0 row57" >57</th>
+      <td id="T_f9c4c_row57_col0" class="data row57 col0" >Interaction Threshold</td>
+      <td id="T_f9c4c_row57_col1" class="data row57 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row58" class="row_heading level0 row58" >58</th>
+      <td id="T_f9c4c_row58_col0" class="data row58 col0" >Fix Imbalance</td>
+      <td id="T_f9c4c_row58_col1" class="data row58 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f9c4c_level0_row59" class="row_heading level0 row59" >59</th>
+      <td id="T_f9c4c_row59_col0" class="data row59 col0" >Fix Imbalance Method</td>
+      <td id="T_f9c4c_row59_col1" class="data row59 col1" >SMOTE</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2005,22 +2252,22 @@ dtype: int64
       <th>Pclass_1</th>
       <th>Pclass_2</th>
       <th>Pclass_3</th>
-      <th>Sex_male</th>
+      <th>Sex_female</th>
       <th>SibSp_0</th>
       <th>SibSp_1</th>
       <th>SibSp_2</th>
       <th>SibSp_3</th>
       <th>...</th>
+      <th>Cabin_E77</th>
+      <th>Cabin_E8</th>
       <th>Cabin_F E69</th>
       <th>Cabin_F33</th>
-      <th>Cabin_F38</th>
       <th>Cabin_G6</th>
       <th>Cabin_T</th>
       <th>Cabin_not_available</th>
       <th>Embarked_C</th>
       <th>Embarked_Q</th>
       <th>Embarked_S</th>
-      <th>Embarked_not_available</th>
     </tr>
   </thead>
   <tbody>
@@ -2031,7 +2278,7 @@ dtype: int64
       <td>0.000000</td>
       <td>0.000000</td>
       <td>1.000000</td>
-      <td>1.000000</td>
+      <td>0.000000</td>
       <td>0.000000</td>
       <td>1.000000</td>
       <td>0.000000</td>
@@ -2042,11 +2289,11 @@ dtype: int64
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>1.000000</td>
-      <td>0.000000</td>
       <td>0.000000</td>
       <td>1.000000</td>
       <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>1</th>
@@ -2055,7 +2302,7 @@ dtype: int64
       <td>1.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.000000</td>
+      <td>1.000000</td>
       <td>0.000000</td>
       <td>1.000000</td>
       <td>0.000000</td>
@@ -2067,8 +2314,8 @@ dtype: int64
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>1.000000</td>
       <td>0.000000</td>
+      <td>1.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
@@ -2079,7 +2326,7 @@ dtype: int64
       <td>0.000000</td>
       <td>0.000000</td>
       <td>1.000000</td>
-      <td>0.000000</td>
+      <td>1.000000</td>
       <td>1.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -2090,11 +2337,11 @@ dtype: int64
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>1.000000</td>
-      <td>0.000000</td>
       <td>0.000000</td>
       <td>1.000000</td>
       <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>3</th>
@@ -2103,7 +2350,7 @@ dtype: int64
       <td>1.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.000000</td>
+      <td>1.000000</td>
       <td>0.000000</td>
       <td>1.000000</td>
       <td>0.000000</td>
@@ -2117,8 +2364,8 @@ dtype: int64
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>1.000000</td>
       <td>0.000000</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>4</th>
@@ -2127,7 +2374,7 @@ dtype: int64
       <td>0.000000</td>
       <td>0.000000</td>
       <td>1.000000</td>
-      <td>1.000000</td>
+      <td>0.000000</td>
       <td>1.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
@@ -2138,15 +2385,15 @@ dtype: int64
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>1.000000</td>
-      <td>0.000000</td>
       <td>0.000000</td>
       <td>1.000000</td>
       <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 568 columns</p>
+<p>5 rows × 567 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -2159,10 +2406,17 @@ dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:ylabel=&#39;Frequency&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/datacleaning_48_1.svg" src="_images/datacleaning_48_1.svg" /></div>
+<img alt="_images/datacleaning_48_1.png" src="_images/datacleaning_48_1.png" />
 </div>
 </div>
 </div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"ef7824e070474bc691e759bf68691896": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "70b57e7aa97a41ad819e63692d5451b5": {"model_name": "ProgressStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "3ebea4deb92547ab91cd18eb7370f486": {"model_name": "IntProgressModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "", "description": "Processing: ", "description_tooltip": null, "layout": "IPY_MODEL_ef7824e070474bc691e759bf68691896", "max": 3, "min": 0, "orientation": "horizontal", "style": "IPY_MODEL_70b57e7aa97a41ad819e63692d5451b5", "value": 3}}, "14c2928e8cce4ad4927967f20af77627": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f0c7339d300242bf9217123f02455ff6": {"model_name": "ProgressStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "1bc51bd4ccbe4fc096f621eda09e9375": {"model_name": "IntProgressModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "", "description": "Processing: ", "description_tooltip": null, "layout": "IPY_MODEL_14c2928e8cce4ad4927967f20af77627", "max": 3, "min": 0, "orientation": "horizontal", "style": "IPY_MODEL_f0c7339d300242bf9217123f02455ff6", "value": 3}}, "c5d92491dea345b3b3b1f1d4c9371566": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "50de6a42ee7e4dab918f24ce4522a58a": {"model_name": "ProgressStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "5421c05b0e254286b526ad2778771d75": {"model_name": "IntProgressModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "", "description": "Processing: ", "description_tooltip": null, "layout": "IPY_MODEL_c5d92491dea345b3b3b1f1d4c9371566", "max": 3, "min": 0, "orientation": "horizontal", "style": "IPY_MODEL_50de6a42ee7e4dab918f24ce4522a58a", "value": 3}}}, "version_major": 2, "version_minor": 0}
+</script>
+
 
     <script type="text/x-thebe-config">
     {

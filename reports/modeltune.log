@@ -1,19 +1,19 @@
 Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
     record_timing=False,
-  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 1117, in execute
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 1117, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/util.py", line 78, in wrapped
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/util.py", line 78, in wrapped
     return just_run(coro(*args, **kwargs))
-  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/util.py", line 57, in just_run
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/util.py", line 57, in just_run
     return loop.run_until_complete(coro)
-  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
     return future.result()
-  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 559, in async_execute
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 559, in async_execute
     cell, index, execution_count=self.code_cells_executed + 1
-  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 862, in async_execute_cell
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 862, in async_execute_cell
     self._check_raise_for_error(cell, exec_reply)
-  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
@@ -34,98 +34,77 @@ tuned_dt_custom = tune_model(dt, custom_grid = params)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mImportError[0m                               Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2071/563638542.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      2[0m [0mdiabetes[0m [0;34m=[0m [0mget_data[0m[0;34m([0m[0;34m'diabetes'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;31mStdinNotImplementedError[0m                  Traceback (most recent call last)
+[0;32m/tmp/ipykernel_4692/563638542.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      3[0m [0;31m# Importing module and initializing setup[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 4[0;31m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0mclassification[0m [0;32mimport[0m [0;34m*[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      5[0m [0mclf1[0m [0;34m=[0m [0msetup[0m[0;34m([0m[0mdata[0m [0;34m=[0m [0mdiabetes[0m[0;34m,[0m [0mtarget[0m [0;34m=[0m [0;34m'Class variable'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      6[0m [0;31m# train a decision tree model[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0mclassification[0m [0;32mimport[0m [0;34m*[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 5[0;31m [0mclf1[0m [0;34m=[0m [0msetup[0m[0;34m([0m[0mdata[0m [0;34m=[0m [0mdiabetes[0m[0;34m,[0m [0mtarget[0m [0;34m=[0m [0;34m'Class variable'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      6[0m [0;31m# train a decision tree model[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      7[0m [0mdt[0m [0;34m=[0m [0mcreate_model[0m[0;34m([0m[0;34m'dt'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pycaret/classification.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      8[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      9[0m [0;34m[0m[0m
-[0;32m---> 10[0;31m [0;32mimport[0m [0mpycaret[0m[0;34m.[0m[0minternal[0m[0;34m.[0m[0mtabular[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     11[0m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0minternal[0m[0;34m.[0m[0mDisplay[0m [0;32mimport[0m [0mDisplay[0m[0;34m,[0m [0mis_in_colab[0m[0;34m,[0m [0menable_colab[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     12[0m [0;32mfrom[0m [0mtyping[0m [0;32mimport[0m [0mList[0m[0;34m,[0m [0mTuple[0m[0;34m,[0m [0mAny[0m[0;34m,[0m [0mUnion[0m[0;34m,[0m [0mOptional[0m[0;34m,[0m [0mDict[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pycaret/classification.py[0m in [0;36msetup[0;34m(data, target, train_size, test_data, preprocess, imputation_type, iterative_imputation_iters, categorical_features, categorical_imputation, categorical_iterative_imputer, ordinal_features, high_cardinality_features, high_cardinality_method, numeric_features, numeric_imputation, numeric_iterative_imputer, date_features, ignore_features, normalize, normalize_method, transformation, transformation_method, handle_unknown_categorical, unknown_categorical_method, pca, pca_method, pca_components, ignore_low_variance, combine_rare_levels, rare_level_threshold, bin_numeric_features, remove_outliers, outliers_threshold, remove_multicollinearity, multicollinearity_threshold, remove_perfect_collinearity, create_clusters, cluster_iter, polynomial_features, polynomial_degree, trigonometry_features, polynomial_threshold, group_features, group_names, feature_selection, feature_selection_threshold, feature_selection_method, feature_interaction, feature_ratio, interaction_threshold, fix_imbalance, fix_imbalance_method, data_split_shuffle, data_split_stratify, fold_strategy, fold, fold_shuffle, fold_groups, n_jobs, use_gpu, custom_pipeline, html, session_id, log_experiment, experiment_name, log_plots, log_profile, log_data, silent, verbose, profile, profile_kwargs)[0m
+[1;32m    653[0m         [0mverbose[0m[0;34m=[0m[0mverbose[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    654[0m         [0mprofile[0m[0;34m=[0m[0mprofile[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 655[0;31m         [0mprofile_kwargs[0m[0;34m=[0m[0mprofile_kwargs[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    656[0m     )
+[1;32m    657[0m [0;34m[0m[0m
 
-[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pycaret/internal/tabular.py[0m in [0;36m<module>[0;34m[0m
-[1;32m     45[0m [0;32mimport[0m [0mpycaret[0m[0;34m.[0m[0mcontainers[0m[0;34m.[0m[0mmodels[0m[0;34m.[0m[0mclustering[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     46[0m [0;32mimport[0m [0mpycaret[0m[0;34m.[0m[0mcontainers[0m[0;34m.[0m[0mmodels[0m[0;34m.[0m[0manomaly[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 47[0;31m [0;32mimport[0m [0mpycaret[0m[0;34m.[0m[0minternal[0m[0;34m.[0m[0mpreprocess[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     48[0m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     49[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pycaret/internal/tabular.py[0m in [0;36msetup[0;34m(data, target, ml_usecase, available_plots, train_size, test_data, preprocess, imputation_type, iterative_imputation_iters, categorical_features, categorical_imputation, categorical_iterative_imputer, ordinal_features, high_cardinality_features, high_cardinality_method, numeric_features, numeric_imputation, numeric_iterative_imputer, date_features, ignore_features, normalize, normalize_method, transformation, transformation_method, handle_unknown_categorical, unknown_categorical_method, pca, pca_method, pca_components, ignore_low_variance, combine_rare_levels, rare_level_threshold, bin_numeric_features, remove_outliers, outliers_threshold, remove_multicollinearity, multicollinearity_threshold, remove_perfect_collinearity, create_clusters, cluster_iter, polynomial_features, polynomial_degree, trigonometry_features, polynomial_threshold, group_features, group_names, feature_selection, feature_selection_threshold, feature_selection_method, feature_interaction, feature_ratio, interaction_threshold, fix_imbalance, fix_imbalance_method, transform_target, transform_target_method, data_split_shuffle, data_split_stratify, fold_strategy, fold, fold_shuffle, fold_groups, n_jobs, use_gpu, custom_pipeline, html, session_id, log_experiment, experiment_name, log_plots, log_profile, log_data, silent, verbose, profile, profile_kwargs, display)[0m
+[1;32m   1328[0m             [0mtest_data[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mconcat[0m[0;34m([0m[0;34m[[0m[0mX_test[0m[0;34m,[0m [0my_test[0m[0;34m][0m[0;34m,[0m [0maxis[0m[0;34m=[0m[0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1329[0m [0;34m[0m[0m
+[0;32m-> 1330[0;31m         [0mtrain_data[0m [0;34m=[0m [0mprep_pipe[0m[0;34m.[0m[0mfit_transform[0m[0;34m([0m[0mtrain_data[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1331[0m         [0;31m# workaround to also transform target[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1332[0m         [0mdtypes[0m[0;34m.[0m[0mfinal_training_columns[0m[0;34m.[0m[0mappend[0m[0;34m([0m[0mtarget[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pycaret/internal/preprocess.py[0m in [0;36m<module>[0;34m[0m
-[1;32m     25[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mdecomposition[0m [0;32mimport[0m [0mIncrementalPCA[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     26[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mpreprocessing[0m [0;32mimport[0m [0mKBinsDiscretizer[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 27[0;31m [0;32mfrom[0m [0mpyod[0m[0;34m.[0m[0mmodels[0m[0;34m.[0m[0mknn[0m [0;32mimport[0m [0mKNN[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     28[0m [0;32mfrom[0m [0mpyod[0m[0;34m.[0m[0mmodels[0m[0;34m.[0m[0miforest[0m [0;32mimport[0m [0mIForest[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     29[0m [0;32mfrom[0m [0mpyod[0m[0;34m.[0m[0mmodels[0m[0;34m.[0m[0mpca[0m [0;32mimport[0m [0mPCA[0m [0;32mas[0m [0mPCA_od[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/pipeline.py[0m in [0;36mfit_transform[0;34m(self, X, y, **fit_params)[0m
+[1;32m    365[0m         """
+[1;32m    366[0m         [0mfit_params_steps[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_check_fit_params[0m[0;34m([0m[0;34m**[0m[0mfit_params[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 367[0;31m         [0mXt[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_fit[0m[0;34m([0m[0mX[0m[0;34m,[0m [0my[0m[0;34m,[0m [0;34m**[0m[0mfit_params_steps[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    368[0m [0;34m[0m[0m
+[1;32m    369[0m         [0mlast_step[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_final_estimator[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pyod/__init__.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      2[0m [0;34m[0m[0m
-[1;32m      3[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mmodels[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 4[0;31m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mutils[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      5[0m [0;31m# TODO: add version information here[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      6[0m [0;34m[0m[0m
+[0;32m/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/pipeline.py[0m in [0;36m_fit[0;34m(self, X, y, **fit_params_steps)[0m
+[1;32m    294[0m                 [0mmessage_clsname[0m[0;34m=[0m[0;34m'Pipeline'[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    295[0m                 [0mmessage[0m[0;34m=[0m[0mself[0m[0;34m.[0m[0m_log_message[0m[0;34m([0m[0mstep_idx[0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 296[0;31m                 **fit_params_steps[name])
+[0m[1;32m    297[0m             [0;31m# Replace the transformer of the step with the fitted[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    298[0m             [0;31m# transformer. This is necessary when loading the transformer[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pyod/utils/__init__.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      9[0m [0;32mfrom[0m [0;34m.[0m[0mdata[0m [0;32mimport[0m [0mgenerate_data[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     10[0m [0;32mfrom[0m [0;34m.[0m[0mdata[0m [0;32mimport[0m [0mevaluate_print[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 11[0;31m [0;32mfrom[0m [0;34m.[0m[0mstat_models[0m [0;32mimport[0m [0mpairwise_distances_no_broadcast[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     12[0m [0;32mfrom[0m [0;34m.[0m[0mstat_models[0m [0;32mimport[0m [0mwpearsonr[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     13[0m [0;32mfrom[0m [0;34m.[0m[0mstat_models[0m [0;32mimport[0m [0mpearsonr_mat[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/joblib/memory.py[0m in [0;36m__call__[0;34m(self, *args, **kwargs)[0m
+[1;32m    350[0m [0;34m[0m[0m
+[1;32m    351[0m     [0;32mdef[0m [0m__call__[0m[0;34m([0m[0mself[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 352[0;31m         [0;32mreturn[0m [0mself[0m[0;34m.[0m[0mfunc[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    353[0m [0;34m[0m[0m
+[1;32m    354[0m     [0;32mdef[0m [0mcall_and_shelve[0m[0;34m([0m[0mself[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pyod/utils/stat_models.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      9[0m [0;34m[0m[0m
-[1;32m     10[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 11[0;31m [0;32mfrom[0m [0mnumba[0m [0;32mimport[0m [0mnjit[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     12[0m [0;32mfrom[0m [0mscipy[0m[0;34m.[0m[0mstats[0m [0;32mimport[0m [0mpearsonr[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     13[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mutils[0m[0;34m.[0m[0mvalidation[0m [0;32mimport[0m [0mcheck_array[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/pipeline.py[0m in [0;36m_fit_transform_one[0;34m(transformer, X, y, weight, message_clsname, message, **fit_params)[0m
+[1;32m    738[0m     [0;32mwith[0m [0m_print_elapsed_time[0m[0;34m([0m[0mmessage_clsname[0m[0;34m,[0m [0mmessage[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    739[0m         [0;32mif[0m [0mhasattr[0m[0;34m([0m[0mtransformer[0m[0;34m,[0m [0;34m'fit_transform'[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 740[0;31m             [0mres[0m [0;34m=[0m [0mtransformer[0m[0;34m.[0m[0mfit_transform[0m[0;34m([0m[0mX[0m[0;34m,[0m [0my[0m[0;34m,[0m [0;34m**[0m[0mfit_params[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    741[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    742[0m             [0mres[0m [0;34m=[0m [0mtransformer[0m[0;34m.[0m[0mfit[0m[0;34m([0m[0mX[0m[0;34m,[0m [0my[0m[0;34m,[0m [0;34m**[0m[0mfit_params[0m[0;34m)[0m[0;34m.[0m[0mtransform[0m[0;34m([0m[0mX[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/numba/__init__.py[0m in [0;36m<module>[0;34m[0m
-[1;32m     37[0m [0;34m[0m[0m
-[1;32m     38[0m [0;31m# Re-export decorators[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 39[0;31m from numba.core.decorators import (cfunc, generated_jit, jit, njit, stencil,
-[0m[1;32m     40[0m                                    jit_module)
-[1;32m     41[0m [0;34m[0m[0m
+[0;32m/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pycaret/internal/preprocess.py[0m in [0;36mfit_transform[0;34m(self, dataset, y)[0m
+[1;32m    419[0m [0;34m[0m[0m
+[1;32m    420[0m         [0;31m# since this is for training , we dont nees any transformation since it has already been transformed in fit[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 421[0;31m         [0mdata[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mfit[0m[0;34m([0m[0mdata[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    422[0m [0;34m[0m[0m
+[1;32m    423[0m         [0;31m# additionally we just need to treat the target variable[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/numba/core/decorators.py[0m in [0;36m<module>[0;34m[0m
-[1;32m     10[0m [0;34m[0m[0m
-[1;32m     11[0m [0;32mfrom[0m [0mnumba[0m[0;34m.[0m[0mcore[0m[0;34m.[0m[0merrors[0m [0;32mimport[0m [0mDeprecationError[0m[0;34m,[0m [0mNumbaDeprecationWarning[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 12[0;31m [0;32mfrom[0m [0mnumba[0m[0;34m.[0m[0mstencils[0m[0;34m.[0m[0mstencil[0m [0;32mimport[0m [0mstencil[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     13[0m [0;32mfrom[0m [0mnumba[0m[0;34m.[0m[0mcore[0m [0;32mimport[0m [0mconfig[0m[0;34m,[0m [0mextending[0m[0;34m,[0m [0msigutils[0m[0;34m,[0m [0mregistry[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     14[0m [0;34m[0m[0m
+[0;32m/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pycaret/internal/preprocess.py[0m in [0;36mfit[0;34m(self, dataset, y)[0m
+[1;32m    321[0m [0;34m[0m[0m
+[1;32m    322[0m             [0mdisplay[0m[0;34m([0m[0mdt_print_out[0m[0;34m[[0m[0;34m[[0m[0;34m"Data Type"[0m[0;34m][0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 323[0;31m             [0mself[0m[0;34m.[0m[0mresponse[0m [0;34m=[0m [0minput[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    324[0m [0;34m[0m[0m
+[1;32m    325[0m             if self.response in [
 
-[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/numba/stencils/stencil.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      9[0m [0;32mfrom[0m [0mllvmlite[0m [0;32mimport[0m [0mir[0m [0;32mas[0m [0mlir[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     10[0m [0;34m[0m[0m
-[0;32m---> 11[0;31m [0;32mfrom[0m [0mnumba[0m[0;34m.[0m[0mcore[0m [0;32mimport[0m [0mtypes[0m[0;34m,[0m [0mtyping[0m[0;34m,[0m [0mutils[0m[0;34m,[0m [0mir[0m[0;34m,[0m [0mconfig[0m[0;34m,[0m [0mir_utils[0m[0;34m,[0m [0mregistry[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     12[0m from numba.core.typing.templates import (CallableTemplate, signature,
-[1;32m     13[0m                                          infer_global, AbstractTemplate)
+[0;32m/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/ipykernel/kernelbase.py[0m in [0;36mraw_input[0;34m(self, prompt)[0m
+[1;32m   1002[0m         [0;32mif[0m [0;32mnot[0m [0mself[0m[0;34m.[0m[0m_allow_stdin[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1003[0m             raise StdinNotImplementedError(
+[0;32m-> 1004[0;31m                 [0;34m"raw_input was called, but this frontend does not support input requests."[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1005[0m             )
+[1;32m   1006[0m         return self._input_request(
 
-[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/numba/core/ir_utils.py[0m in [0;36m<module>[0;34m[0m
-[1;32m     14[0m [0;34m[0m[0m
-[1;32m     15[0m [0;32mimport[0m [0mnumba[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 16[0;31m [0;32mfrom[0m [0mnumba[0m[0;34m.[0m[0mcore[0m[0;34m.[0m[0mextending[0m [0;32mimport[0m [0m_Intrinsic[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     17[0m [0;32mfrom[0m [0mnumba[0m[0;34m.[0m[0mcore[0m [0;32mimport[0m [0mtypes[0m[0;34m,[0m [0mutils[0m[0;34m,[0m [0mtyping[0m[0;34m,[0m [0mir[0m[0;34m,[0m [0manalysis[0m[0;34m,[0m [0mpostproc[0m[0;34m,[0m [0mrewrites[0m[0;34m,[0m [0mconfig[0m[0;34m,[0m [0mcgutils[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     18[0m from numba.core.typing.templates import (signature, infer_global,
-
-[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/numba/core/extending.py[0m in [0;36m<module>[0;34m[0m
-[1;32m     17[0m [0;32mfrom[0m [0mnumba[0m[0;34m.[0m[0mcore[0m[0;34m.[0m[0mdatamodel[0m [0;32mimport[0m [0mmodels[0m   [0;31m# noqa: F401[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     18[0m [0;32mfrom[0m [0mnumba[0m[0;34m.[0m[0mcore[0m[0;34m.[0m[0mdatamodel[0m [0;32mimport[0m [0mregister_default[0m [0;32mas[0m [0mregister_model[0m  [0;31m# noqa: F401, E501[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 19[0;31m [0;32mfrom[0m [0mnumba[0m[0;34m.[0m[0mcore[0m[0;34m.[0m[0mpythonapi[0m [0;32mimport[0m [0mbox[0m[0;34m,[0m [0munbox[0m[0;34m,[0m [0mreflect[0m[0;34m,[0m [0mNativeValue[0m  [0;31m# noqa: F401[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     20[0m [0;32mfrom[0m [0mnumba[0m[0;34m.[0m[0m_helperlib[0m [0;32mimport[0m [0m_import_cython_function[0m  [0;31m# noqa: F401[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     21[0m [0;32mfrom[0m [0mnumba[0m[0;34m.[0m[0mcore[0m[0;34m.[0m[0mserialize[0m [0;32mimport[0m [0mReduceMixin[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/numba/core/pythonapi.py[0m in [0;36m<module>[0;34m[0m
-[1;32m     10[0m [0;34m[0m[0m
-[1;32m     11[0m [0;32mimport[0m [0mctypes[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 12[0;31m [0;32mfrom[0m [0mnumba[0m [0;32mimport[0m [0m_helperlib[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     13[0m from numba.core import (
-[1;32m     14[0m     [0mtypes[0m[0;34m,[0m [0mutils[0m[0;34m,[0m [0mconfig[0m[0;34m,[0m [0mlowering[0m[0;34m,[0m [0mcgutils[0m[0;34m,[0m [0mimputils[0m[0;34m,[0m [0mserialize[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-
-[0;31mImportError[0m: numpy.core.multiarray failed to import
-ImportError: numpy.core.multiarray failed to import
+[0;31mStdinNotImplementedError[0m: raw_input was called, but this frontend does not support input requests.
+StdinNotImplementedError: raw_input was called, but this frontend does not support input requests.
 
